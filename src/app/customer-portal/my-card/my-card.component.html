@@ -1,0 +1,163 @@
+<main>
+    <section class="fp_customer_portal fp_card">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper flow-rootX6">
+                    <!-- stored card -->
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="85" height="67" viewBox="0 0 85 66" fill="none">
+                                        <path d="M75.297 60.2296C75.297 62.4434 73.5028 64.238 71.289 64.238H6.0085C3.7946 64.238 2 62.4434 2 60.2296V17.8545C2 15.6407 3.7946 13.846 6.0085 13.846H71.289C73.5028 13.846 75.297 15.6407 75.297 17.8545" stroke="white" stroke-width="2.29055"/>
+                                        <path d="M80.707 52.2921C82.285 52.1896 83.481 50.8273 83.378 49.2493L80.483 4.67773C80.38 3.09973 79.018 1.90363 77.44 2.00613L10.0109 6.38692C8.43292 6.48952 7.23682 7.85182 7.33932 9.42972" stroke="white" stroke-width="2.29055"/>
+                                        <path d="M24.9055 29.0209H14.598C12.8586 29.0209 11.4485 30.431 11.4485 32.1704V36.7515C11.4485 38.491 12.8586 39.901 14.598 39.901H24.9055C26.6449 39.901 28.055 38.491 28.055 36.7515V32.1704C28.055 30.431 26.6449 29.0209 24.9055 29.0209Z" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M10.5895 49.0631H22.6149" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M13.4527 35.0336H25.4781" stroke="white" stroke-width="1.14527"/>
+                                        <path d="M26.0508 49.0631H38.0762" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M10.5895 55.9348H38.0761" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M41.512 49.0631H53.5374" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M56.9731 49.0631H68.9985" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M56.9731 25.8714V30.4525" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M60.4089 23.0082C61.4587 24.917 62.9285 29.479 60.4089 32.4567" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M63.5583 20.7176C65.2868 23.4941 67.7067 30.1297 63.5583 34.4609" stroke="white" stroke-width="1.71791"/>
+                                        <path d="M75.297 17.2818V40.4736" stroke="white" stroke-width="2.29055"/>
+                                        <path d="M75.297 46.4863V61.3748" stroke="white" stroke-width="2.29055"/>
+                                        <path d="M81.31 52.2126L75.297 53.9306" stroke="white" stroke-width="2.29055"/>
+                                      </svg>
+                                    <h3>Stored Card Information</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card_inner m_card_wrap">
+                                    <!-- <h4>Edit Your Card Detail</h4> -->
+                                    <h4>My Saved Card</h4>
+                                    <div class="card_table">
+                                        <table class="m_card_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Last 4 Digits <span>Ending</span></th>
+                                                    <th>Exp Date <span>Exp</span></th>
+                                                    <th>Name on Card <span>Name</span></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ng-container *ngIf="customerCardList.length>0">
+                                                    <tr *ngFor="let item of customerCardList"> 
+                                                        <td>
+                                                            <span class="payment-icons mastercard">
+                                                                <img *ngIf="item?.card_type=='Visa'" src="assets/img/allCardIcon/visa.svg" />
+                                                                <img *ngIf="item?.card_type=='MasterCard'"
+                                                                    src="assets/img/allCardIcon/mastercard.svg" />
+                                                                <img *ngIf="item?.card_type=='Discover'"
+                                                                    src="assets/img/allCardIcon/discover.svg" />
+                                                                <img *ngIf="item?.card_type=='AmericanExpress'"
+                                                                    src="assets/img/allCardIcon/amex.svg" />
+                                                                <img *ngIf="item?.card_type=='DinersClub'"
+                                                                    src="assets/img/allCardIcon/diners.svg" />
+                                                                <img *ngIf="item?.card_type!='DinersClub' && item?.card_type!='AmericanExpress' 
+                                                                        && item?.card_type!='Discover'&& item?.card_type!='MasterCard' 
+                                                                        && item?.card_type!='Visa'" src="assets/img/allCardIcon/credit-card.svg" />
+                                                            </span>
+                                                            &nbsp; {{item.card_last_4_digit}} &nbsp;
+                                                            <span  class="budge" *ngIf="item.primary_card">Primary</span>
+                                                        </td>
+                                                       
+                                                        <td class="td-exp"><span>VALID THRU 12/25 </span>{{item.card_expiry_date | slashify}}</td>
+                                                        <td>{{item.card_holder_name}} </td>
+                                                        <!-- <td>
+                                                            <div class="action_btn">
+                                                                <button href="javaScript:void(0)" class="edit_info" *ngIf="!item.primary_card"><span class="material-symbols-outlined c--fpBlue">edit_square</span><span class="edit c--fpBlue">Edit</span></button>
+                                                                <button href="javaScript:void(0)" class="edit_info" *ngIf="!item.primary_card"><span class="material-symbols-outlined c--trash">delete</span><span class="trash c--trash">Delete</span></button>
+                                                                
+                                                            </div>
+                                                        </td> -->
+
+                                                        <td align="right"><button type="button" class="c2a size:minimal bg--fpGreen hvr:bg--fpBlue c--whitee" *ngIf="!item.primary_card" (click)="changePrimaryCard(item)">Set as Primary</button></td>
+                                                    </tr>  
+                                                </ng-container>
+                                                                                        
+                                            </tbody>
+                                        </table>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ./stored card -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--Logout modal -->
+<!-- <div class="logout_modal modal_show">
+    <div class="logout_modal_inner">
+        <div class="modal_hdr">
+            <h4>Are you sure want to Logout?</h4>
+            <label for="modal-test" class="modal-close">×</label>
+        </div>
+        
+        <div class="text-center">
+        <button type="submit" class="c2a c2a--inline btn-yes">Yes</button>
+        <button type="submit" class="c2a c2a--inline btn-no">No</button>
+        </div>
+    </div>
+</div> -->
+
+</main>
+                        
+
+
+<div class="moadal_wrap moadal_wrap_on" style="display: none;">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close" >×</div>
+
+        <div class="modal-content modal_show">
+            <form class="form-style-3 flow-rootx moadal_form">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <i class="material-symbols-outlined">add_card</i>
+                        <h3>Add New Card</h3>
+                    </div>
+                </div>
+
+                <div class="addCard_form_row">
+                    <div class="form-element colspan-2">
+                        <label class="form-label">Name on Card <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field"  minlength="3" maxlength="150"
+                        formControlName=""/>
+                    </div>
+                    <div class="form-element colspan-2">
+                        <label class="form-label">Card No. <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field"  minlength="3" maxlength="150"
+                        formControlName=""/>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">Expiry date<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName=""
+                        placeholder="">
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">CVV<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName=""
+                        placeholder="">
+                    </div>
+                </div>
+                <div class="form_btn text-right pt-0 mt-0">
+                    <button class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" type="submit" value="Add New Card" >                        
+                        
+                    </button>
+                </div>
+                <p><i class="material-symbols-outlined" style="vertical-align: text-bottom;">info</i> Your card information is safe with us. We don't stored CVV details.</p>
+            </form>
+        </div>
+    </div>
+
+
+</div>

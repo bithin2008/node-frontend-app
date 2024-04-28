@@ -1,0 +1,33 @@
+<section class="fp__artical_slider">
+    <div class="mainX-container">
+      <div class="inner-container">
+
+        <article class="fp__artical_slider--heading">
+          <p>Learn more about the benefits of <strong>First Premier Home Warranty</strong> and why it's a smart solution for every homeowner:</p>
+        </article>
+
+
+        <div class="artical_wrapper" *ngIf="blogList.length>0">
+          <div class="swiper-container swiper__blog-container">
+            <div class="swiper-wrapper eq-height">
+              <div class="swiper-slide" *ngFor="let blog of blogList">
+                <div class="blog--card">
+                  <span class="burdge">{{blog.publish_date | date:'MMM d, y'}}</span>
+                  <figure><a  routerLink="/blogs/{{blog.slug}}"><img src="{{blog.image}}" alt="{{blog.blog_title}}" title="{{blog.blog_title}}"/></a></figure>
+                  <article class="flow-rootX">
+                    <h5 class="item--heading"><a  routerLink="/blogs/{{blog.slug}}">{{ (blog.blog_title.length>50)? (blog.blog_title | slice:0:40)+'...':(blog.blog_title) }}</a></h5>
+                    <a routerLink="/blogs/{{blog.slug}}" class="readbtn">Read Blog</a>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-nav">
+          <div class="swiper-nav--prev swiper__blog-container--prev"></div>
+          <div class="swiper-nav--next swiper__blog-container--next"></div>
+        </div>
+      </div>
+    </div>
+  </section>

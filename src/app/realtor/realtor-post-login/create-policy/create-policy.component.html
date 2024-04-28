@@ -1,0 +1,1389 @@
+<app-realtor-post-header></app-realtor-post-header>
+<main>
+    <section class="rp_panel">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="rp-policy-checkout">
+                                <div class="stepper_wrapper">
+                                    <ng-stepper style="overflow: visible;" [linear]="true"
+                                        (selectionChange)="onStepChanged($event)">
+                                        <div class="stepper">
+                                            <div class="stepper-header">
+                                                <ol class="steps">
+                                                    <li class="step active">
+                                                        <div class="step-bullet"></div>
+                                                        <div class="step-title current">
+                                                            <span class="stp">Step 1</span>
+                                                        </div>
+                                                        <p class="step_sub_title">Property Information</p>
+                                                    </li>
+                                                    <li class="step">
+                                                        <div class="step-bullet"></div>
+                                                        <div class="step-title current">
+                                                            <span class="stp">Step 2</span>
+                                                        </div>
+                                                        <p class="step_sub_title">Personal Information</p>
+                                                    </li>
+                                                    <li class="step">
+                                                        <div class="step-bullet"></div>
+                                                        <div class="step-title current">
+                                                            <span class="stp">Step 3</span>
+                                                        </div>
+                                                        <p class="step_sub_title">Plan and Coverage</p>
+                                                    </li>
+                                                    <li class="step">
+                                                        <div class="step-bullet"></div>
+                                                        <div class="step-title current">
+                                                            <span class="stp">Step 4</span>
+                                                        </div>
+                                                        <p class="step_sub_title">Checkout</p>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                            <div class="stepper-body">
+                                                <div class="content ">
+                                                    <cdk-step [stepControl]="stepOneForm" [optional]="false">
+                                                        <div class="step step-1">
+
+                                                            <ng-template cdkStepLabel>
+                                                                <div class="step-bullet">1</div>
+                                                                <div class="step-title current"><span class="stp">Step
+                                                                        1</span><div class="ripple_ani"></div></div>
+                                                                        <p class="step_sub_title">Property Information</p>        
+                                                            </ng-template>
+                                                            <div class="card-body">
+                                                                <div class="card_inner">
+                                                                    <form class="form-style checkout_form"
+                                                                        [formGroup]="stepOneForm"
+                                                                        (ngSubmit)="stepOneSubmit()" #formRef="ngForm">
+                                                                        <div class="form_sub_hdng">
+                                                                            <h5>Property Address</h5>
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Address <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field" id="addressBar"
+                                                                                    formControlName="propertyAddress" placeholder=""
+                                                                                    minlength="3">
+                                                                                <span
+                                                                                    class="material-symbols-outlined">home</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertyAddress']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Zip Code <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input  type="text" pattern="\d*" class="form-field"
+                                                                                    placeholder=""
+                                                                                    formControlName="propertyZipCode"
+                                                                                    (input)="allowOnlyNumber($event)"
+                                                                                    (keyup)="chekcZipCode($event)"
+                                                                                    onKeyPress="if(this.value.length==5) return true;"
+                                                                                    [minlength]="5" [maxlength]="5">
+                                                                                <span
+                                                                                    class="material-symbols-outlined">markunread_mailbox</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertyZipCode']"></app-validation-error>
+                                                                                <div class="my-1 py-2 alert alert-danger"
+                                                                                    *ngIf="validZipMessage">
+                                                                                    <i aria-hidden="true"
+                                                                                        class="pi pi-exclamation-circle me-2"></i>
+                                                                                    <span>{{validZipMessage}}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">State </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="propertyState"
+                                                                                    readonly>
+                                                                                <span
+                                                                                    class="material-symbols-outlined">where_to_vote</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertyState']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">City</label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="propertyCity"
+                                                                                    readonly>
+                                                                                <span
+                                                                                    class="material-symbols-outlined">navigation</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertyCity']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="form_sub_hdng">
+                                                                            <h5>Property Details</h5>
+                                                                        </div>
+
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element has-value">
+                                                                                <label class="form-label"> Property Type
+                                                                                    <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <select class="form-field form-select"
+                                                                                    id="propertyType"
+                                                                                    formControlName="propertyTypeId"
+                                                                                    (change)="getSelectedPropertyText()">                                                                                   
+                                                                                    <option
+                                                                                        *ngFor="let item of propertyTypes"
+                                                                                        value="{{item.property_type_id}}">
+                                                                                        {{item.property_type}}
+                                                                                    </option>
+                                                                                </select>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertyTypeId']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element has-value">
+                                                                                <label class="form-label">Property Size
+                                                                                    <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <select class="form-field form-select"
+                                                                                    formControlName="propertySizeId">
+                                                                                    <option value="0">Under 5,000 sq. ft
+                                                                                    </option>
+                                                                                    <option value="1">Over 5,000 sq. ft
+                                                                                    </option>
+                                                                                </select>
+                                                                                <app-validation-error
+                                                                                    [control]="s1['propertySizeId']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="propty_btn gap-0">
+                                                                            <button type="submit"
+                                                                                class="c2a justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100"><span>NEXT</span><span
+                                                                                    class="material-symbols-outlined">east</span></button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </cdk-step>
+                                                    <cdk-step [stepControl]="stepTwoForm" [optional]="false">
+                                                        <div class="step step-2">
+                                                            <ng-template cdkStepLabel>
+                                                                <div class="step-bullet">2</div>
+                                                                <div class="step-title current"><span class="stp">Step 2</span><div class="ripple_ani"></div></div>
+                                                                <p class="step_sub_title">Personal Information</p>
+                                                            </ng-template>
+                                                            <div class="card-body">
+                                                                <div class="card_inner">
+                                                                    <form class="form-style " [formGroup]="stepTwoForm"
+                                                                        (ngSubmit)="stepTwoSubmit()" #formRef="ngForm">
+                                                                        <div class="form_sub_hdng">
+                                                                            <h5>Buyer Information</h5>
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">First Name
+                                                                                    <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="buyerFirstName">
+                                                                                <span class="material-symbols-outlined">person</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['buyerFirstName']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Last Name
+                                                                                    <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="buyerLastName">
+                                                                                <span class="material-symbols-outlined">person</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['buyerLastName']"></app-validation-error>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Email <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="buyerEmail">
+                                                                                <span class="material-symbols-outlined">mail</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['buyerEmail']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Phone <span
+                                                                                    class="c--error">*</span> </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="buyerMobile"
+                                                                                    usPhoneNumber
+                                                                                    (input)="buyerChangePhoneFormat($event)">
+                                                                                <span class="material-symbols-outlined">call</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['buyerMobile']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="form_sub_hdng">
+                                                                            <h5>Seller Information</h5>
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">First Name
+                                                                                </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="sellerFirstName">
+                                                                                <span class="material-symbols-outlined">person</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['sellerFirstName']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Last Name
+                                                                                </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="sellerLastName">
+                                                                                <span class="material-symbols-outlined">person</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['sellerLastName']"></app-validation-error>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Email </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="sellerEmail"
+                                                                                    >
+                                                                                <span class="material-symbols-outlined">mail</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['sellerEmail']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Phone </label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="sellerMobile"
+                                                                                    usPhoneNumber
+                                                                                    (input)="sellerChangePhoneFormat($event)">
+                                                                                <span class="material-symbols-outlined">call</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['sellerMobile']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-element "
+                                                                            *ngIf="validSellerEmail" style="display: none;">
+                                                                            <label>Please select to whom the Policy
+                                                                                belongs?<span
+                                                                                class="c--error">*</span></label>
+                                                                            <div style="margin-top:10px">
+                                                                                <div
+                                                                                    class="form-checkbox rl_form_checkbox inline-style check-element d-inline-block mr-1 mb-0">
+                                                                                    <label>
+                                                                                        <input type="radio"
+                                                                                            value="buyer"
+                                                                                            formControlName="policyBelongs">
+                                                                                        <span class="checkmark"></span>
+                                                                                        <p>Buyer</p>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="form-checkbox rl_form_checkbox inline-style check-element d-inline-block mb-0">
+                                                                                    <label>
+                                                                                        <input type="radio"
+                                                                                            value="seller"
+                                                                                            formControlName="policyBelongs">
+                                                                                        <span class="checkmark"></span>
+                                                                                        <p>Seller</p>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['policyBelongs']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form_sub_hdng">
+                                                                            <h5>Title Company Information</h5>
+                                                                        </div>
+                                                                        <div
+                                                                            class="form-checkbox rl_form_checkbox inline-style check-element">
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                    [(ngModel)]="hasCompanyInfo"
+                                                                                    [ngModelOptions]="{standalone: true}"
+                                                                                    (change)="toggleCompanyInfo()">
+                                                                                <span class="checkmark"></span>
+                                                                                <p>I do not have the Title Company Information
+                                                                                    at
+                                                                                    this time.</p>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1 diabled-col">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Company Name
+                                                                                    <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="companyName">
+                                                                                <span
+                                                                                    class="material-symbols-outlined">home</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['companyName']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Contact Person
+                                                                                    Name <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="companyContactPerson">
+                                                                                <span class="material-symbols-outlined">person</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['companyContactPerson']"></app-validation-error>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="grid grid-2 grid-sm-1 diabled-col">
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Email <span
+                                                                                        class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="companyEmail">
+                                                                                <span class="material-symbols-outlined">mail</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['companyEmail']"></app-validation-error>
+                                                                            </div>
+                                                                            <div class="form-element ">
+                                                                                <label class="form-label">Phone <span
+                                                                                    class="c--error">*</span></label>
+                                                                                <input type="text" class="form-field"
+                                                                                    formControlName="companyMobile"
+                                                                                    usPhoneNumber
+                                                                                    (input)="companyChangePhoneFormat($event)">
+                                                                                <span class="material-symbols-outlined">call</span>
+                                                                                <app-validation-error
+                                                                                    [control]="s2['companyMobile']"></app-validation-error>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="propty_btn">
+                                                                            <button type="button"
+                                                                                class="c2a justify-content-between justify-md-content-center hvr:bg--fpBlue c--whitee w-100" (click)="previousStep()"><span
+                                                                                    class="material-symbols-outlined">arrow_back</span><span>PREV</span></button>
+                                                                            <button type="submit"
+                                                                                class="c2a justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100"><span>NEXT</span><span
+                                                                                    class="material-symbols-outlined">east</span></button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </cdk-step>
+                                                    <cdk-step [stepControl]="stepThreeForm" [optional]="false">
+                                                        <div class="step step-3">
+
+                                                            <ng-template cdkStepLabel>
+                                                                <div class="step-bullet">3</div>
+                                                                <div class="step-title current"><span class="stp">Step 3</span><div class="ripple_ani"></div></div>
+                                                                <p class="step_sub_title">Plan and Coverage</p>
+                                                            </ng-template>
+                                                            <div class="card-body">
+                                                                <div class="card_inner">
+                                                                    <form class="form-style "
+                                                                        [formGroup]="stepThreeForm"
+                                                                        (ngSubmit)="stepThreeSubmit()"
+                                                                        #formRef="ngForm">
+                                                                        <div class="plan_selct_hdng">
+                                                                            <p>Explore our selection of cost-effective coverage plans and secure your vital home
+                                                                                appliances against unforeseen damages.</p>
+                                                                            <div class="switch-container">
+                                                                                <p class="disable-element">Monthly </p>
+                                                                                <label class="switch disable-element"><input
+                                                                                        type="checkbox"
+                                                                                        [(ngModel)]="planTerm" [disabled]="true"
+                                                                                        [ngModelOptions]="{standalone: true}"
+                                                                                        (change)="changePlanTerm()" />
+                                                                                    <div></div>
+                                                                                </label>
+                                                                                <p>Annually <span
+                                                                                        class="bg--fpGreen">Best
+                                                                                        Choice</span></p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plan_panel_wrapper">
+                                                                            <ng-container *ngFor="let item of planList">
+                                                                                <div
+                                                                                    class="plan_box plan-{{ item.plan_name | lowercase}}">
+                                                                                    <div class="plan_box_head">
+                                                                                        <div class="pln_hdng">
+                                                                                            <h4 class="fw--sb">
+                                                                                                {{item.plan_name}} Plan
+                                                                                            </h4>
+                                                                                            <span class="mostpopular"
+                                                                                                *ngIf="item.plan_id == 2">
+                                                                                                <span><img
+                                                                                                        src="assets/img/thumbs-up.gif"
+                                                                                                        alt="Mostpopular"
+                                                                                                        title="Mostpopular" /></span>
+                                                                                                Most Popular
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        <span
+                                                                                            class="currentPrice fw--sb c--whitee"><span
+                                                                                                *ngIf="s1['propertySizeId'].value==0">{{item.price_below_5000_sqft
+                                                                                                |
+                                                                                                currency:'USD'}}</span>
+                                                                                            <span
+                                                                                                *ngIf="s1['propertySizeId'].value==1">{{item.price_above_5000_sqft|
+                                                                                                currency:'USD'}}</span>
+                                                                                            <span>/{{planTerm?'Year':'Month'}}</span></span>
+                                                                                    </div>
+                                                                                    <div class="plan_box_body">
+                                                                                        <div class="plan_box_content">
+                                                                                            <ul>
+                                                                                                <!-- <li class="cancl">A/C System (2
+                                                                                            Units)</li>
+                                                                                        <li class="cancl">Clothes Dryer</li>
+                                                                                        <li class="cancl">Oven/Range/Stove
+                                                                                        </li>
+                                                                                        <li class="cancl">Cooktop</li>
+                                                                                        <li class="cancl">Clothes Washer
+                                                                                        </li> -->
+                                                                                                <ng-container
+                                                                                                    *ngFor="let product of planWiseProductList">
+                                                                                                    <li
+                                                                                                        *ngIf="product.exist_in_both_plan || item?.plan_id==2">
+
+                                                                                                        {{product?.product_name}}
+                                                                                                    </li>
+                                                                                                    <li *ngIf="!product.exist_in_both_plan && item?.plan_id==1"
+                                                                                                        class="cancl">
+
+                                                                                                        {{product?.product_name}}
+                                                                                                    </li>
+                                                                                                </ng-container>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="plan_box_footer">
+                                                                                            <button type="button"
+                                                                                                (click)="planSelection(item)"
+                                                                                                class="c2a c2a--inline {{item.is_active?'bg--fpBlue':'bg--fpGreen'}} c--whitee hvr:bg--fpBlue">GET THE PLAN</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </ng-container>
+                                                                            <div class="plan_box popular"
+                                                                                style="display: none;">
+                                                                                <div class="plan_box_head">
+                                                                                    <div class="pln_hdng">
+                                                                                        <h4 class="fw--sb">Platinum Plan
+                                                                                        </h4>
+                                                                                        <span class="mostpopular">
+                                                                                            <span><img
+                                                                                                    src="assets/img/thumbs-up.gif"
+                                                                                                    alt="Mostpopular"
+                                                                                                    title="Mostpopular" /></span>
+                                                                                            Most Popular
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <span
+                                                                                        class="currentPrice fw--sb c--whitee">$699.99/yr</span>
+                                                                                </div>
+                                                                                <div class="plan_box_body">
+                                                                                    <div class="plan_box_content">
+                                                                                        <ul>
+                                                                                            <li>A/C System (2 Units)
+                                                                                            </li>
+                                                                                            <li>Clothes Dryer</li>
+                                                                                            <li>Oven/Range/Stove</li>
+                                                                                            <li>Electrical System</li>
+                                                                                            <li>Bathtub</li>
+                                                                                            <li>Refrigerator</li>
+                                                                                            <li>Built-in Microwave</li>
+                                                                                            <li>Trash Compactor</li>
+                                                                                            <li>Ductwork</li>
+                                                                                            <li>Cooktop</li>
+                                                                                            <li>Clothes Washer</li>
+                                                                                            <li>Garage Door Opener</li>
+                                                                                            <li>Ceiling & Exhaust Fans
+                                                                                            </li>
+                                                                                            <li>Heating System (2 Units)
+                                                                                            </li>
+                                                                                            <li>Water Heater</li>
+                                                                                            <li>Plumbing Stopage</li>
+                                                                                            <li>Plumbing System</li>
+                                                                                            <li>Dishwasher</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <div class="plan_box_footer">
+                                                                                        <a routerLink="/checkout"
+                                                                                            class="c2a c2a--inline bg--fpGreen c--whitee hvr:bg--fpBlue">GET
+                                                                                            COVERAGE
+                                                                                            NOW</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rl_optional_addon_list">
+                                                                            <div class="optional_addon_hdr">
+                                                                                <h3>Optional Coverage</h3>
+                                                                            </div>
+                                                                            <div class="optional_addon_bdy">
+                                                                                <div class="form-style-3"
+                                                                                    style="position: relative;">
+                                                                                    <div *ngIf="(activePlan | json) == '{}' || activePlan==undefined"
+                                                                                        (click)="disableClick()"
+                                                                                        style="position:absolute;width: 100%;height: 100%; z-index: 9999;top: 0;left: 0;">
+                                                                                    </div>
+                                                                                    <div class="productlist_wrap">
+                                                                                        <ng-container
+                                                                                            *ngFor="let item of addOnProductList ">
+                                                                                            <div
+                                                                                                class="form-checkbox inline-style check-element">
+                                                                                                <label>
+                                                                                                    <input
+                                                                                                        type="checkbox"
+                                                                                                        name="callback_request"
+                                                                                                        class="serviceTypesCheckbox"
+                                                                                                        [(ngModel)]="item.is_selected"
+                                                                                                        [ngModelOptions]="{standalone: true}"
+                                                                                                        (change)="addonProductSelection($event,item)">
+                                                                                                    <span
+                                                                                                        class="checkmark"></span>
+                                                                                                    <p>{{item.product_name}}
+                                                                                                    </p>
+                                                                                                </label>
+                                                                                                <div class="add_pric"
+                                                                                                    *ngIf="planTerm">
+                                                                                                    {{item.yearly_price
+                                                                                                    |
+                                                                                                    currency:'USD'}}/yr
+                                                                                                </div>
+                                                                                                <div class="add_pric"
+                                                                                                    *ngIf="!planTerm">
+                                                                                                    {{item.monthly_price
+                                                                                                    |
+                                                                                                    currency:'USD'}}/mo
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rl_coverage-details">
+                                                                            <div class="coverage-details_hdr">
+                                                                                <h3>Coverage Details</h3>
+                                                                            </div>
+                                                                            <div class="coverage-details-total">                                                                               
+                                                                                <div class="totl_items">
+                                                                                    <span>{{activePlan?.plan_name}}
+                                                                                        Plan</span>
+                                                                                    <em>{{selectedPlanPrice
+                                                                                        |currency:'USD'}}</em>
+                                                                                </div>
+                                                                                <div class="totl_items">
+                                                                                    <span>Optional Coverage</span>
+                                                                                    <em class="per-clm">{{totalAddonProductPrice
+                                                                                        | currency:'USD'}} </em>
+                                                                                </div>
+                                                                                <div class="totl_items">
+                                                                                    <span>SCF</span>
+                                                                                    <em>{{75| currency:'USD'}}</em>
+                                                                                </div>
+
+                                                                                <div class="totl_items">
+                                                                                    <span>Total Amount Due</span>
+                                                                                    <em>{{(selectedPlanPrice+totalAddonProductPrice)
+                                                                                        |
+                                                                                        currency:'USD'}} /
+                                                                                        {{planTerm?'year':'month'}}</em>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="propty_btn">
+                                                                            <button type="button"
+                                                                                class="c2a justify-content-between justify-md-content-center hvr:bg--fpBlue c--whitee w-100"  (click)="previousStep()"><span
+                                                                                    class="material-symbols-outlined">arrow_back</span><span>PREV</span></button>
+                                                                            <button type="submit"
+                                                                                class="c2a justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100"><span>NEXT</span><span
+                                                                                    class="material-symbols-outlined">east</span></button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </cdk-step>
+                                                    <cdk-step [stepControl]="stepFourForm" [optional]="false">
+                                                        <div class="step step-4">
+
+                                                            <ng-template cdkStepLabel>
+                                                                <div class="step-bullet">4</div>
+                                                                <div class="step-title current"><span class="stp">Step 4</span><div class="ripple_ani"></div></div>
+                                                                <p class="step_sub_title">Checkout</p>
+                                                            </ng-template>
+                                                            <div class="card-body">
+                                                                <div class="card_inner">
+                                                                    <form class="form-style "
+                                                                    [formGroup]="stepFourForm"
+                                                                    (ngSubmit)="stepFourSubmit()"
+                                                                    #formRef="ngForm">
+                                                                    <div class="rf_checkout_warp">
+                                                                        <div class="checkout_left_bx">
+                                                                            <div class="rf_optional_addon">
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Property Information</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <div class="addon_table_body">
+                                                                                        <div class="card_table">
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Address
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s1['propertyAddress'].value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">Zip
+                                                                                                    Code</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s1['propertyZipCode'].value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    State
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s1['propertyState'].value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    City
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s1['propertyCity'].value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Type of
+                                                                                                    Home</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    <span
+                                                                                                        [ngSwitch]="s1['propertyTypeId'].value">
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="1">Single
+                                                                                                            Family</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="2">Condo</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="3">Town
+                                                                                                            Home</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="4">Mobile</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="5">Two
+                                                                                                            Family</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="6">Three
+                                                                                                            Family</span>
+                                                                                                        <span
+                                                                                                            *ngSwitchCase="7">Four
+                                                                                                            Family</span>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Property Size</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s1['propertySizeId'].value==0?'Under':'Over'}}
+                                                                                                    5,000 sq.
+                                                                                                    ft.
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rf_optional_addon">
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Buyer Information</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <div class="addon_table_body">
+                                                                                        <div class="card_table">
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    First
+                                                                                                    Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['buyerFirstName'].value}}</div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Last
+                                                                                                    Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['buyerLastName'].value}}</div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Email
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['buyerEmail'].value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Phone
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['buyerMobile'].value}}</div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rf_optional_addon">
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Seller Information</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <div class="addon_table_body">
+                                                                                        <div class="card_table">
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    First
+                                                                                                    Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['sellerFirstName'].value?s2['sellerFirstName'].value:'N/A'}}</div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Last
+                                                                                                    Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['sellerLastName'].value?s2['sellerLastName'].value:'N/A'}}</div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Email
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['sellerEmail'].value?s2['sellerEmail'].value:'N/A'}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Phone
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['sellerMobile'].value?s2['sellerMobile'].value:'N/A'}}</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                           
+                                                                            <div class="rf_optional_addon"
+                                                                                >
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Title Company Information</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <div class="addon_table_body">
+                                                                                        <div class="card_table">
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Company
+                                                                                                    Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['companyName'].value?s2['companyName'].value:'N/A'}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Contact
+                                                                                                    Person Name</div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['companyContactPerson'].value?s2['companyContactPerson'].value:'N/A'}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Email
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['companyEmail'].value?s2['companyEmail'].value:'N/A'}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="ctb-row">
+                                                                                                <div class="ctb-vlu">
+                                                                                                    Phone
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ctb-vlu lbl-val">
+                                                                                                    {{s2['companyMobile'].value?s2['companyMobile'].value:'N/A'}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rf_optional_addon">
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Plan Details</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <ng-container
+                                                                                        *ngFor="let item of planList">
+                                                                                        <ul class="addon_grid"
+                                                                                            *ngIf="item?.plan_id==activePlan.plan_id">
+                                                                                            <ng-container
+                                                                                                *ngFor="let product of planWiseProductList">
+                                                                                                <li
+                                                                                                    *ngIf="product.exist_in_both_plan || item?.plan_id==2">
+                                                                                                    {{product?.product_name}}
+                                                                                                </li>
+                                                                                                <li *ngIf="!product.exist_in_both_plan && item?.plan_id==1"
+                                                                                                    class="cancl">
+                                                                                                    {{product?.product_name}}
+                                                                                                </li>
+                                                                                            </ng-container>
+                                                                                        </ul>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="rf_optional_addon addon_covrg">
+                                                                                <div class="optional_addon_hdr">
+                                                                                    <h3>Optional Coverage</h3>
+                                                                                </div>
+                                                                                <div class="optional_addon_bdy">
+                                                                                    <ul class="addon_grid"
+                                                                                        *ngIf="selectdAddOnProducts.length>0">
+                                                                                        <ng-container
+                                                                                            *ngFor="let item of selectdAddOnProducts">
+                                                                                            <li>{{item.product_name}} <span>{{(item.yearly_price * (planTermSelection/12)) | currency:'USD'}}</span>
+                                                                                            </li>
+                                                                                        </ng-container>
+                                                                                    </ul>
+                                                                                    <p *ngIf="selectdAddOnProducts.length==0">
+                                                                                        No optional coverage selected
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="checkout_right_bx">
+                                                                            <div class="policy_tram_wrap">
+                                                                                <div class="policy_hdng">
+                                                                                    <h3>Select Policy Term</h3>
+                                                                                </div>
+                                                                                <div class="btn-group policy_trm_btns"
+                                                                                    data-toggle="buttons">
+                                                                                    <ng-container *ngFor="let item of policyTerm"> 
+                                                                                            <label for="policyTerm-{{item.plan_term}}" (click)="changePolicyTerm(item)">
+                                                                                                <input type="radio"
+                                                                                                    name="policyTerm" value="{{item.plan_term_month}}" id="policyTerm-{{item.plan_term_month}}" [(ngModel)]="planTermSelection"  [ngModelOptions]="{standalone: true}"
+                                                                                                    >
+                                                                                                <div>
+                                                                                                    <span>{{item.plan_term}}</span>
+                                                                                                </div>
+                                                                                            </label>
+                                                                                    </ng-container>                                                                                 
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="policy_coverage_wrap">
+                                                                                <div class="policy_hdng">
+                                                                                    <h3>Coverage Details</h3>
+                                                                                </div>
+                                                                                <div class="cal_ammt">
+                                                                                    <table class="table">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>{{activePlan?.plan_name}}
+                                                                                                    Plan</td>
+                                                                                                <td
+                                                                                                    class="text-right fw--m">
+                                                                                                    {{selectedPlanPrice
+                                                                                                    | currency:'USD'}}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Optional Coverage
+                                                                                                </td>
+                                                                                                <td
+                                                                                                    class="text-right fw--m">
+                                                                                                    <span
+                                                                                                        class="c--fpYellow qntyPric"></span>
+                                                                                                    {{totalAddonProductPrice
+                                                                                                    |
+                                                                                                    currency:'USD'}}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                                <table class="total_amt_tabl">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>Total Amount Due</td>
+                                                                                            <td class="text-right">
+                                                                                                <strong>{{(selectedPlanPrice
+                                                                                                    +totalAddonProductPrice)
+                                                                                                    |
+                                                                                                    currency:'USD'}}</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+
+
+                                                                            <div class="policy_pay_method">
+                                                                                <div class="policy_hdng">
+                                                                                    <h3>Payment Methods</h3>
+                                                                                </div>
+
+                                                                                <div class="rl_save_card_info">
+                                                                                    <div class="form-style">
+                                                                                        <div class="wrapper">
+                                                                                            <input type="radio"
+                                                                                                name="select"
+                                                                                                id="credit-card"
+                                                                                                checked>
+                                                                                            <input type="radio"
+                                                                                                name="select"
+                                                                                                id="bank-account">
+                                                                                            <!-- <input type="radio" name="select" id="paypal"> -->
+                                                                                        </div>
+
+                                                                                        <div class="tab-container">
+
+                                                                                            <div class="tab active" (click)="openTab($event, 'tab1')">
+                                                                                                <label for="credit-card"
+                                                                                                    class="option credit-card">
+                                                                                                    <span class="material-symbols-outlined"> credit_card </span>
+                                                                                                    <span>Credit
+                                                                                                        Card</span>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                            <div class="tab" (click)="openTab($event, 'tab2')"> <label
+                                                                                                    for="bank-account"
+                                                                                                    class="option bank-account">
+                                                                                                    <span class="material-symbols-outlined"> shopping_cart </span>
+                                                                                                    <span>Escrow
+                                                                                                        Payment</span>
+                                                                                                </label></div>
+
+                                                                                        </div>
+                                                                                        <div id="tab1"
+                                                                                            class="tab-content flow-rootX active">
+                                                                                            <div
+                                                                                                class="radio_inline radio_tab_inline">
+                                                                                                <!-- <div class="form-check">
+                                                                                                    <input type="radio"
+                                                                                                        name="cardlist"
+                                                                                                        id="new-card"
+                                                                                                        class="form-check-input">
+                                                                                                    <label
+                                                                                                        for="new-card"
+                                                                                                        class="form-check-label"><span
+                                                                                                            class="radio-circle"></span>Add
+                                                                                                        New Card
+                                                                                                    </label>
+                                                                                                </div> -->
+                                                                                                <!-- <div class="form-check">
+                                                                                                    <input type="radio"
+                                                                                                        name="cardlist"
+                                                                                                        id="save-card"
+                                                                                                        class="form-check-input"
+                                                                                                        checked>
+                                                                                                    <label
+                                                                                                        for="save-card"
+                                                                                                        class="form-check-label"><span
+                                                                                                            class="radio-circle"></span>Previous
+                                                                                                        Saved Card(s)
+                                                                                                    </label>
+                                                                                                </div> -->
+                                                                                              
+
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="card_table rl_card_detls" style="display: none;">
+                                                                                                <table
+                                                                                                    class="m_card_table">
+                                                                                                    <tbody>
+                                                                                                        <tr
+                                                                                                            class="checked_on">
+                                                                                                            <td>
+                                                                                                                <div
+                                                                                                                    class="radio_inline">
+                                                                                                                    <div
+                                                                                                                        class="form-check">
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="select-row"
+                                                                                                                            id="select-row"
+                                                                                                                            class="form-check-input"
+                                                                                                                            checked>
+                                                                                                                        <label
+                                                                                                                            for="select-row"
+                                                                                                                            class="form-check-label"><span
+                                                                                                                                class="radio-circle"></span>
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                            <td>xx1234
+                                                                                                            </td>
+                                                                                                            <td>05/27
+                                                                                                            </td>
+                                                                                                            <td>John
+                                                                                                                Smith
+                                                                                                            </td>
+                                                                                                            <td
+                                                                                                                class="mcard_icon">
+                                                                                                                <img src="assets/img/icon/visa.webp"
+                                                                                                                    alt="Card"
+                                                                                                                    title="Card">
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>
+                                                                                                                <div
+                                                                                                                    class="radio_inline">
+                                                                                                                    <div
+                                                                                                                        class="form-check">
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="select-row2"
+                                                                                                                            id="select-row2"
+                                                                                                                            class="form-check-input">
+                                                                                                                        <label
+                                                                                                                            for="select-row2"
+                                                                                                                            class="form-check-label"><span
+                                                                                                                                class="radio-circle"></span>
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                            <td>xx1234
+                                                                                                            </td>
+                                                                                                            <td>05/27
+                                                                                                            </td>
+                                                                                                            <td>John
+                                                                                                                Smith
+                                                                                                            </td>
+                                                                                                            <td
+                                                                                                                class="mcard_icon">
+                                                                                                                <img src="assets/img/icon/amex.webp"
+                                                                                                                    alt="Card"
+                                                                                                                    title="Card">
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>
+                                                                                                                <div
+                                                                                                                    class="radio_inline">
+                                                                                                                    <div
+                                                                                                                        class="form-check">
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="select-row3"
+                                                                                                                            id="select-row3"
+                                                                                                                            class="form-check-input">
+                                                                                                                        <label
+                                                                                                                            for="select-row3"
+                                                                                                                            class="form-check-label"><span
+                                                                                                                                class="radio-circle"></span>
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                            <td>xx1234
+                                                                                                            </td>
+                                                                                                            <td>05/27
+                                                                                                            </td>
+                                                                                                            <td>John
+                                                                                                                Smith
+                                                                                                            </td>
+                                                                                                            <td
+                                                                                                                class="mcard_icon">
+                                                                                                                <img src="assets/img/icon/mastercard.webp"
+                                                                                                                    alt="Card"
+                                                                                                                    title="Card">
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+
+                                                                                            </div>
+                                                                                            <div class="new_card rl_card_detls active"
+                                                                                                >
+                                                                                                <div
+                                                                                                    class="form-style pay_details_form">
+                                                                                                    <div
+                                                                                                        class="form-grid-on">
+                                                                                                        <div
+                                                                                                            class="form-element">
+                                                                                                            <label
+                                                                                                                class="form-label">Card
+                                                                                                                Holder
+                                                                                                                Name
+                                                                                                                <span
+                                                                                                                    class="c--madnatory">*</span></label>
+                                                                                                            <input
+                                                                                                                type="text"
+                                                                                                                class="form-field" formControlName="cardHolderName" (keypress)="mszKeyDown($event)"
+                                                                                                                autocomplete="off" (keydown)="preventNumberInput($event)">
+                                                                                                                <app-validation-error
+                                                                                                                [control]="s4['cardHolderName']"></app-validation-error>
+
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="form-element  card-form-wrap">
+                                                                                                            <label
+                                                                                                                class="form-label">Card
+                                                                                                                Number
+                                                                                                                <span
+                                                                                                                    class="c--madnatory">*</span></label>
+                                                                                                            <input
+                                                                                                                type="text" inputmode="numeric"
+                                                                                                                class="form-field" formControlName="cardNumber" allowOnlyNumbers creditCardFormatter>
+                                                                                                                <div class="input-group-prepend">
+                                                                                                                    <div class="card-svg-icon">
+                                                                                                                        <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.svg" alt="Card Image" title="Card Image">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <app-validation-error
+                                                                                                                               [control]="s4['cardNumber']"></app-validation-error>
+                                                                                                        </div>
+                                                                                                        <div class="grid grid-2 grid-sm-1">
+                                                                                                        <div
+                                                                                                            class="form-element">
+                                                                                                            <label
+                                                                                                                class="form-label">Expiry
+                                                                                                                Date
+                                                                                                                (MM/YY)
+                                                                                                                <span
+                                                                                                                    class="c--madnatory">*</span></label>
+                                                                                                            <input
+                                                                                                                type="text"
+                                                                                                                class="form-field" id="expiryDate"
+                                                                                                                formControlName="expiryDate" maxlength="5" >
+                                                                                                                <app-validation-error
+                                                                                                                [control]="s4['expiryDate']"></app-validation-error>
+                                                                                                        </div>
+
+                                                                                                        <div
+                                                                                                            class="form-element cvv_fild">
+                                                                                                            <label
+                                                                                                                class="form-label">CVV
+                                                                                                                <span
+                                                                                                                    class="c--madnatory">*</span></label>
+                                                                                                            <input
+                                                                                                                type="text" pattern="\d*"
+                                                                                                                class="form-field"
+                                                                                                                id="cvv"
+                                                                                                                formControlName="cvv"
+                                                                                                                id="cvv" formControlName="cvv" maxlength="4"  [appInputLimit]="4">
+                                                                                                                <app-validation-error
+                                                                                                                [control]="s4['cvv']"></app-validation-error>
+
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div id="tab2"
+                                                                                            class="tab-content flow-rootX">
+                                                                                            <h4>Just click on "PAY" button to create your policy</h4>
+
+                                                                                            <!-- <div
+                                                                                                class="form-style pay_details_form">
+                                                                                                <div
+                                                                                                    class="form-grid-on">
+                                                                                                    <div
+                                                                                                        class="form-element">
+                                                                                                        <label
+                                                                                                            class="form-label">Account
+                                                                                                            Holder Name
+                                                                                                            <span
+                                                                                                                class="c--madnatory">*</span></label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-field">
+
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="form-element ">
+                                                                                                        <label
+                                                                                                            class="form-label"
+                                                                                                            data-label="Bank Name*">Bank
+                                                                                                            Name <span
+                                                                                                                class="c--madnatory">*</span></label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-field">
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="form-element ">
+                                                                                                        <label
+                                                                                                            class="form-label"
+                                                                                                            data-label="Account Number*">Bank
+                                                                                                            Account
+                                                                                                            Number
+                                                                                                            <span
+                                                                                                                class="c--madnatory">*</span></label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-field">
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="form-element ">
+                                                                                                        <label
+                                                                                                            class="form-label"
+                                                                                                            data-label="Routing number">Bank
+                                                                                                            Routing
+                                                                                                            Number
+                                                                                                            <span
+                                                                                                                class="c--madnatory">*</span></label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-field"
+                                                                                                            placeholder="">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div> -->
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="policy_invoice_method"
+                                                                                style="display: none;">
+                                                                                <div class="policy_hdng">
+                                                                                    <h3>Sending Invoices to</h3>
+                                                                                </div>
+                                                                                <div class="invoice_mail_wrap">
+                                                                                    <table class="mail_table">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="c--fpBlue">
+                                                                                                    Receipent 1</td>
+                                                                                                <td><span
+                                                                                                        class="material-symbols-outlined fw--l">mail</span><a
+                                                                                                        href="mailto:john@gmail.com">john@gmail.com</a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="c--fpBlue">
+                                                                                                    Receipent 2</td>
+                                                                                                <td><span
+                                                                                                        class="material-symbols-outlined fw--l">mail</span><a
+                                                                                                        href="mailto:john@gmail.com">john@gmail.com</a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                    <div class="mail_box flow-rootX">
+                                                                                        <h4 class="fw--b">Add email
+                                                                                            addresses to get invoice
+                                                                                        </h4>
+                                                                                        <form class="form-style">
+                                                                                            <div class="form-element">
+                                                                                                <label
+                                                                                                    class="form-label">Email
+                                                                                                    <span
+                                                                                                        class="c--error">*</span></label>
+                                                                                                <input type="text"
+                                                                                                    class="form-field">
+                                                                                                <span
+                                                                                                    class="material-symbols-outlined fw--l">mail</span>
+                                                                                            </div>
+                                                                                            <div class="text-right">
+                                                                                                <button
+                                                                                                    class="c2a bg--fpBlue c--whitee">ADD
+                                                                                                    NOW</button>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-checkbox mt-1">
+                                                                                <label>
+                                                                                    <input type="checkbox" 
+                                                                                        class="ng-untouched ng-pristine ng-valid" [(ngModel)]="termsCondition"
+                                                                                        [ngModelOptions]="{standalone: true}">
+                                                                                    <span class="checkmark"></span>
+                                                                                    <p>I agreed with the <a routerLink="/terms-conditions"
+                                                                                            class="fw--b c2a-underline hvr:c--fpBlue" target="_blank">Terms & Conditions</a></p>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="propty_btn">
+                                                                                <button type="button" (click)="previousStep()"
+                                                                                    class="c2a justify-content-between justify-md-content-center hvr:bg--fpBlue c--whitee w-100"><span
+                                                                                        class="material-symbols-outlined">arrow_back</span><span>PREV</span></button>
+                                                                                <button type="submit"
+                                                                                    class="c2a justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100"  [disabled]="loading">
+                                                                                    <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> loading...</span> <span *ngIf="!loading">PAY</span>
+                                                                                   
+                                                                                    <span
+                                                                                        class="material-symbols-outlined">east</span></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </cdk-step>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </ng-stepper>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-realtor-post-footer></app-realtor-post-footer>

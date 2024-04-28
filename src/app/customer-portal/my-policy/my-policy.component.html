@@ -1,0 +1,166 @@
+<main>
+    <section class="fp_customer_portal">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="47" height="49" viewBox="0 0 47 48" fill="none">
+                                        <path d="M35 24C32.5 26.5 26.6667 29.1667 24 30C24 41.5 33 46.5 34.5 47C42.9 43.8 46 35.5 46 29.5C40 29 37 25.5 35 24Z" stroke="white" stroke-width="1.5"/>
+                                        <path d="M26 1V8L28.381 11H36" stroke="white" stroke-width="1.5"/>
+                                        <path d="M34 47H6C3.2386 47 1 44.7614 1 42V6C1 3.2386 3.2386 1 6 1H26.5C31.5 6 32.5 6.5 36.5 11" stroke="white" stroke-width="1.5"/>
+                                        <path d="M7 11.25H19" stroke="white" stroke-width="1.5"/>
+                                        <path d="M7 17.25H27" stroke="white" stroke-width="1.5"/>
+                                        <path d="M7 23.25H27" stroke="white" stroke-width="1.5"/>
+                                        <path d="M7 29H21" stroke="white" stroke-width="1.5"/>
+                                        <path d="M7 35.25H22" stroke="white" stroke-width="1.5"/>
+                                        <path d="M36.5 10.5V25" stroke="white" stroke-width="1.5"/>
+                                        <path d="M31 35.5L33 38L38 34" stroke="white" stroke-width="1.5"/>
+                                      </svg>
+                                    <h3>My Policy</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card_inner">
+                                    <div class="card_sec_hdng flow-rootX">
+                                        <div class="accodian_wrapper">
+                                            <ng-container *ngFor="let item of customerDetails.policy_list; let i=index">
+                                            <div class="accordion-single-item js-acc-item is-close">
+                                                <div class="accordion-single-title js-acc-single-trigger">
+                                                    <h3 class="c--whitee">{{item.plan_details.plan_name}}</h3>
+                                                    <div class="acc_hdr_elemts">
+                                                        <ul>
+                                                            <li>Policy No. - <strong>{{item.policy_number}}</strong></li>
+                                                            <li>Policy - <strong>{{item.policy_term}}</strong></li>
+                                                            <li>Status - <strong>{{item?.policy_status_details.status_name}}</strong></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="price-elem">Premium Amount <span class="price">{{item.net_amount | currency:'USD'}}</span> </div>
+                                                </div>
+
+
+                                                <div class="accod_body mypolicy-accd">
+                                                    <div class="accod_table">
+                                                        <div class="accod_table_item">
+                                                            <table class="table card_table">
+                                                                <tbody>
+                                                                    <tr class="mob-hide">
+                                                                        <td>Policy No.</td>
+                                                                        <td>{{item.policy_number}} </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Status:</td>
+                                                                        <td>
+                                                                            <span class="badge--style" [style.background-color]="item.policy_status_details.status_color">{{item.policy_status_details.status_name}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- <tr>
+                                                                        <td>Policy Type</td>
+                                                                        <td>Home Warranty</td>
+                                                                    </tr> -->
+                                                                    <tr>
+                                                                        <td>Policy:</td>
+                                                                        <td><strong class="{{item.plan_details.plan_name=='Premier'?'premium':'platinum'}}-pln">{{item.plan_details.plan_name}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Address:</td>
+                                                                        <td>{{item.billing_address1}} {{item.billing_city}} {{item.billing_state}}, {{item.billing_zip}}</td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="accod_table_item">
+                                                            <table class="table card_table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Term:</td>
+                                                                        <td>{{item.policy_term}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Start Date:</td>
+                                                                        <td>{{item.policy_start_date | date:'MM-dd-yyyy'}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>End Date:</td>
+                                                                        <td>{{item.policy_expiry_date | date:'MM-dd-yyyy'}}</td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="accod_table_item">
+                                                            <table class="table card_table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Plan Price:</td>
+                                                                        <td>{{item.net_amount |
+                                                                            currency:'USD'}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>SCF (Service Call Fee):</td>
+                                                                        <td>{{item.pcf |
+                                                                            currency:'USD'}}</td>
+                                                                    </tr>
+                                                                    <!-- <tr>
+                                                                        <td>Coverage Plan:</td>
+                                                                        <td>{{item.policy_term}}</td>
+                                                                    </tr> -->
+                                                                    <tr>
+                                                                        <td>Opional Coverage:</td>
+                                                                        <td ><span *ngIf="item.optional_item_count>0">{{item.optional_item_count}} </span><span *ngIf="item.optional_item_count==0">N/A </span>  <i class="pi pi-exclamation-circle c--fpLightBlue add_toltip" *ngIf="item.optional_item_count>0" (click)="isShowAddon=!isShowAddon"></i> </td>
+                                                                    </tr>
+
+                                                                    <tr class="border-top-0">
+                                                                        <td colspan="2">
+                                                                            <div class="tooltip {{isShowAddon?'active':''}}">
+                                                                                <table class="table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Add-ons</th>
+                                                                                            <th class="text-right">Price/Unit</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr *ngFor=" let product of item.optional_items">
+                                                                                            <td>{{product.product_details.product_name}} </td>
+                                                                                            <td>{{product.price | currency:'USD'}} <span class="pil">{{product.product_quantity}}</span></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- <tr>
+                                                                        <td>Status:</td>
+                                                                        <td><span class="stat_active c--blak" *ngIf="item.policy_status==1">Active</span> <span class="stat_hold c--blak" *ngIf="item.policy_status==2">On-hold</span> <span class="stat_inactive c--blak" *ngIf="item.policy_status==3">Inactive</span> <span class="stat_cancel c--blak" *ngIf="item.policy_status==0">Cancelled</span></td>
+
+                                                                    </tr> -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="text-right">
+                                                        <button type="submit" class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD POLICY PDF</button>
+                                                        <button type="submit" class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD POLICY PAYMENT INVOICE</button>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

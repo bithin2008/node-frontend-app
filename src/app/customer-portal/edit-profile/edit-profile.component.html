@@ -1,0 +1,307 @@
+<main>
+    <section class="fp_customer_portal fp_edit_profile">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper edt_prof_wrap">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner pass_change_hdr">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="64" viewBox="0 0 54 64" fill="none">
+                                    <path d="M26.6409 34.993C36.0278 34.993 43.6374 27.3834 43.6374 17.9965C43.6374 8.60959 36.0278 1 26.6409 1C17.254 1 9.64441 8.60959 9.64441 17.9965C9.64441 27.3834 17.254 34.993 26.6409 34.993Z" stroke="white" stroke-width="1.5"/>
+                                    <path d="M52.5211 62.3624C52.5211 54.2289 55.4437 33.3064 34 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1.13409 62.3624C1.13409 54.2289 -1.78851 33.3064 19.6552 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1 62.3064L53 62.3624" stroke="white" stroke-width="1.5"/>
+                                    </svg>
+                                    <h3>Primary Account Holder Information</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card_inner">
+                                    <div class="flow-rootX">
+                                        <form class="c__portal_form edit_forms_done" [formGroup]="editProfileForm"
+                                            (ngSubmit)="onSubmit()"> <!-- edit_forms_done  ADDClass when form edit done -->
+                                            <div class="portal_form_row">
+                                                <div class="form-element disabled-field has-value">
+                                                    <div class="prend"><span class="material-symbols-outlined">person</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">First Name</label>
+                                                        <input type="text" class="form-field w-100" minlength="3" readonly
+                                                            formControlName="firstName"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['firstName']"></app-validation-error>
+                                                </div>
+                                                <div class="form-element disabled-field ">
+                                                    <div class="prend"><span class="material-symbols-outlined">person</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">Last Name</label>
+                                                        <input type="text" class="form-field w-100" minlength="3" readonly
+                                                            formControlName="lastName"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['lastName']"></app-validation-error>
+                                                </div>
+                                                <div class="form-element disabled-field">
+                                                    <div class="prend"><span class="material-symbols-outlined">email</span></div>
+                                                    <div class="form_group  not-allowed">
+                                                        <label class="form-label">Email Address</label>
+                                                        <input type="email" class="form-field w-100" formControlName="emailId" readonly
+                                                            [ngClass]="{ 'is-invalid': submitted && f['emailId'].errors }"
+                                                            readonly />
+                                                            <app-validation-error [control]="f['emailId']"></app-validation-error>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="portal_form_row">
+                                                <div class="form-element">
+                                                    <div class="prend"><span class="material-symbols-outlined">smartphone</span></div>
+                                                    <div class="form_group  not-allowed">
+                                                        <label class="form-label">Mobile</label>
+                                                        <input type="text" inputmode="numeric" class="form-field w-100"
+                                                                formControlName="mobileNo"
+                                                                [ngClass]="{ 'is-invalid': submitted && f['mobileNo'].errors }"
+                                                                usPhoneNumber (input)="changePhoneFormat($event)" />
+                                                        <app-validation-error [control]="f['mobileNo']"></app-validation-error>
+                                                    </div>
+                                                </div>
+                                                <div class="form-element">
+                                                    <div class="prend"><span class="material-symbols-outlined">call</span></div>
+                                                    <div class="form_group  not-allowed">
+                                                        <label class="form-label">Alternate Numbers</label>
+                                                        <input type="text" class="form-field w-100"
+                                                        formControlName="alternatePhone"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['alternatePhone'].errors }"
+                                                        usPhoneNumber (input)="changeAlterPhoneFormat($event)" />
+                                                        <app-validation-error [control]="f['alternatePhone']"></app-validation-error>
+                                                    </div>
+                                                </div>
+                                                <div class="form-element disabled-field">
+                                                    <div class="prend"><span class="material-symbols-outlined">home</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">Address</label>
+                                                        <input type="text" class="form-field w-100"
+                                                            formControlName="address1" readonly
+                                                            [ngClass]="{ 'is-invalid': submitted && f['address1'].errors }" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['address1']"></app-validation-error>
+                                                </div>
+                                            </div>
+                                            <div class="portal_form_row ">
+                                                <div class="form-element disabled-field">
+                                                    <div class="prend"><span class="material-symbols-outlined">markunread_mailbox</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">Zip</label>
+                                                        <input type="text" pattern="\d*" class="form-field w-100" readonly
+                                                            formControlName="zip" [minlength]="5" [maxlength]="5" onKeyPress="if(this.value.length==5) return true;"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['zip'].errors }" (keyup)="chekcZipCode($event)" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['zip']"></app-validation-error>
+                                                    <div class="my-1 py-2 alert alert-danger" *ngIf="validZipMessage">
+                                                        <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                                                        <span>{{validZipMessage}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-element disabled-field">
+                                                    <div class="prend"><span class="material-symbols-outlined">navigation</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">City</label>
+                                                        <input type="text" class="form-field w-100"
+                                                            formControlName="city" readonly
+                                                            [ngClass]="{ 'is-invalid': submitted && f['city'].errors }" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['city']"></app-validation-error>
+                                                </div>
+                                                <div class="form-element disabled-field state_col">
+                                                    <div class="prend"><span class="material-symbols-outlined">where_to_vote</span></div>
+                                                    <div class="form_group ">
+                                                        <label class="form-label">State</label>
+                                                        <input type="text" class="form-field w-100" readonly
+                                                            formControlName="state"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['state'].errors }" />
+                                                    </div>
+                                                    <app-validation-error [control]="f['state']"></app-validation-error>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="text-right">
+                                                <button type="submit"
+                                                    class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">SAVE
+                                                    CHANGES</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner pass_change_hdr">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="64" viewBox="0 0 54 64" fill="none">
+                                    <path d="M26.6409 34.993C36.0278 34.993 43.6374 27.3834 43.6374 17.9965C43.6374 8.60959 36.0278 1 26.6409 1C17.254 1 9.64441 8.60959 9.64441 17.9965C9.64441 27.3834 17.254 34.993 26.6409 34.993Z" stroke="white" stroke-width="1.5"/>
+                                    <path d="M52.5211 62.3624C52.5211 54.2289 55.4437 33.3064 34 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1.13409 62.3624C1.13409 54.2289 -1.78851 33.3064 19.6552 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1 62.3064L53 62.3624" stroke="white" stroke-width="1.5"/>
+                                    </svg>
+                                    <h3>Policy Holder Information</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="policy_wrapper">
+                                    <ng-container *ngFor="let item of customerDetails.policy_list; let i=index">
+                                    <div class="policy_item">
+                                        <div class="policy_item_inner">
+                                            <div class="policy_item_header bg--{{item?.plan_details.plan_id==2?'platinum':'premier'}}">
+                                                <!-- <picture>
+                                                    <source srcset="assets/img/customer-portal/policy-img1.webp"
+                                                        type="image/webp">
+                                                    <source srcset="assets/img/customer-portal/policy-img1.jpg"
+                                                        type="image/jpg">
+                                                    <img src="assets/img/customer-portal/policy-img1.webp"
+                                                        alt="First Premier" title="First Premier">
+                                                </picture> -->
+
+                                                <div class="policy_info policy_info_item">
+                                                    <h4 class="c--{{item?.plan_details.plan_id==2?'platinum':'premier'}}Light">{{item.plan_details.plan_name}}</h4>
+                                                    <p>Policy No. {{item.policy_number}}</p>
+                                                </div>
+                                                <div class="policy_info policy_info_item text-right">
+                                                    <div>
+                                                        <span class="badge--style" [style.background-color]="item.policy_status_details.status_color">{{item.policy_status_details.status_name}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="policy_item_body">
+                                                <div class="card_table">
+                                                    <!-- <div class="ctb-row">
+                                                        <div class="ctb-vlu"><strong class="fw--m">Policy Name</strong></div>
+                                                        <div class="ctb-vlu lbl-val">{{item.plan_details.plan_name}}</div>
+                                                    </div> -->
+                                                    <!-- <div class="ctb-row">
+                                                        <div class="ctb-vlu"><strong class="fw--m">Policy No.</strong></div>
+                                                        <div class="ctb-vlu lbl-val">{{item.policy_number}}</div>
+                                                    </div> -->
+                                                    <div class="ctb-row">
+                                                        <div class="ctb-vlu">Address</div>
+                                                        <div class="ctb-vlu lbl-val">{{item.billing_address1}} {{item.billing_city}} {{item.billing_state}}, {{item.billing_zip}}</div>
+                                                    </div>
+                                                    <div class="ctb-row">
+                                                        <div class="ctb-vlu">Policy holder</div>
+                                                        <div class="ctb-vlu lbl-val">{{item.first_name}} {{item.last_name}}</div>
+                                                    </div>
+                                                    <div class="ctb-row">
+                                                        <div class="ctb-vlu">Email</div>
+                                                        <div class="ctb-vlu lbl-val">{{item.email}}</div>
+                                                    </div>
+                                                    <div class="ctb-row">
+                                                        <div class="ctb-vlu">Mobile</div>
+                                                        <div class="ctb-vlu lbl-val">{{item.mobile}}
+                                                            <button type="button" class="edit_info bg--fpGreen hvr:c--blak hvr:bg--fpYellow"(click)="toggleEditInfoModal(item)">EDIT</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal_wrap modal_wrap_on" *ngIf="showInfoModal">
+    <div class="modal-dialog edit_info_modal">
+        <div for="modal-test" class="modal-close" (click)="closeInfoModal()">×</div>
+
+        <div class="modal-content modal_show">
+            <div class="form-style-3 flow-rootx moadal_form">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <i class="material-symbols-outlined">credit_card_gear</i>
+                        <h3>Edit Policy Information</h3>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="form-style" [formGroup]="policyInfoForm" (ngSubmit)="policyInfoSubmit()">
+                        <div class="form_row">
+                            <div class="form-element form_root">
+                                <div class="prend"><span class="material-symbols-outlined">person</span></div>
+                                <label class="form-label">First Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="150" [readonly]="true"
+                                formControlName="firstName"
+                                [ngClass]="{ 'is-invalid': policyInfoFormSubmitted && s1['firstName'].errors }" />
+                                <app-validation-error [control]="s1['firstName']"></app-validation-error>
+                            </div>
+
+                            <div class="form-element form_root">
+                                <div class="prend"><span class="material-symbols-outlined">person</span></div>
+                                <label class="form-label">Last Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field"  minlength="3" maxlength="150"  [readonly]="true"
+                                formControlName="lastName"
+                                [ngClass]="{ 'is-invalid': policyInfoFormSubmitted && s1['lastName'].errors }" />
+                                <app-validation-error [control]="s1['lastName']"></app-validation-error>
+                            </div>
+                        </div>
+                        <div class="form_row">
+                            <div class="form-element form_root">
+                                <div class="prend"><span class="material-symbols-outlined">email</span></div>
+                                <label class="form-label">Email Address  <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field"  [readonly]="true"  formControlName="emailId"
+                                placeholder="">
+                                <app-validation-error [control]="s1['emailId']"></app-validation-error>
+                            </div>
+                            <div class="form-element form_root">
+                                <div class="prend"><span class="material-symbols-outlined">call</span></div>
+                                <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                                <input type="text" inputmode="numeric" class="form-field" usPhoneNumber formControlName="mobileNo"
+                                placeholder="" (input)="changeMobileFormat($event)">
+                                <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+                            </div>
+                        </div>
+                        <div class="form_root text-right">
+                            <button class="c2a bg--fpYellow hvr:bg--fpGreen hvr:c--whitee" type="submit" value="Get a Quote">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Logout modal -->
+<!-- <div class="modal_wrap modal_wrap_on logmodal">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close modal-close-sm" (click)="closeInfoModal()">×</div>
+        <div class="modal-content modal_show">
+            <div class="form-style-3 flow-rootx moadal_form">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <h3>Are you Sure?</h3>
+                    </div>
+                </div>
+                <div class="btn-grp">
+                    <button class="c2a w-100" type="submit" value="Get a Quote">Yes</button>
+                    <button class="c2a w-100" type="submit" value="Get a Quote">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

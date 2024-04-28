@@ -1,0 +1,134 @@
+<main>
+    <section class="fp__blog">
+        <div class="mainX-container">
+            <div class="inner-container">
+                <div class="blog_header">
+
+                    <h1 *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                    <h1 *ngIf="!pageDetails?.h1_tag">Our <span>Blogs</span></h1>
+
+                    <div class="form-style">
+                        <div class="search_box">
+                            <div class="pread"><span class="material-symbols-outlined">search</span></div>
+                            <!-- <div class="pread"><span class="material-symbols-outlined">rss_feed</span></div> -->
+                            <input type="search" placeholder="Search Blogs" class="" (keyup)="searchingBlog($event)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="featured--blogs fl-left w-100">
+            <div class="featured-blog--card" *ngIf="blogList[0]">
+                <article class="flow-rootX4">
+                    <h4><a routerLink="/blogs/{{blogList[0]?.slug}}">{{blogList[0]?.blog_title}}</a></h4>
+                    <p>{{blogList[0]?.short_description}}</p>
+                    <a routerLink="/blogs/{{blogList[0]?.slug}}" class="readbtn">Read Blog</a>
+                </article>
+                <figure routerLink="/blogs/{{blogList[0]?.slug}}">
+                    <img src="{{blogList[0]?.image}}" class="w-100" alt="{{blogList[0]?.blog_title}}" title="{{blogList[0]?.blog_title}}" />
+                </figure>
+            </div>
+            <div class="featured-blog--card" *ngIf="blogList[1]">
+                <article class="flow-rootX4">
+                    <h4><a routerLink="/blogs/{{blogList[1]?.slug}}">{{blogList[1]?.blog_title}}</a></h4>
+                    <p>{{blogList[1]?.short_description}}</p>
+                    <a routerLink="/blogs/{{blogList[1]?.slug}}" class="readbtn">Read Blog</a>
+                </article>
+                <figure routerLink="/blogs/{{blogList[1]?.slug}}">
+                    <img src="{{blogList[1]?.image}}" class="w-100" alt="{{blogList[1]?.blog_title}}" title="{{blogList[1]?.blog_title}}" />
+                </figure>
+            </div>
+            <div class="featured-blog--card" *ngIf="blogList[2]">
+                <article class="flow-rootX4">
+                    <h4><a routerLink="/blogs/{{blogList[2]?.slug}}">{{blogList[2]?.blog_title}}</a></h4>
+                    <p>{{blogList[2]?.short_description}}</p>
+                    <a routerLink="/blogs/{{blogList[2]?.slug}}" class="readbtn">Read Blog</a>
+                </article>
+                <figure routerLink="/blogs/{{blogList[2]?.slug}}">
+                    <img src="{{blogList[2]?.image}}" class="w-100" alt="{{blogList[2]?.blog_title}}" title="{{blogList[2]?.blog_title}}" />
+                </figure>
+            </div>
+            <div class="featured-blog--card" *ngIf="blogList[3]">
+                <article class="flow-rootX4" >
+                    <h4><a routerLink="/blogs/{{blogList[3]?.slug}}">{{blogList[3]?.blog_title}}</a></h4>
+                    <p>{{blogList[3]?.short_description}}</p>
+                    <a routerLink="/blogs/{{blogList[3]?.slug}}" class="readbtn">Read Blog</a>
+                </article>
+                <figure routerLink="/blogs/{{blogList[3]?.slug}}"> 
+                    <img src="{{blogList[3]?.image}}" class="w-100" alt="{{blogList[3]?.blog_title}}" title="{{blogList[3]?.blog_title}}" />
+                </figure>
+            </div>
+        </div>
+
+        <div class="w-100 fl-left blog--grid blog_lists">
+            <div class="mainX-container">
+                <div class="inner-container">
+                    <div class="grid-3 bottom_blog_list"  *ngIf="blogList.length>4">
+                        <ng-container *ngFor="let item of blogList.slice(4)">
+                            <div class="blog--card">
+                                <figure>
+                                    <a routerLink="/blogs/{{item.slug}}">
+                                    <img src="{{item.image}}" class="w-100" alt="{{item.blog_title}}" title="{{item.blog_title}}" /></a>
+                                </figure>
+                                <article class="flow-rootX">
+                                    <h4 class="item--heading">{{ (item.blog_title.length>50)? (item.blog_title | slice:0:50)+'...':(item.blog_title) }}</h4>
+                                    <span class="burdge">{{item.publish_date | date: 'MMM dd, yyyy'}}</span>
+                                    <p>{{ (item.short_description.length>110)? (item.short_description | slice:0:80)+'...':(item.short_description) }}</p>
+                                    <a routerLink="/blogs/{{item.slug}}" class="readbtn">Read Blog</a>
+                                </article>
+                            </div>
+                        </ng-container>
+                    </div>
+                    
+                    <nav class="pagination_list" *ngIf="paginationObj.totalPages>1">
+                        <p-paginator (onPageChange)="paginate($event)" [first]="paginationObj.first" [rows]="paginationObj.limit" [totalRecords]="paginationObj.total"></p-paginator>
+                    </nav>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="fl-left text-center w-100 post_txt">
+            <p *ngIf="blogList.length==0 && isDataLoaded">No Post Found</p>
+        </div>
+    </section>
+
+    <section class="fp__protection">
+        <div class="main-container">
+          <div class="inner-container">
+            <div class="protection_wrapper home_blog_protection">
+              <figure class="float-img "><img src="assets/img/logo-icon.webp" alt="Protect Your Home"
+                  title="Protect Your Home"></figure>
+              <div class="mob_background">
+                <img src="assets/img/home/hero-3.webp" alt="Protect Your Home" title="Protect Your Home">
+              </div>
+              <div class="protection_inner">
+                <figcaption class="protecting_content flow-rootX">
+                  <span>Guaranteed Protection</span>
+                  <h2 class="h2 txt-reveal-anim">Feel Confident and Be in Control of Your Home</h2>
+                  <ul>
+                    <!-- <li>Our plans cover major appliances and systems you use every day, and if we can’t repair an item,
+                      we’ll replace it.</li>
+                    <li>Choose from our network of qualified technicians, saving you time.</li> -->
+    
+                    <li><strong>Protect Your Family & Budget</strong><br/>A First Premier Home Warranty can help you avoid worrying about the high cost of repairing or replacing your home's covered appliances or systems.</li>
+                    <!-- <li><strong>Comprehensive & Affordable Coverage</strong><br/>We provide affordable and comprehensive home warranty protection against inevitable home system component and appliance breakdowns. First Premier offers monthly and annual plans to fit any household budget.</li> -->
+                    <li><strong>Comprehensive & Affordable Coverage</strong><br/>Choose from our network of Licensed and Insured Technicians.</li>
+                  </ul>
+                  <div class="protection--c2a">
+                    <a routerLink="/checkout" class="c2a c2a--inline bg--fpGreen c--whitee hvr:bg--fpBlue">GET COVERAGE NOW</a>
+                    <a routerLink="/plan" class="c2a c2a--inline bg--fpDarkYellow c--whitee hvr:bg--fpBlue">VIEW OUR PLANS</a>
+                  </div>
+                </figcaption>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+</main>
+<app-check-out-strip></app-check-out-strip>

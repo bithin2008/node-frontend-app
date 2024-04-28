@@ -1,0 +1,194 @@
+<main>
+    <!---Banner Section--->
+
+    <section class="fp_faq_tab">
+        <div class="mainX-container">
+            <div class="inner-container">
+                <div class="hdng_content">             
+                    <h5 class="h2 fw--b " *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h5>
+                    <h5 class="h2 fw--b " *ngIf="!pageDetails?.h1_tag">Frequently Asked Questions</h5>
+                </div>
+                <div class="faq_nav">
+                    <ul>
+                        <li class="{{selectedTab==1?'active':''}}" (click)="selectTab(1)"><a href="javascript:void(0)">Policy Holders</a></li>
+                        <li class="{{selectedTab==2?'active':''}}" (click)="selectTab(2)"><a href="javascript:void(0)">Contractors</a></li>
+                        <li class="{{selectedTab==3?'active':''}}" (click)="selectTab(3)"><a href="javascript:void(0)">Real Estate Professionals</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane states {{selectedTab==1?'active':''}}">
+                            <div class="fp__faq mb-0 py-0">
+                                <div class="faq_list">
+                                    <!-- acc single -->
+                                    <div class="accordion-single js-acc-single">
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">What Is the difference between Homeowners
+                                        insurance and a Home Warranty?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>A home warranty is a service contract between a homeowner and a home warranty company. The contract covers repair and replacement costs on major home systems and appliances in the event of breakdowns associated with normal wear and tear.</p>
+
+                                            <p> A HOME INSURANCE POLICY is designed to cover accidental damage to your property and possessions, as a result of theft, fire, natural disasters, etc. The four main areas of coverage are interior, exterior, personal property, and general liability, but homeowners insurance does not cover issues related to natural wear and tear. That means that if one of your essential home systems or appliances simply stops working, then your policy probably isn’t going to cover it.</p>
+
+                                           <p>Unlike homeowners insurance, a home warranty is not mandatory when purchasing a home. The main purpose of a home warranty is to offer coverage for the items that homeowners insurance overlooks — key items, appliances, and home systems that inevitably end up needing to be repaired or replaced over time. This is not limited to new items; which items or systems are covered depends upon the specific warranty plan.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">Why Buy a Home Warranty?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>If your home’s appliances or systems break, you may end up paying top dollar to repair them or replace them. An HVAC costs several hundred dollars to repair (if you’re lucky), and several thousands if you need to replace it. A sudden, unexpected, expense which may cause a serious dent in your budget.</p>
+                                        <p>A home warranty is supposed to address such situations. For an annual premium of $500 on average, in additional to deductible cost per service, you get free repairs, and item replacements – if necessary – up to a certain dollar figure limit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">Are Home Warranties Worth It?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>The main reason people get a home warranty is that they hope it will help them cover the cost of home maintenance. Whether appliances or pools, what everyone is essentially looking for is whether their home warranty of choice covers what they need at a adequate price. However, not many people realize how much it costs to maintain their house now, and how much it will cost them to do so in the future, as compared to the cost of a home warranty and its benefits.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">Can I choose my own service contractor?</h2>
+                                        <div class="accordion-single-content">
+                                            <p>Yes, you absolutely can. We only ask that you reach out to us first so that we can authorize the contractor you'd like to work with. This helps ensure that the highest standards are applied and that you and your family are kept safe. In our experience, you will usually save the most money and get the best work done using an FPHW Certified Techncian. All of our contractors are licensed professionals, and their work comes with a 60-day workmanship guarantee.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">What do home warranties cover and how do they
+                                        intend to save money?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>Home warranties are in essence a service contract which provides a commitment to repair certain appliances and systems if they malfunction. In exchange for that commitment, you are paying a set amount of money every year (named “premium”). Additional cost to the annual premium would be a service-fee for each time you call in a repair person. The Homeowner’s budget will be far more stable without unexpected expenses. Unexpected cost of repairs can add up very quickly and replacing an expensive home system can have a significant impact on your monthly budget.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">Is a home warranty worth it for me as a home
+                                        seller or real estate agent?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>One specific scenario in which home warranties are almost always worth it is when you are selling a house (for yourself or for someone). Home buyers tend to appreciate homes that come with a home warranty. It’s a nice freebie and it makes them feel like it can potentially mitigate their expenses coming to a new home. The SCIC even published that homes that come with a home warranty sell faster on the market. Considering the average cost of approximately $500 for a home warranty plan for a year ahead, it sure does sound like a worthwhile deal.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-single-item js-acc-item is-close">
+                                        <h2 class="accordion-single-title js-acc-single-trigger">What Happens If I sell my home?</h2>
+                                        <div class="accordion-single-content">
+                                        <p>You can take your warranty to your new home, or cancel your warranty plan.</p>
+                                        </div>
+                                    </div>
+                                    </div><!-- accordion-single -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane states {{selectedTab==2?'active':''}}">
+                            <div class="fp__faq mb-0 py-0">
+                                <div class="faq_list">
+                                    <!-- acc single -->
+                                    <div class="accordion-single js-acc-single">
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What Is the difference between Homeowners
+                                            insurance and a Home Warranty?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>A home warranty is a service contract between a homeowner and a home warranty company. The contract covers repair and replacement costs on major home systems and appliances in the event of breakdowns associated with normal wear and tear.</p>
+    
+                                                <p> A HOME INSURANCE POLICY is designed to cover accidental damage to your property and possessions, as a result of theft, fire, natural disasters, etc. The four main areas of coverage are interior, exterior, personal property, and general liability, but homeowners insurance does not cover issues related to natural wear and tear. That means that if one of your essential home systems or appliances simply stops working, then your policy probably isn’t going to cover it.</p>
+    
+                                               <p>Unlike homeowners insurance, a home warranty is not mandatory when purchasing a home. The main purpose of a home warranty is to offer coverage for the items that homeowners insurance overlooks — key items, appliances, and home systems that inevitably end up needing to be repaired or replaced over time. This is not limited to new items; which items or systems are covered depends upon the specific warranty plan.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Why Buy a Home Warranty?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>If your home’s appliances or systems break, you may end up paying top dollar to repair them or replace them. An HVAC costs several hundred dollars to repair (if you’re lucky), and several thousands if you need to replace it. A sudden, unexpected, expense which may cause a serious dent in your budget.</p>
+                                            <p>A home warranty is supposed to address such situations. For an annual premium of $500 on average, in additional to deductible cost per service, you get free repairs, and item replacements – if necessary – up to a certain dollar figure limit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Are Home Warranties Worth It?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>The main reason people get a home warranty is that they hope it will help them cover the cost of home maintenance. Whether appliances or pools, what everyone is essentially looking for is whether their home warranty of choice covers what they need at a adequate price. However, not many people realize how much it costs to maintain their house now, and how much it will cost them to do so in the future, as compared to the cost of a home warranty and its benefits.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What do home warranties cover and how do they
+                                            intend to save money?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>Home warranties are in essence a service contract which provides a commitment to repair certain appliances and systems if they malfunction. In exchange for that commitment, you are paying a set amount of money every year (named “premium”). Additional cost to the annual premium would be a service-fee for each time you call in a repair person. The Homeowner’s budget will be far more stable without unexpected expenses. Unexpected cost of repairs can add up very quickly and replacing an expensive home system can have a significant impact on your monthly budget.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Is a home warranty worth it for me as a home
+                                            seller or real estate agent?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>One specific scenario in which home warranties are almost always worth it is when you are selling a house (for yourself or for someone). Home buyers tend to appreciate homes that come with a home warranty. It’s a nice freebie and it makes them feel like it can potentially mitigate their expenses coming to a new home. The SCIC even published that homes that come with a home warranty sell faster on the market. Considering the average cost of approximately $500 for a home warranty plan for a year ahead, it sure does sound like a worthwhile deal.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What Happens If I sell my home?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>You can take your warranty to your new home, or cancel your warranty plan.</p>
+                                            </div>
+                                        </div>
+                                        </div><!-- accordion-single -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane states {{selectedTab==3?'active':''}}">
+                            <div class="fp__faq mb-0 py-0">
+                                <div class="faq_list">
+                                     <!-- acc single -->
+                                     <div class="accordion-single js-acc-single">
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What Is the difference between Homeowners
+                                            insurance and a Home Warranty?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>A home warranty is a service contract between a homeowner and a home warranty company. The contract covers repair and replacement costs on major home systems and appliances in the event of breakdowns associated with normal wear and tear.</p>
+    
+                                                <p> A HOME INSURANCE POLICY is designed to cover accidental damage to your property and possessions, as a result of theft, fire, natural disasters, etc. The four main areas of coverage are interior, exterior, personal property, and general liability, but homeowners insurance does not cover issues related to natural wear and tear. That means that if one of your essential home systems or appliances simply stops working, then your policy probably isn’t going to cover it.</p>
+    
+                                               <p>Unlike homeowners insurance, a home warranty is not mandatory when purchasing a home. The main purpose of a home warranty is to offer coverage for the items that homeowners insurance overlooks — key items, appliances, and home systems that inevitably end up needing to be repaired or replaced over time. This is not limited to new items; which items or systems are covered depends upon the specific warranty plan.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Why Buy a Home Warranty?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>If your home’s appliances or systems break, you may end up paying top dollar to repair them or replace them. An HVAC costs several hundred dollars to repair (if you’re lucky), and several thousands if you need to replace it. A sudden, unexpected, expense which may cause a serious dent in your budget.</p>
+                                            <p>A home warranty is supposed to address such situations. For an annual premium of $500 on average, in additional to deductible cost per service, you get free repairs, and item replacements – if necessary – up to a certain dollar figure limit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Are Home Warranties Worth It?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>The main reason people get a home warranty is that they hope it will help them cover the cost of home maintenance. Whether appliances or pools, what everyone is essentially looking for is whether their home warranty of choice covers what they need at a adequate price. However, not many people realize how much it costs to maintain their house now, and how much it will cost them to do so in the future, as compared to the cost of a home warranty and its benefits.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What do home warranties cover and how do they
+                                            intend to save money?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>Home warranties are in essence a service contract which provides a commitment to repair certain appliances and systems if they malfunction. In exchange for that commitment, you are paying a set amount of money every year (named “premium”). Additional cost to the annual premium would be a service-fee for each time you call in a repair person. The Homeowner’s budget will be far more stable without unexpected expenses. Unexpected cost of repairs can add up very quickly and replacing an expensive home system can have a significant impact on your monthly budget.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">Is a home warranty worth it for me as a home
+                                            seller or real estate agent?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>One specific scenario in which home warranties are almost always worth it is when you are selling a house (for yourself or for someone). Home buyers tend to appreciate homes that come with a home warranty. It’s a nice freebie and it makes them feel like it can potentially mitigate their expenses coming to a new home. The SCIC even published that homes that come with a home warranty sell faster on the market. Considering the average cost of approximately $500 for a home warranty plan for a year ahead, it sure does sound like a worthwhile deal.</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-single-item js-acc-item is-close">
+                                            <h2 class="accordion-single-title js-acc-single-trigger">What Happens If I sell my home?</h2>
+                                            <div class="accordion-single-content">
+                                            <p>You can take your warranty to your new home, or cancel your warranty plan.</p>
+                                            </div>
+                                        </div>
+                                        </div><!-- accordion-single -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+
+</main>

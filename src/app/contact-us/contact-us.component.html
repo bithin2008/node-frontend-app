@@ -1,0 +1,125 @@
+<main>
+	<section class="fp__inner__banner contact_bnr">
+		<div class="main-container">
+			<div class="inner-container">
+				<div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/contact-us/contact-us-hero1.webp" type="image/webp">
+                        <source srcset="assets/img/contact-us/contact-us-hero1.jpg" type="image/jpg">
+                        <img src="assets/img/contact-us/contact-us-hero1.webp" alt="First Premier" title="First Premier">
+                    </picture>
+					<div class="banner_content flow-rootX">
+                        <h1  class="h1 txt-reveal-anim" *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                        <h1 class="h1 txt-reveal-anim" *ngIf="!pageDetails?.h1_tag">Get in Touch<br>With Our Team</h1>
+                        <p>Check our FAQ Page for additional helpful information.</p>
+                        <a routerLink="/checkout" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">GET YOUR QUOTE NOW</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <section class="fp_affiliate fp_realestate fp_contact_us">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_hdng">
+                    <div class="hdng_content flow-rootX">
+                        <h2>Have question or need help? Just <span class="c--fpDarkYellow"><img src="assets/img/real-estate/FPHW-home.png" alt="First Premier" title="First Premier"> sk!</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="contact_info">
+                    <div class="contact_box contact_box--tel">
+                        <picture class="primr_fst">
+                            <source srcset="assets/img/icon/contact-call.webp" type="image/webp">
+                            <source srcset="assets/img/icon/contact-call.png" type="image/png">
+                            <img src="assets/img/icon/contact-call.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                        
+                        <div class="con_detl">
+                           <a href="tel:18003881918">Call Us</a> 
+                        </div>
+                    </div>
+                    <div class="contact_box contact_box--mail">
+                        <picture class="primr_fst">
+                            <source srcset="assets/img/icon/contact-email.webp" type="image/webp">
+                            <source srcset="assets/img/icon/contact-email.png" type="image/png">
+                            <img src="assets/img/icon/contact-email.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                       
+                        <div class="con_detl">
+                          <a href="mailto:info@firstpremierhomewarranty.com">Mail Us</a>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </section>
+    				
+    <section class="fp_affiliate fp_contact_form">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_premier_wrapper">
+                    <div class="affiliate_primr_image">
+                        <picture class="primr_fst ">
+                            <source srcset="assets/img/contact-us/contact-side.webp" type="image/webp">
+                            <source srcset="assets/img/contact-us/contact-side.jpg" type="image/jpg">
+                            <img src="assets/img/contact-us/contact-side.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                        <div class="primr_image_card advtg_primr_card">
+                            <span>7K <sup>+</sup></span>
+                            <p>Satisfied clients all over the world </p>
+                        </div>
+                    </div>
+                    <div class="affiliate_primr_form">
+                        <form class="form-style" [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+                            <div class="form-element form_root">
+                                <label class="form-label">First Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="35"
+                                formControlName="firstName"
+                                [ngClass]="{ 'is-invalid': contactFormSubmitted && s1['firstName'].errors }" (keypress)="mszKeyDown($event)"
+                                autocomplete="off" (keydown)="preventNumberInput($event)"/>
+                            <app-validation-error [control]="s1['firstName']"></app-validation-error>
+                              
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Last Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field"  minlength="3" maxlength="35"
+                                formControlName="lastName"
+                                [ngClass]="{ 'is-invalid': contactFormSubmitted && s1['lastName'].errors }" (keypress)="mszKeyDown($event)"
+                                autocomplete="off" (keydown)="preventNumberInput($event)"/>
+                            <app-validation-error [control]="s1['lastName']"></app-validation-error>
+                            
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Email Address  <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field"   formControlName="emailId" minlength="3" maxlength="100"
+                                placeholder="">
+                            <app-validation-error [control]="s1['emailId']"></app-validation-error>
+                              
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                                <input type="text" inputmode="numeric" class="form-field" usPhoneNumber formControlName="mobileNo"
+                                placeholder="" (input)="changeMobileFormat($event)">
+                            <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+                              
+                            </div>
+                            <div class="form-element form_root form-floating textarea_field">
+                                <label class="form-label">Message <span class="c--madnatory">*</span></label>
+                                <textarea class="form-field"  formControlName="message"></textarea>                              
+                             
+                            <app-validation-error [control]="s1['message']"></app-validation-error>
+                               
+                            </div>
+                            <div class="form_root">
+                                <button class="c2a bg--fpYellow w-100 c2a-lg hvr:bg--fpGreen hvr:c--whitee" type="submit" value="Get a Quote">SUBMIT</button>
+                            </div>
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="coverage_faq"><app-faq></app-faq></div>
+<app-check-out-strip></app-check-out-strip>

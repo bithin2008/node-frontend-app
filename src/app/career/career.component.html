@@ -1,0 +1,250 @@
+<main>
+    <section class="fp__inner__banner career_bnr">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/career/career-hero1.webp" type="image/webp">
+                        <source srcset="assets/img/career/career-hero1.jpg" type="image/jpg">
+                        <img src="assets/img/career/career-hero1.webp" alt="First Premier" title="First Premier">
+                    </picture>
+                    <div class="banner_content flow-rootX">
+                        <h1 class="h1 " *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                        <h1 class="h1 " *ngIf="!pageDetails?.h1_tag">View our vacancies<br> find your dream job</h1>
+    
+                        <a class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" (click)="scrollToCareerForm()">APPLY NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fp_affiliate fp_career" #careerFormSection>
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_hdng">
+                    <div class="hdng_content flow-rootX">
+                        <!-- <h2 class="">Join Our Professional Team</h2> -->
+                        <h2 class="">Join Us at <span>First Premier Home Warranty</span></h2>
+                        <!-- <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that</p> -->
+                        <p>Our team overseas one of the most extensive support networks for homeowners and home professionals across the United States." Great products are only part of being a great company. What makes First Premier Home Warranty great, is our experienced and dedicated staff.</p>
+                    </div>
+                </div>
+                <!-- <div class="career_filter_box">
+                    <div class="affiliate_primr_form filter_form">
+                        <form class="form-style-3 flow-rootX">
+                            <div class="form-element form_root">
+                                <label class="form-label">Location</label>
+                                <select class="form-field form-select">
+                                    <option></option>
+                                    <option value="1">New York</option>
+                                    <option value="2">WA</option>
+                                    <option value="3">OR</option>
+                                </select>
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Expertise</label>
+                                <select class="form-field form-select">
+                                    <option></option>
+                                    <option value="1">Entrt</option>
+                                    <option value="2">Mid</option>
+                                    <option value="3">Expart</option>
+                                </select>
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Level</label>
+                                <select class="form-field form-select">
+                                    <option></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-element form_root search_form">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-field">
+                                <i class="material-symbols-outlined">search</i>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="career_box_list">
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                        <div class="career_box">
+                            <div class="flow-rootx">
+                                <span class="loc c--fpBlue">Location: New York</span>
+                                <h5>Business Development Manager</h5>
+                                <p>It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            </div>
+                            <div class="career_box_outside">
+                                <button class="c2a c2a-sm bg--fpYellow hvr:bg--fpGreen hvr:c--whitee hvr:c--whitee"
+                                    type="submit" (click)="scrollToCareerForm()">APPLY NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="pagination_list" #careerFormSection>
+                        <p-paginator [first]="0" [rows]="10" [totalRecords]="50"></p-paginator>
+                    </nav>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="fp_affiliate mt-0 fp_career_pnl">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_premier_wrapper mt-0">
+                    <div class="affiliate_primr_image">
+                        <picture class="primr_fst img-reveal-anim">
+                            <source srcset="assets/img/career/career-side.webp" type="image/webp">
+                            <source srcset="assets/img/career/career-side.jpg" type="image/jpg">
+                            <img src="assets/img/career/career-side.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                        <!-- <div class="primr_image_card advtg_primr_card" >
+                            <p>Don’t see a role you’re <span>interested in?</span></p>
+                        </div> -->
+                    </div>
+                    <div class="affiliate_primr_form" id="apply">
+                        <div class="carer_hdng">
+                            <h3>Reach out to us <br/>to Apply & Learn More</h3>
+                            <!-- <p>It is a long established fact that a reader will be distracted by the readable content of
+                                a page when looking at its layout.</p> -->
+                        </div>
+                        <form class="form-style flow-rootx3" [formGroup]="careerForm" (ngSubmit)="careerSubmit()">
+                            <div class="form-element form_root">
+                                <label class="form-label">First Name<span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="35"
+                                    formControlName="firstName"
+                                    [ngClass]="{ 'is-invalid': contactFormSubmitted && s1['firstName'].errors }" (keypress)="mszKeyDown($event)"
+                                    autocomplete="off" (keydown)="preventNumberInput($event)"/>
+                                <app-validation-error [control]="s1['firstName']"></app-validation-error>
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Last Name<span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="35"
+                                    formControlName="lastName"
+                                    [ngClass]="{ 'is-invalid': contactFormSubmitted && s1['lastName'].errors }" (keypress)="mszKeyDown($event)"
+                                    autocomplete="off" (keydown)="preventNumberInput($event)"/>
+                                <app-validation-error [control]="s1['lastName']"></app-validation-error>
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Email<span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field"  maxlength="100" formControlName="emailId"
+                                placeholder="">
+                            <app-validation-error [control]="s1['emailId']"></app-validation-error>
+                            </div>
+                            <div class="form-element form_root">
+                                <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                                <input type="text" inputmode="numeric" class="form-field" usPhoneNumber formControlName="mobileNo"
+                                placeholder="" (input)="changeMobileFormat($event)">
+                            <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+                            </div>
+
+                            <div class="form-element form_root exp_fild">
+                                <div class="form-field">
+                                    <label class="form-label d-inline-block">Any Experience <span class="c--madnatory">*</span></label>
+                                    <div class="radio_inline">
+                                        <input type=radio id="rdo1" checked class="radio-input" name="experience" formControlName="experience" value="1">
+                                        <label for="rdo1" class="radio-label"> <span class="radio-border"></span>Yes
+                                        </label>
+
+                                        <input type=radio id="rdo2" class="radio-input" name="experience" formControlName="experience"  value="0">
+                                        <label for="rdo2" class="radio-label mr-0"><span class="radio-border"></span>No
+                                        </label>
+                                    </div>
+                                    <app-validation-error
+                                    [control]="s1['experience']"></app-validation-error>
+                                </div>
+                            </div>
+                            <div class="form-element form_root">
+                                <div class="file-upload-wrapper upload-block">
+                                    <label *ngIf="!fileAdded">Upload Resume <span class="c--madnatory">*</span></label>
+                                    <input type="file" formControlName="resumeFile" class="file-upload-field"  id="real-file"  accept=".doc, .docx, .pdf"
+                                   (change)="fileChangeEvent($event)">
+                                </div>
+                                <span *ngIf=" (careerForm.controls['resumeFile'].touched && contactFormSubmitted)  && careerForm.controls['resumeFile'].errors?.['required']">
+                                    <app-validation-error
+                                [control]="s1['resumeFile']"></app-validation-error>
+                                </span>  
+                            </div>
+
+<!-- {{careerForm.controls['resumeFile'].errors?.['required'] | json}}
+{{careerForm.controls['resumeFile'].touched | json}}
+{{contactFormSubmitted}} -->
+
+                            <div class="form_root">
+                                <button class="c2a bg--fpYellow w-100 c2a-lg hvr:bg--fpGreen hvr:c--whitee"
+                                    type="submit" value="Get a Quote" [disabled]="loading">                                    
+                                    <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">SUBMIT</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-check-out-strip></app-check-out-strip>

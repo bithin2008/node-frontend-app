@@ -1,0 +1,474 @@
+<main>
+    <section class="fp__inner__banner affiliate_bnr">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/contractor/Contractor-hero.webp" type="image/webp">
+                        <source srcset="assets/img/contractor/Contractor-hero.jpg" type="image/jpg">
+                        <img src="assets/img/contractor/Contractor-hero.webp" alt="First Premier" title="First Premier">
+                    </picture>
+                    <div class="banner_content flow-rootX3">
+                        <h1 class="h1" *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                        <h1 class="h1" *ngIf="!pageDetails?.h1_tag">Join our Network of <br>Home Warranty Contractors
+                        </h1>
+
+                        <a (click)="scrollToContractorForm()"
+                            class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">JOIN NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fp_affiliate fp_contractor">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_premier_wrapper">
+                    <div class="affiliate_primr_image mb-0">
+                        <picture class="primr_fst img-reveal-anim">
+                            <source srcset="assets/img/contractor/Contractor-inner-1.webp" type="image/webp">
+                            <source srcset="assets/img/contractor/Contractor-inner-1.jpg" type="image/jpg">
+                            <img src="assets/img/contractor/Contractor-inner-1.webp" alt="First Premier"
+                                title="First Premier">
+                        </picture>
+                    </div>
+                    <div class="contractor_content">
+                        <div class="hdng_content flow-rootX5">
+                            <em>Home Warranty Contractors:</em>
+                            <h2 class="txt-reveal-anim">Get Started Today! </h2>
+                            <ul>
+                                <!-- <li>If you’re a contractor, you’ve surely heard of home warranties.</li>
+                                <li>That’s what brought you here, after all, and we’re glad you found us! </li>
+                                <li>Home warranty contractors and the experts who offer our service plans.</li> -->
+
+                                <li>Accept and schedule service calls with ease.</li>
+                                <li>Submit diagnosis and invoices and receive same day payment.</li>
+                                <li>Steady Business & Free Leads well send business to you through our strong customer
+                                    base.</li>
+                            </ul>
+                            <p>Take advantage of our vast network of customers to elevate your business and add on a new
+                                sales channel - all at no cost to you. We reward quality work, competitive pricing,
+                                professionalism and responsiveness with opportunities that will keep your business
+                                growing and profitable.</p>
+                            <a (click)="scrollToContractorForm()"
+                                class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">APPLY TO PARTNER</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="affiliate_premier_wrapper reverse_contractor">
+                    <div class="contractor_img">
+                        <picture class="primr_fst">
+                            <source srcset="assets/img/contractor/Contractor-fphw-technician.webp" type="image/webp">
+                            <source srcset="assets/img/contractor/Contractor-fphw-technician.png" type="image/png">
+                            <img src="assets/img/contractor/Contractor-fphw-technician.webp" alt="First Premier"
+                                title="First Premier">
+                        </picture>
+                    </div>
+                    <div class="contractor_content flow-rootX">
+                        <h3 class="c--fpBlue">Benefits</h3>
+                        <h4 class="txt-reveal-anim">Why should you become a
+                            <span class="c--fpBlue d-block"> Home Warranty Contractor?</span>
+                        </h4>
+
+                        <ul>
+                            <li><strong>Reliable Stream of Work:</strong> Becoming a home warranty contractor provides a
+                                steady flow of work opportunities.</li>
+                            <li><strong>Access to Customers:</strong> Partnering with a home warranty company grants
+                                access to a large customer base of homeowners seeking trustworthy contractors for their
+                                repair needs.</li>
+                            <li><strong>Increased Credibility:</strong> Being affiliated with a reputable home warranty
+                                provider enhances your credibility as a contractor, instilling confidence in potential
+                                clients.</li>
+                            <li><strong>Guaranteed Payment:</strong> Home warranty companies typically guarantee payment
+                                for services rendered, reducing the risk of payment delays or disputes commonly
+                                encountered in other contracting arrangements.</li>
+                        </ul>
+                        <!-- <p>A home warranty contractor is someone who fulfills the services covered under a home
+                            warranty.</p>
+                        <p #contractorForm>For customers, a home warranty covers home system and appliance breakdowns.
+                            If a covered
+                            system or appliance has an issue, we cover the costs for repair or replacement.</p> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="fp__stepform_Sec" #contractorForm>
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="step_form_wrapper step_contrctr bg--fpBlue">
+                    <div class="mainxx-container">
+                        <div class="stepform_hdng flow-rootX">
+                            <h5 class="c--whitee">Become a Contractor</h5>
+                            <p>Please complete the registration form below and a contractor relations representative
+                                will contact you shortly.</p>
+                        </div>
+                        <div class="contractor stepper">
+                            <div class="stepper-header">
+                                <ol>
+                                    <li class="step form__tabs-item {{activeStep==1?'active':''}}"
+                                        (click)="onStepChanged(1)"><button class="stp"><span>Step 1</span>
+                                            <em>Personal Information</em></button></li>
+                                    <li class="step form__tabs-item {{activeStep==2?'active':''}}"
+                                        (click)="onStepChanged(2)"><button class="stp"><span>Step 2</span><em>Contact
+                                                Information</em></button></li>
+                                    <li class="step form__tabs-item {{activeStep==3?'active':''}}"
+                                        (click)="onStepChanged(3)"><button class="stp"><span>Step 3</span><em>Select
+                                                Service
+                                                Areas</em></button></li>
+                                </ol>
+                            </div>
+                            <div class="stepper-body mt-0">
+
+                            </div>
+                        </div>
+                        <ng-stepper [linear]="true">
+
+                            <!-- Step 1 -->
+                            <cdk-step [stepControl]="stepOneForm" [optional]="true">
+                                <ng-template cdkStepLabel>
+                                </ng-template>
+                                <div class="step step-1 active" id="fieldsets">
+                                    <form class="form-style-3 flow-rootX banner_form contractor_form"
+                                        [formGroup]="stepOneForm" (ngSubmit)="stepOneSubmit()" #formRef="ngForm">
+                                        <div class="grid-3 grid-sm-1">
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">badge</span>
+                                                </div>
+                                                <label class="form-label">Company Name <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" minlength="3" maxlength="80"
+                                                    formControlName="companyName"
+                                                    [ngClass]="{ 'is-invalid': stepOneSubmitted && s1['companyName'].errors }" />
+                                                <app-validation-error
+                                                    [control]="s1['companyName']"></app-validation-error>
+
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">person</span>
+                                                </div>
+                                                <label class="form-label">First Name <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" minlength="3" maxlength="25"
+                                                    formControlName="firstName"
+                                                    [ngClass]="{ 'is-invalid': stepOneSubmitted && s1['firstName'].errors }"
+                                                    (keypress)="mszKeyDown($event)" autocomplete="off"
+                                                    (keydown)="preventNumberInput($event)" />
+                                                <app-validation-error
+                                                    [control]="s1['firstName']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">person</span>
+                                                </div>
+                                                <label class="form-label">Last Name <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" placeholder="" minlength="3"
+                                                    maxlength="25" formControlName="lastName"
+                                                    (keypress)="mszKeyDown($event)" autocomplete="off"
+                                                    (keydown)="preventNumberInput($event)">
+                                                <app-validation-error [control]="s1['lastName']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">phone_in_talk</span>
+                                                </div>
+                                                <label class="form-label">Company Phone Number <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" usPhoneNumber
+                                                    formControlName="companyPhone" placeholder=""
+                                                    (input)="changePhoneFormat($event)">
+                                                <app-validation-error
+                                                    [control]="s1['companyPhone']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">phone_in_talk</span>
+                                                </div>
+                                                <label class="form-label">Mobile Number <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" inputmode="numeric" class="form-field" usPhoneNumber
+                                                    formControlName="mobileNo" placeholder=""
+                                                    (input)="changeMobileFormat($event)">
+                                                <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">receipt_long</span>
+                                                </div>
+                                                <label class="form-label">License/Certification Number <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="licenseNumber"
+                                                    minlength="3" maxlength="35"
+                                                    [ngClass]="{ 'is-invalid': stepOneSubmitted && s1['licenseNumber'].errors }"
+                                                    allowOnlyNumbers />
+                                                <app-validation-error
+                                                    [control]="s1['licenseNumber']"></app-validation-error>
+                                            </div>
+                                        </div>
+                                        <div class="grid-2 button_grp">
+                                            <div class="form-checkbox inline-style form-checkbox-whitee">
+                                                <label>
+                                                    <input type="checkbox" name="callback_request" value="1"
+                                                        formControlName="dontHaveLicense" (change)="dontHaveALicense()">
+                                                    <span class="checkmark"></span>
+                                                    <p class="mt-0">I do not have any License/Certification.</p>
+                                                </label>
+                                            </div>
+                                            <button class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen"
+                                                type="submit" value="Get a Quote">PROCEED TO NEXT STEP</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </cdk-step>
+                            <!-- Step 2 -->
+                            <cdk-step [stepControl]="stepTwoForm" [optional]="true">
+                                <ng-template cdkStepLabel>
+                                </ng-template>
+                                <div class="step step-2" id="fieldsets">
+                                    <form class="form-style-3 flow-rootX banner_form contractor_form"
+                                        [formGroup]="stepTwoForm" (ngSubmit)="stepTwoSubmit()" #formRef="ngForm">
+                                        <div class="grid-3 grid-sm-6">
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">email</span>
+                                                </div>
+                                                <label class="form-label">Email Address <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="emailId"
+                                                    placeholder="">
+
+                                                <app-validation-error [control]="s2['emailId']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">home</span>
+                                                </div>
+                                                <label class="form-label">Street Address <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="addressOne"
+                                                    placeholder="">
+
+                                                <app-validation-error
+                                                    [control]="s2['addressOne']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">markunread_mailbox</span>
+                                                </div>
+                                                <label class="form-label">Zip Code <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" pattern="\d*" class="form-field" [minlength]="5"
+                                                    [maxlength]="5" formControlName="zipCode" allowOnlyNumbers
+                                                    (keyup)="chekcZipCode($event)"
+                                                    onKeyPress="if(this.value.length==5) return true;"
+                                                    [ngClass]="{ 'is-invalid': stepTwoSubmitted && s2['zipCode'].errors }">
+
+
+                                                <app-validation-error [control]="s2['zipCode']"></app-validation-error>
+                                                <div class="my-1 py-2 alert alert-danger" *ngIf="validZipMessage">
+                                                    <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                                                    <span>{{validZipMessage}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">navigation</span>
+                                                </div>
+                                                <label class="form-label">City <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="city"
+                                                    [readonly]="isReadOnly">
+                                                <app-validation-error [control]="s2['city']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">where_to_vote</span>
+                                                </div>
+                                                <label class="form-label">State <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="state"
+                                                    [readonly]="isReadOnly">
+                                                <app-validation-error [control]="s2['state']"></app-validation-error>
+                                            </div>
+
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">engineering</span>
+                                                </div>
+                                                <label class="form-label">How many contractors do you have <span
+                                                        class="c--madnatory">*</span></label>
+
+                                                <select class="form-field form-select"
+                                                    formControlName="contractorsNumber">
+                                                    <option value="1">0 to 50</option>
+                                                    <option value="2">50 to 100</option>
+                                                    <option value="3">100 to 250</option>
+                                                    <option value="4">More than 250</option>
+                                                </select>
+
+
+                                                <app-validation-error
+                                                    [control]="s2['contractorsNumber']"></app-validation-error>
+                                            </div>
+
+
+                                            <div class="form-element form_root form-zips">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">location_away</span>
+                                                </div>
+                                                <label class="form-label">Which zipcodes do you service? <span
+                                                        class="c--madnatory">*</span></label>
+
+
+                                                <div class="zip-service">
+                                                    <p-autoComplete formControlName="serviceCity" placeholder=""
+                                                        [suggestions]="zipCodeList" (onFocus)="zipfocus($event)" (onUnselect)="onItemUnselect($event)" (keyup)="searchZipCode($event)"
+                                                        (onSelect)="selectZipCode($event)" [multiple]="true">
+                                                        <ng-template let-zip pTemplate="item">
+                                                            <div class="zip-item">
+                                                                <div>{{zip.zipcode}} (City:{{zip.city}},
+                                                                    State:{{zip.state}})</div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-autoComplete>
+                                                </div>
+
+                                                <app-validation-error
+                                                    [control]="s2['serviceCity']"></app-validation-error>
+                                            </div>
+
+
+                                            <!-- <div class="form-element form_root" >
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">location_away</span>
+                                                </div>
+                                                <label class="form-label">What cities do you service? <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="text" class="form-field" formControlName="serviceCity">
+                                                <app-validation-error
+                                                    [control]="s2['serviceCity']"></app-validation-error>
+                                            </div> -->
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">share_location</span>
+                                                </div>
+                                                <label class="form-label">Radial Distance (In miles) <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="number" class="form-field" min="0" max="250"
+                                                    formControlName="radialDistance"
+                                                    onKeyPress="if(this.value.length==3) return false;">
+                                                <app-validation-error
+                                                    [control]="s2['radialDistance']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element form_root">
+                                                <div class="prend">
+                                                    <span class="material-symbols-outlined">headset_mic</span>
+                                                </div>
+                                                <label class="form-label">Service Call Fee ($) <span
+                                                        class="c--madnatory">*</span></label>
+                                                <input type="number" class="form-field" min="0"
+                                                    formControlName="serviceCallFee" max="200"
+                                                    onKeyPress="if(this.value.length==3) return false;">
+                                                <app-validation-error
+                                                    [control]="s2['serviceCallFee']"></app-validation-error>
+                                            </div>
+                                        </div>
+                                        <div class="grid-2 button_grp justify-content-center">
+                                            <button class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen"
+                                                type="submit" value="Get a Quote">PROCEED TO NEXT STEP</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </cdk-step>
+                            <!-- Step 3 -->
+                            <cdk-step [stepControl]="stepThreeForm" [optional]="true">
+                                <ng-template cdkStepLabel>
+                                </ng-template>
+                                <div class="step step-3" id="fieldsets">
+                                    <form class="form-style-3 flow-rootX banner_form contractor_form"
+                                        [formGroup]="stepThreeForm" (ngSubmit)="stepThreeSubmit()" #formRef="ngForm">
+                                        <div class="stepform_hdng">
+                                            <h6>Choose your service(s) <span>(You can choose multiple
+                                                    options)</span>
+                                            </h6>
+                                            <div
+                                                class="form-checkbox inline-style form-checkbox-whitee check-element select_all">
+                                                <label>
+                                                    <input type="checkbox" name="" [(ngModel)]="selectAll"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        (change)="selectAllServices()">
+                                                    <span class="checkmark"></span>
+                                                    <p>Select All Service(s)</p>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="productlist_wrap">
+                                            <div class="grid-4">
+                                                <ng-container *ngFor="let item of productList; let i=index">
+                                                    <div
+                                                        class="form-checkbox inline-style form-checkbox-whitee check-element">
+                                                        <label>
+                                                            <input type="checkbox" name="callback_request"
+                                                                formControlName="serviceTypes"
+                                                                class="serviceTypesCheckbox"
+                                                                (change)="onSelectServiceType($event, item)">
+                                                            <span class="checkmark"></span>
+                                                            <p>{{item.product_name}}</p>
+                                                        </label>
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                            <app-validation-error [control]="s3['serviceTypes']"></app-validation-error>
+                                        </div>
+                                        <div class="grid-2 button_grp justify-content-between button_grp_step3">
+ 
+                                            <div id="license_upload" class="btn_box ">
+                                                <div class="file-upload">
+                                                    <input type="file" formControlName="licenseFile" id="real-file"
+                                                        hidden="hidden" accept=".doc, .docx, .pdf"
+                                                        (change)="fileChangeEvent($event)" />
+                                                    <button type="button"
+                                                        class="c2a c2a--inline bg--whitee c--blak hvr:c--whitee hvr:bg--fpGreen"
+                                                        id="file-upload-btn">UPLOAD LICENSE<span
+                                                            class="c--madnatory">*</span></button>
+                                                    <em id="custom-text">No file chosen, yet.</em>
+
+                                                </div>
+                                                <app-validation-error
+                                                    [control]="s3['licenseFile']"></app-validation-error>
+                                                <span class="c--whitee d-block mt-1">[Only doc and pdf are
+                                                    accepted.]<br>
+                                                    Max size: 6 MB</span>
+                                            </div>
+                                        </div>
+                                        <div class="grid-2 button_grp justify-content-center apply_ptnr_btn">
+                                            <button class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen"
+                                                type="submit" value="Get a Quote" [disabled]="loading">
+                                                <span class="fp-spinner-container" *ngIf="loading"><span
+                                                        class="fp-spinner"></span> Loading...</span> <span
+                                                    *ngIf="!loading"> APPLY TO PARTNER</span>
+
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </cdk-step>
+
+                        </ng-stepper>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-testimoial-slider></app-testimoial-slider>
+</main>
+<app-blog-list></app-blog-list>
+<app-check-out-strip></app-check-out-strip>

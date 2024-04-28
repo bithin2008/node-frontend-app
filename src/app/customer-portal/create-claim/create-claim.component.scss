@@ -1,0 +1,22 @@
+.alert-box{
+    color: #000;
+    background-color: #f8c126;
+    padding: 10px 15px;
+    border-radius: 0.388rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.pay_details_form{
+    position: relative;
+}
+
+.white-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    background: rgba(255,255,255,0.7);
+}

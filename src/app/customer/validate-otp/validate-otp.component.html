@@ -1,0 +1,54 @@
+<main>
+    <section class="fp_cl">
+        <div class="mainX-container">
+            <div class="inner-container">
+                <div class="cl_wrapper">
+                    <div class="clogin_img">
+                        <picture>
+                            <source srcset="assets/img/customer-login/customerlogin-hero.webp" type="image/webp">
+                            <source srcset="assets/img/customer-login/customerlogin-hero.png" type="image/png">
+                            <img src="assets/img/customer-login/customerlogin-hero.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                    </div>
+                    <div class="clogin_form">
+                        <div class="clogin_form_inner flow-rootX">
+                            <div class="hdng_content flow-rootx">
+                                <h2><span>OTP Verification</span></h2> 
+                                <p>We have sent an OTP to your email id. Please enter the 4 digit code here to proceed.</p>
+                            </div>
+                            <form class="form-style-3 flow-rootX" (ngSubmit)="validateOTP()">                           
+                
+                                <div class="form-element text-center w-100 mb-0">
+                                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="{length:4,allowNumbersOnly:true}">
+                                    </ng-otp-input>
+                                </div>
+                 
+                                <div class="text-center flow-root">
+                                    <p class="h6 fw--b">Did not received OTP?</p>
+                                    
+                                    <div class="flow-rootx2">
+                                        <div >
+                                            <span *ngIf="isDisabledResendotp">Resend in </span>
+                                            <countdown  #cd [hidden]="!isDisabledResendotp"
+                                                [config]="{leftTime: 60,format: 'mm:ss'}" (event)="handleEvent($event)" >
+                                            </countdown>
+                                        </div>
+    
+                                        <a title="Resend OTP" *ngIf="!isDisabledResendotp" class="fw--b c2a-underline hvr:c--fpBlue pointer resendotp otp-btn" [class.disabled]="isDisabledResendotp" (click)="resendOtp()">Resend Code</a>
+                                    </div>
+                                </div>                             
+                                
+                                <div>
+                                    <button class="c2a bg--fpGreen w-100 hvr:bg--fpBlue c--whitee" type="submit" value="Get a Quote" [disabled]="loading">                                        
+                                        <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">VALIDATE OTP</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-check-out-strip></app-check-out-strip>

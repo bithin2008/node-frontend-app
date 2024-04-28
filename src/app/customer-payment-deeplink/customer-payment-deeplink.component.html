@@ -1,0 +1,186 @@
+<div class="container fullW">
+    <!-- <app-alert-message></app-alert-message> -->
+    <app-svg></app-svg>
+    <app-header></app-header>
+    <section class="fp_payment_deeplik">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="main-inner-container">
+                        <div class="deeplink-checkout">
+                            <div class="stepper_wrapper">
+                                <div class="stepper">
+                                    <div class="stepper-header">
+                                        <ol class="steps">
+                                            <li class="step completed">
+                                                <div class="step-bullet"></div>
+                                                <div class="step-title current">
+                                                    <span class="stp">Step 1</span>
+                                                    <div class="ripple_ani"></div>
+                                                </div>
+                                                <p class="step_sub_title">Personal Details</p>
+                                            </li>
+                                            <li class="step completed">
+                                                <div class="step-bullet"></div>
+                                                <div class="step-title current">
+                                                    <span class="stp">Step 2</span>
+                                                    <div class="ripple_ani"></div>
+                                                </div>
+                                                <p class="step_sub_title">Property Details</p>
+                                            </li>
+                                            <li class="step completed">
+                                                <div class="step-bullet"></div>
+                                                <div class="step-title current">
+                                                    <span class="stp">Step 3</span>
+                                                    <div class="ripple_ani"></div>
+                                                </div>
+                                                <p class="step_sub_title">Optional Coverage</p>
+                                            </li>
+                                            <li class="step active">
+                                                <div class="step-bullet"></div>
+                                                <div class="step-title current">
+                                                    <span class="stp">Step 4</span>
+                                                    <div class="ripple_ani"></div>
+                                                </div>
+                                                <p class="step_sub_title">Payment Confirmation</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="stepper-body">
+                                        <div class="content active">
+                                            <div class="step step-4">
+                                                <div class="card-body">
+                                                    <div class="card_inner">
+                                                        <div class="checkout_order_hdr">
+                                                            <ul>
+                                                                <li><p><span>Policy</span> Term - <strong >{{policyData?.plan_term_details?.plan_term}}</strong></p></li>
+                                                                <li><p><span>Policy No. - </span> <strong>{{policyData?.policy_number}}</strong></p></li>
+                                                            </ul>
+                                                         </div>
+                                                         
+                                                        <div class="order-info_wrapper">
+                                                            <div class="checkout_order">
+                                                                <div class="checkout_order_body">
+                                                                    <div class="optional_addon_list mt-0">
+                                                                        <div class="optional_addon_hdr">
+                                                                            <h3>Payment Confirmation</h3>
+                                                                        </div>
+                                                                        <div class="optional_addon_bdy">
+                                                                            <div class="addon_table_body">
+                                                                                <div class="card_table">
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">Property Information
+                                                                                        </div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.billing_address1}}, {{policyData?.billing_city}} {{policyData?.billing_state}}, {{policyData?.billing_zip}}</div>
+                                                                                    </div>
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">Name</div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.first_name+' '+policyData?.last_name }}</div>
+                                                                                    </div>
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">Email</div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.email}}</div>
+                                                                                    </div>
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">Plan Name</div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.plan_details?.plan_name}}</div>
+                                                                                    </div>
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">Start Date</div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.policy_start_date | date:'MM-dd-yyyy'}}</div>
+                                                                                    </div>
+                                                                                    <div class="ctb-row">
+                                                                                        <div class="ctb-vlu">End Date</div>
+                                                                                        <div class="ctb-vlu lbl-val">{{policyData?.policy_expiry_date | date:'MM-dd-yyyy'}}</div>
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="details_total">
+                                                                    <div class="totl_items">
+                                                                        <p><em>Total Amount </em></p>   
+                                                                    </div>                                        
+                                                                    <div class="totl_items">
+                                                                        <p><span>{{policyData?.net_amount |
+                                                                            currency:'USD'}}</span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="new_card cc_card_detls">
+                                                              <form [formGroup]="newCardForm" (ngSubmit)="onsubmitAddCard()"> 
+                                                                <div class="depl_cardinfo">
+                                                                    <h3>Card Information</h3>
+                                                                    <div  class="form-style pay_details_form">
+                                                                        <div class="form-grid-on">
+                                                                            <div class="form-element">
+                                                                                <label class="form-label">Card
+                                                                                    Holder Name <span
+                                                                                        class="c--madnatory">*</span></label>
+                                                                                    <input type="text" class="form-field" minlength="3" maxlength="150"
+                                                                                    formControlName="cardHolderName" />
+                                                                                    <app-validation-error [control]="s1['cardHolderName']"></app-validation-error>
+                                                                                                                                                          
+                                                                            </div>
+                                                                            <div class="form-element card-form-wrap">
+                                                                                <label class="form-label">Card
+                                                                                    Number <span
+                                                                                        class="c--madnatory">*</span></label>
+                                                                                        <input type="text" inputmode="numeric" class="form-field" formControlName="cardNumber" creditCardFormatter />
+                                                                                        <div class="input-group-prepend">
+                                                                                            <div class="card-svg-icon">
+                                                                                                <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.svg" alt="Card Image" title="Card Image">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <app-validation-error [control]="s1['cardNumber']"></app-validation-error>
+                                                                               
+                                                                            </div>
+                                                                            <div class="element-grid">
+                                                                                <div class="form-element">
+                                                                                    
+                                                                                            <label class="form-label">Expiry Date (MM/YY)<span class="c--madnatory">*</span></label>
+                                                                                            <input type="text" class="form-field" id="expiryDate" formControlName="expiryDate" maxlength="5"
+                                                                                                placeholder="">
+                                                                                            <app-validation-error [control]="s1['expiryDate']"></app-validation-error>
+                                                                                   
+                                                                                </div>
+            
+                                                                                <div class="form-element cvv_fild">
+                                                                                    <label class="form-label">CVV
+                                                                                        <span
+                                                                                            class="c--madnatory">*</span></label>
+                                                                                            <input type="text" class="form-field" formControlName="cvv" placeholder="" pattern="\d*"  [appInputLimit]="4" maxlength="4">
+                                                                                            <app-validation-error [control]="s1['cvv']"></app-validation-error>
+                                                                                       
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="text-right">
+                                                                                <button type="submit" class="c2a bg--fpGreen hvr:bg--fpBlue c--whitee">PAY NOW</button>
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+                                                                </div>
+                                                              </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-check-out-strip></app-check-out-strip>
+    <app-footer></app-footer>
+</div> 

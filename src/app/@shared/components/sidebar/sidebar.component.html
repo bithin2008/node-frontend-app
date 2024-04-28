@@ -1,0 +1,139 @@
+<div class="sbar-links ms-2 my-3">
+  <div class="mt-4">
+    <a class="btn btn-primary d-flex justify-content-center align-items-center mx-3 me-4 fw-normal"
+      [routerLink]="['/emp/my-profile']">
+      <app-icon [name]="'user'" [styleClass]="'me-2'"></app-icon>
+      {{transform(welcomeUserText, 18)}}
+    </a>
+  </div>
+  <ul class="list-unstyled mb-0 py-3 pt-md-1">
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon [name]="'home'" [styleClass]="'me-2 f-18'"></app-icon> Getting Started</h6>
+      <div class="collapse show" id="getting-started-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="nav-link">Dashboard</a>
+          </li>
+          <li>
+            <a [routerLink]="['/dashboard/my-analytics/emp/', loggedInUserId]" [routerLinkActive]="['active-nav-link']" class="nav-link">Analytics</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3" *ngIf="userRole === '1' ">
+      <h6 class="mx-2"><app-icon [name]="'admin'" [styleClass]="'me-2 f-18'"></app-icon> Admin Menu</h6>
+      <div class="collapse show" id="getting-started-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Employees</a>
+          </li>
+          <!-- <li>
+            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="nav-link">Add New Employee</a>
+          </li> -->
+          <li>
+            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Contents</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Holidays</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Leave Applications</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="nav-link">View & Upload Leave Balance</a>
+          </li>
+          <li>
+            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet Report</a>
+          </li>
+          <li>
+            <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Manage Projects</a>
+          </li>
+          <li>
+            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Tasks</a>
+          </li>
+          <!-- <li>
+            <a [routerLink]="['/asset-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Asset Management</a>
+          </li> -->
+          <li>
+            <a [routerLink]="['/settings']" [routerLinkActive]="['active-nav-link']" class="nav-link">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon [name]="'tasks'" [styleClass]="'me-2 f-18'"></app-icon> My Tasks</h6>
+      <div class="collapse show" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Leave Applications</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon [name]="'selfService'" [styleClass]="'me-2 f-18'"></app-icon> Self Services</h6>
+      <div class="collapse show" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log Timesheet</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
+              Workflow Approvers</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="nav-link">Apply Leave</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave History</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon [name]="'globe'" [styleClass]="'me-2 f-18'"></app-icon> Organization</h6>
+      <div class="collapse show" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Employees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="nav-link">My
+              Reportees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cms/holiday-calendar']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Holidays</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon [name]="'user'" [styleClass]="'me-2 f-18'"></app-icon> My Account</h6>
+
+      <div class="collapse show" id="layout-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Profile</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
+              Password</a>
+          </li>
+
+          <li>
+            <a [routerLink]="['/auth/login']" [routerLinkActive]="['active-nav-link']" [queryParams]="{logout: true}"
+              class="nav-link">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

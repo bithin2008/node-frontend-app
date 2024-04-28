@@ -1,0 +1,60 @@
+<ng-container *ngIf="customerReviews.length>0">
+    <section class="fp__offset_slider fp__customer_says_slider fp__customer_notfound" id="testimoials">
+      <div class="inner-container">
+        <div class="mainX-container">
+          <div class="slider_wrapper">
+           
+            <div class="slider_hdng">
+              <img src="assets/img/home/rating-icon.webp" alt="Protect Your Home" title="Protect Your Home">
+              <h4 class="fw--b">What Our <br/> Customers are Saying</h4>
+            </div>
+            
+  
+            <div class="customer_slider" >
+              <div class="swiper-container swiper__testimonials" *ngIf="customerReviews.length>0">
+                <div class="swiper-wrapper">                   
+                  <div class="swiper-slide" *ngFor="let item of customerReviews">
+                      <div class="card--review flow-rootX">
+                        <div class="top_content">
+                          <h5 class="sml_ttl">{{item.first_name}} {{item.last_name}}</h5>
+                          <span class="date">{{item.review_date  | date:'MMM d, y'}}</span>
+                        </div>
+                        <div class="middle_content">
+                          <div class="left">
+                            <div class="left_cont">                          
+                              <p>{{item.description}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="last_content" >
+                          <div class="last_content_ratng" >
+                            <span>Posted to</span>
+                            <figure *ngIf="item.review_source==1"><img src="assets/img/home/google-icon.webp" alt="Google" title="Google"></figure>
+                            <figure *ngIf="item.review_source==2"><img src="assets/img/home/trustpilot-icon.webp"  width="55" alt="Trustpilot" title="Trustpilot"></figure>
+                            <figure *ngIf="item.review_source==3"><img src="assets/img/home/bbb-icon.webp" width="60" alt="BBB" title="BBB"></figure>
+                          </div>
+                          <star-rating [starType]="'svg'" [readOnly]="true" [rating]="item.rating"></star-rating>
+                        </div>
+                      </div>
+                    </div>                    
+                </div>
+              </div>
+
+              <ng-container  *ngIf="customerReviews.length==0">
+                  <div class="notfound-rvw">
+                      <p>No customer review found</p>
+                    </div>          
+                </ng-container>
+            </div>
+  
+            
+            <div class="swiper-nav">
+              <div class="swiper-nav--prev swiper__testimonials--prev"></div>
+              <div class="swiper-nav--next swiper__testimonials--next"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-container>

@@ -1,0 +1,40 @@
+.form-style-3 .form-field{
+    font-size: 1.15rem;
+  }
+
+  .form-style-3 .form-element.has-value .form-label{
+    left: 1em;
+    @media(max-width: 1024px){
+        left: 0.6em;
+    }
+  }
+
+  .form-style-3 .form-field:not(.with-placeholder) {
+    padding: 1.25em 1.25em 0.5em 2.3em;
+}
+
+.form-style-3 .form-label{
+    font-size: 1.15em;
+    @media(max-width: 1024px){
+        font-size: 1em;
+    }
+}
+
+.form-style-3 .form-element.has-value .form-label {
+    font-size: 12px;
+    left: 1.75em;
+    @media(max-width: 1600px){
+        left: 1.3em;
+    }
+    @media(max-width: 1400px){
+        left: 1em;
+    }
+    @media(max-width: 991px){
+        left: 0.56em;
+    }
+}
+
+.fp__home__banner .c2a{
+    font-size: 1.25em;
+    padding: 0.65em 1.5em;
+}

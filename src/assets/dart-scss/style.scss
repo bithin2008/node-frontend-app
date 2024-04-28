@@ -1,0 +1,24 @@
+
+// DART SCSS version: sass@1.50.0
+
+@use './layout/normalize';
+@use './project/typo';
+@use './abstracts/util';
+@use './components/buttons';
+@use './components/form';
+@use './components/modal';
+@use './abstracts/flex';
+@use './project/main';
+@use "./project/realtor";
+@use "./star-rating.min.css";
+@use "./project/landing";
+
+
+
+.split-parent {
+    overflow: hidden;
+  }
+  .split-child {
+    overflow: hidden;
+    display: inline-block;
+  }

@@ -1,0 +1,747 @@
+<main>
+    <section class="fp_customer_portal">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none">
+                                    <path d="M11.0734 37.1811L1 40.1438L6.98879 60.5064L17.0622 57.5437L11.0734 37.1811Z" stroke="white" stroke-width="1.5"/>
+                                    <path d="M12.0689 38.25C13.0689 38.4167 15.2689 38.25 16.0689 36.25C17.0689 33.75 25.5689 27.25 33.0689 34.25C36.5689 34.25 44.5689 32.75 44.5689 36.25C44.5689 39.75 43.5689 42.75 30.5689 42.75" stroke="white" stroke-width="1.5"/>
+                                    <path d="M44.5689 37.25C47.0689 35.5833 54.4689 31.75 56.0689 31.75C58.0689 31.75 61.5689 33.75 60.0689 39.75C53.5689 44.75 42.5689 53.25 39.5689 53.25C37.1689 53.25 22.9022 53.25 16.0689 53.25" stroke="white" stroke-width="1.5"/>
+                                    <path d="M40.0689 27.5C47.3867 27.5 53.3189 21.5678 53.3189 14.25C53.3189 6.93223 47.3867 1 40.0689 1C32.7511 1 26.8189 6.93223 26.8189 14.25C26.8189 21.5678 32.7511 27.5 40.0689 27.5Z" stroke="white" stroke-width="1.5"/>
+                                    <path d="M36.0689 16.9167H37.8689C37.8689 17.8767 39.1019 18.6944 40.5689 18.6944C42.0359 18.6944 43.2689 17.8767 43.2689 16.9167C43.2689 15.9389 42.3329 15.5833 40.3529 15.1122C38.4449 14.6411 36.0689 14.0544 36.0689 11.5833C36.0689 9.9922 37.3919 8.6411 39.2189 8.1878V6.25H41.9189V8.1878C43.7459 8.6411 45.0689 9.9922 45.0689 11.5833H43.2689C43.2689 10.6233 42.0359 9.8056 40.5689 9.8056C39.1019 9.8056 37.8689 10.6233 37.8689 11.5833C37.8689 12.5611 38.8049 12.9167 40.7849 13.3878C42.6929 13.8589 45.0689 14.4456 45.0689 16.9167C45.0689 18.5078 43.7459 19.8589 41.9189 20.3122V22.25H39.2189V20.3122C37.3919 19.8589 36.0689 18.5078 36.0689 16.9167Z" fill="white"/>
+                                    </svg>
+                                    <h3>Billing & Payments</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="card_inner">
+                                    <div class="card_sec_hdng flow-rootX billing_payemnt_body">
+                                        <div class="accodian_wrapper">
+
+                                            <ng-container *ngFor="let item of customerDetails.policy_list; let i=index">
+                                                <div class="accordion-single-item js-acc-item is-close">
+                                                    <div class="accordion-single-title js-acc-single-trigger">
+                                                        <h3 class="c--whitee ">{{item.plan_details.plan_name}}</h3>
+                                                        <div class="acc_hdr_elemts">
+                                                            <ul>
+                                                                <li>Policy No. - <strong>{{item.policy_number}}</strong>
+                                                                </li>
+                                                                <li>Policy Term - <strong>{{item.policy_term}}</strong></li>
+                                                                <li>Date - <strong>{{item.policy_start_date | date:'MMM d, y'}}</strong></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="price-elem">
+                                                            Premium Amount <span class="price"> {{item.net_amount |
+                                                                currency:'USD'}} </span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="accod_body p-0 bg--whitee">
+                                                        <div class="accod_table">
+                                                            <div class="accod_card_item ac_item plocy_md-info">
+                                                                <div class="accdinnr_card_wrap">
+                                                                    <div class="accdinnr_card_header">
+                                                                        <h5>Policy Information</h5>
+                                                                    </div>
+                                                                    <div class="accdinnr_card_body">
+                                                                        <table class="table card_table">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>{{item.plan_details.plan_name}}</td>
+                                                                                    <td>Term - {{item.policy_term}}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Date</td>
+                                                                                    <td>{{item.policy_start_date | date:'MMM d, y'}}</td>
+                                                                                </tr>
+                                                                                <tr class="mob-ammt">
+                                                                                    <td><strong class="fw--m premium-pln">Premium Amount</strong></td>
+                                                                                    <td><strong class="fw--m">{{item.net_amount | currency:'USD'}}</strong></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="accod_card_item ac_item">
+                                                                <div class="accdinnr_card_wrap">
+                                                                    <div class="accdinnr_card_header">
+                                                                        <h5>Last Payment Status</h5>
+                                                                    </div>
+                                                                    <div class="accdinnr_card_body">
+                                                                        <div class="suc_wrap">
+
+                                                                            <ng-container *ngIf="item.most_recent_previous_payments[0].payment_status==1" >
+                                                                                <div class="pulse_ani success">
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <!-- <span class="material-symbols-outlined">done</span> -->
+                                                                                </div>
+                                                                            </ng-container>
+                                                                            <ng-container *ngIf="item.most_recent_previous_payments[0].payment_status==2" >
+                                                                                <div class="pulse_ani faild">
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <div class="ring"></div>
+                                                                                    <!-- <span class="material-symbols-outlined">done</span> -->
+                                                                                </div>
+                                                                            </ng-container>
+                                                                            <ng-container *ngIf="item.most_recent_previous_payments[0].payment_status==4" >
+                                                                            <div class="pulse_ani hold">
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <!-- <span class="material-symbols-outlined">done</span> -->
+                                                                            </div>
+                                                                        </ng-container>
+                                                                        <ng-container *ngIf="item.most_recent_previous_payments[0].payment_status==3" >
+                                                                            <div class="pulse_ani cancelled">
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <div class="ring"></div>
+                                                                                <!-- <span class="material-symbols-outlined">done</span> -->
+                                                                            </div>
+                                                                        </ng-container>
+                                                                            <div class="text-center paymsg"
+                                                                                *ngIf="item.most_recent_previous_payments[0].payment_status==1">
+                                                                                <p>Payment Successful</p>
+                                                                            </div>
+                                                                            <div class="text-center paymsg"
+                                                                                *ngIf="item.most_recent_previous_payments[0].payment_status==4">
+                                                                                <p>Payment Pending</p>
+                                                                            </div>
+                                                                            <div class="text-center paymsg"
+                                                                                *ngIf="item.most_recent_previous_payments[0].payment_status==2">
+                                                                                <p>Payment Failed</p>
+                                                                            </div>
+                                                                            <div class="text-center paymsg"
+                                                                            *ngIf="item.most_recent_previous_payments[0].payment_status==3">
+                                                                            <p>Payment Cancelled</p>
+                                                                        </div>
+                                                                        </div>
+                                                                        <table class="table card_table" *ngIf="item.most_recent_previous_payments[0].payment_type==1">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Transaction ID</td>
+                                                                                    <td>{{item.most_recent_previous_payments[0].transaction_no}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Date</td>
+                                                                                    <td>{{item.most_recent_previous_payments[0].payment_date
+                                                                                        | date:'MM-dd-yyyy'}}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Payment Type</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==1">CREDIT CARD</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==2">BANK ACH</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==3">Escrow</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==4">Do not Charge</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==5">Link</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Card Information</td>
+                                                                                    <!-- <td>{{primaryCardObj[0]?.card_last_4_digit}}</td> -->
+
+                                                                                    <ng-container
+                                                                                    *ngIf="item.most_recent_previous_payments.length>0">
+
+
+                                                                                        <td> Ending with XX  {{item.most_recent_previous_payments[0].card_number}} </td>
+
+                                                                                </ng-container>
+
+
+
+
+
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <table class="table card_table" *ngIf="item.most_recent_previous_payments[0].payment_type!=1">
+                                                                            <tbody>
+
+                                                                                <tr>
+                                                                                    <td>Payment Type</td>
+
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==2">BANK ACH</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==3">ESCROW</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==4">DO NOT CHARGE</td>
+                                                                                    <td *ngIf="item.most_recent_previous_payments[0].payment_type==5">LINK PAYMENT</td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="accod_card_item ac_item">
+                                                                <div class="accdinnr_card_wrap">
+                                                                    <div class="accdinnr_card_header">
+                                                                        <h5>Card(s) Information</h5>
+                                                                    </div>
+                                                                    <div class="accdinnr_card_body" *ngIf="item.most_recent_previous_payments[0].payment_type==1">
+                                                                        <div class="saved_card_info">
+                                                                            <h5>Primary Card Information</h5>
+                                                                            <div class="cradit_card">
+                                                                                <div class="c_card_head">
+                                                                                    <div class="title"><span>CREDIT CARD</span></div>
+                                                                                    <picture
+                                                                                        *ngIf="item.card_type=='AmericanExpress'">
+                                                                                        <source
+                                                                                            srcset="assets/img/icon/card-name.webp"
+                                                                                            type="image/webp">
+                                                                                        <source
+                                                                                            srcset="assets/img/icon/card-name.jpg"
+                                                                                            type="image/jpg">
+                                                                                        <img src="assets/img/icon/card-name.webp"
+                                                                                            alt="{{item.card_type}}"
+                                                                                            title="{{item.card_type}}">
+                                                                                    </picture>
+                                                                                </div>
+                                                                                <div class="c_card_main">
+                                                                                    <p class="number">
+                                                                                        <span>{{primaryCardObj[0]?.card_last_4_digit
+                                                                                            | uppercase}}</span>
+                                                                                    </p>
+                                                                                    <div class="text-right"><em>VALID THRU
+                                                                                            {{primaryCardObj[0]?.card_expiry_date
+                                                                                            | slashify}}</em></div>
+                                                                                </div>
+                                                                                <div class="c_card_ftr"><span
+                                                                                        class="name">{{primaryCardObj[0]?.card_holder_name}}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="payment_btm">
+                                                                                <a routerLink="/customer-portal/my-cards"><span>Change
+                                                                                        primary card from saved cards</span>
+                                                                                    <span
+                                                                                        class="material-symbols-outlined c--fpGreen">arrow_right_alt</span></a>
+
+                                                                                <button
+                                                                                    class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen"
+                                                                                    (click)="addNewCard()">ADD
+                                                                                    NEW CARD</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="saved_card_info2 d-none">
+                                                                            <div class="payment_btm">
+                                                                                <a href="javaScript:void(0)"><span
+                                                                                        class="material-symbols-outlined c--fpGreen">arrow_left_alt</span><span>Back</span>
+                                                                                </a>
+                                                                                <p>Saved Cards Information</p>
+                                                                            </div>
+                                                                            <div class="table-responsive">
+                                                                                <table class="table card_table mt-2 mt-sm-1">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>AMEX <img
+                                                                                                    src="assets/img/icon/amex.webp" alt="AMEX" title="AMEX">
+                                                                                            </td>
+                                                                                            <td>Ending XX 1234</td>
+                                                                                            <td><a class="budge"
+                                                                                                    href="javascript:void(0)">Set
+                                                                                                    as Primary</a></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>Master Card <img
+                                                                                                    src="assets/img/icon/mastercard.webp">
+                                                                                            </td>
+                                                                                            <td>Ending XX 4321</td>
+                                                                                            <td><a class="budge"
+                                                                                                    href="javascript:void(0)">Set
+                                                                                                    as Primary</a></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>Visa <img
+                                                                                                    src="assets/img/icon/visa.webp">
+                                                                                            </td>
+                                                                                            <td>Ending XX 2341</td>
+                                                                                            <td><a class="budge"
+                                                                                                    href="javascript:void(0)">Set
+                                                                                                    as Primary</a></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accdinnr_card_body" *ngIf="item.most_recent_previous_payments[0].payment_type!=1">
+                                                                        <p>No card information available</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="accod_card_item">
+                                                                <div class="accod_card_item ac_item bg--transparent">
+                                                                    <div class="accdinnr_card_wrap">
+                                                                        <div class="accdinnr_card_header">
+                                                                            <h5>Future Payment(s)</h5>
+                                                                            <div class="swiper-nav" *ngIf="item.future_payments.length > 0">
+                                                                                <div class="swiper-nav-prev saved_card_info_one--prev"></div>
+                                                                                <div class="swiper-nav-next saved_card_info_one--next"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accdinnr_card_body bg--grays">
+                                                                            <ng-container *ngIf="item.future_payments.length==0">
+                                                                                <div class="paymnt_card">
+                                                                                    <p>No data found</p>
+                                                                                </div>
+                                                                            </ng-container>
+                                                                            <div class="slider_wrapper">
+                                                                                <div class="saved_card_info saved_card_info_one  swiper-container slider">
+                                                                                    <div class="feature_payments swiper-wrapper">
+                                                                                        <ng-container
+                                                                                            *ngIf="item.future_payments.length>0">
+                                                                                                <div class="swiper-slide paymnt_card"
+                                                                                                    *ngFor="let obj of item.future_payments">
+                                                                                                    <div class="paymnt_card_in">
+                                                                                                        <div>
+                                                                                                            <span class="price c--fpBlue">{{obj.amount | currency:'USD'}}</span>
+                                                                                                        </div>
+                                                                                                        <div class="pay_card_info">
+                                                                                                            <div class="card_info_item">
+                                                                                                                <!-- {{obj.card_type}}  -->
+                                                                                                                <p  *ngIf="obj.payment_type==1">
+                                                                                                                    Ending with XX  {{obj.card_number}}
+                                                                                                                </p>
+                                                                                                                <p><span>Date:</span> {{obj.payment_date |  date:'M/d/yy'}} </p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accdinnr_card_wrap">
+                                                                        <div class="accdinnr_card_header">
+                                                                            <h5>Previous Payment(s)</h5>
+                                                                            <div class="swiper-nav" *ngIf="item.previous_payments.length>1">
+                                                                                <div class="swiper-nav--prev saved_card_info_two--prev">
+                                                                                </div>
+                                                                                <div class="swiper-nav--next saved_card_info_two--next">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="accdinnr_card_body bg--grays">
+                                                                            <div class="slider_wrapper">
+                                                                                <div class="saved_card_info saved_card_info_two swiper-container slider">
+                                                                                    <div class="feature_payments swiper-wrapper">
+                                                                                        <ng-container
+                                                                                            *ngIf="item.previous_payments.length>0">
+                                                                                            <div class="swiper-slide paymnt_card"
+                                                                                                *ngFor="let obj of item.previous_payments">
+                                                                                                <div class="paymnt_card_in">
+                                                                                                    <div class="paymnt_card_flx">
+                                                                                                        <span class="price c--fpBlue fw--m">{{obj.amount
+                                                                                                            | currency:'USD'}}</span>
+                                                                                                            <!-- IF SUCCESS -->
+                                                                                                        <!--  <span class="price c--fpGreen fw--m">{{obj.amount
+                                                                                                                    | currency:'USD'}}</span> -->
+                                                                                                         <!-- IF FAILD -->
+                                                                                                        <!-- <span class="price c--fpBlue fw--m c--fpRed">{{obj.amount
+                                                                                                                | currency:'USD'}}</span> -->
+                                                                                                        <div>
+                                                                                                            <span class="budge" >{{obj.payment_status_details.status_name}}</span>
+
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <div class="pay_card_info" >
+                                                                                                        <div class="card_info_item">
+                                                                                                            <p *ngIf="obj.payment_type==1">
+                                                                                                                <!-- <span class="paid-icon"><img src="assets/img/icon/amex.webp" alt="AMEX" title="AMEX"></span> -->
+                                                                                                                Ending with XX
+                                                                                                                {{obj.card_number}}
+                                                                                                                <!-- {{obj.card_type}} -->
+                                                                                                            </p>
+                                                                                                            <p><span>Date:</span>
+                                                                                                                {{obj.payment_date |
+                                                                                                                date:'M/d/yy'}}
+
+                                                                                                            </p>
+                                                                                                        </div>
+                                                                                                        <div class="card_info_item">
+                                                                                                            <button *ngIf="obj.payment_status==2 && obj.payment_type==1" class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" type="button"
+                                                                                                            (click)="openPaymentModal(obj)">PAY NOW</button>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </ng-container>
+                                                                                        <ng-container
+                                                                                            *ngIf="item.previous_payments.length==0">
+                                                                                            <div class="paymnt_card">
+                                                                                                <p>No data found</p>
+                                                                                            </div>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+
+                                            <!-- <div class="js-acc-item">
+                                                <div class="js-acc-single-trigger">
+                                                    <h3 class="c--whitee">Premier Plan</h3>
+                                                    <div class="acc_hdr_elemts">
+                                                        <ul>
+                                                            <li>Policy No. - <strong>FP1233456789</strong></li>
+                                                            <li>Payment Plan - <strong>Annual</strong></li>
+                                                            <li>Date - <strong>September 26, 2023</strong></li>
+                                                        </ul>
+                                                        <p>Premium Amount <span class="price">$863.99</span> </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="accod_body">
+                                                    <div class="accod_table">
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="js-acc-item">
+                                                <div class="js-acc-single-trigger">
+                                                    <h3 class="c--whitee">Premier Plan</h3>
+                                                    <div class="acc_hdr_elemts">
+                                                        <ul>
+                                                            <li>Policy No. - <strong>FP1233456789</strong></li>
+                                                            <li>Payment Plan - <strong>Annual</strong></li>
+                                                            <li>Date - <strong>September 26, 2023</strong></li>
+                                                        </ul>
+                                                        <p>Premium Amount <span class="price">$863.99</span> </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="accod_body">
+                                                    <div class="accod_table">
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+                                                        <div class="accod_card_item">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+<div class="modal_wrap modal_wrap_on" *ngIf="creditCardModal">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close" (click)="closeModal()">×</div>
+
+        <div class="modal-content modal_show">
+            <form class="form-style-3 flow-rootx moadal_form" [formGroup]="newCardForm" (ngSubmit)="submitCard()"
+                #formRef="ngForm">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <i class="material-symbols-outlined">add_card</i>
+                        <h3>Add New Card</h3>
+                    </div>
+                </div>
+
+                <div class="addCard_form_row">
+                    <div class="form-element colspan-2">
+                        <label class="form-label">Name on Card <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field"autocomplete="off" (keypress)="mszKeyDown($event)"  minlength="3" maxlength="35"
+                        (keydown)="preventNumberInput($event)" formControlName="cardHolderName" />
+                        <app-validation-error [control]="s1['cardHolderName']"></app-validation-error>
+                    </div>
+                    <div class="form-element colspan-2  card-form-wrap">
+                        <label class="form-label">Card No. <span class="c--madnatory">*</span></label>
+                        <input type="text" inputmode="numeric" class="form-field" formControlName="cardNumber" creditCardFormatter />
+                        <div class="input-group-prepend">
+                            <div class="card-svg-icon">
+                                <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.svg" alt="Card Image" title="Card Image">
+                            </div>
+                        </div>
+                        <app-validation-error [control]="s1['cardNumber']"></app-validation-error>
+                    </div>
+                    <div class="form-element exp_fld">
+                        <label class="form-label">Expiry Date (MM/YY)<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" id="expiryDate" formControlName="expiryDate" maxlength="5"
+                            placeholder="">
+                        <app-validation-error [control]="s1['expiryDate']"></app-validation-error>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">CVV<span class="c--madnatory">*</span></label>
+                        <input type="text" pattern="\d*" class="form-field" formControlName="cvv" placeholder=""   [appInputLimit]="4" maxlength="4">
+                        <app-validation-error [control]="s1['cvv']"></app-validation-error>
+                    </div>
+                </div>
+                <div class="form_btn text-right pt-0 mt-0">
+                    <button class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" type="submit"
+                        value="Add New Card"  [disabled]="loading">
+                        <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">Save Card</span>
+                        </button>
+                </div>
+                <p class="add_card_txt"><i class="material-symbols-outlined c--fpGreen">shield_lock</i> Your card
+                    information is safe with us. We don't stored CVV details.</p>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal_wrap modal_wrap_on" *ngIf="retryPaymentModal">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close" (click)="closePaymentModal()">×</div>
+
+        <div class="modal-content modal_show">
+            <form class="form-style-3 flow-rootx moadal_form" [formGroup]="retryPaymentForm" (ngSubmit)="submitPayment()"
+                #formRef="ngForm">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <h3>Pay {{currentFailedpaymentObj.amount | currency:'USD'}}</h3>
+                    </div>
+                </div>
+                <div class="modal_form_radio">
+                    <div class="radio_inline">
+                        <input type="radio" id="rdo1" checked="" name="newOrSavedCard" value="1"  class="radio-input" formControlName="newOrSavedCard"  (change)="onChangeNewOrSavedCard()">
+                        <label for="rdo1" class="radio-label"><span class="radio-border"></span>New Card </label>
+                        <input type="radio" id="rdo2" name="newOrSavedCard" value="2" class="radio-input" formControlName="newOrSavedCard"  (change)="onChangeNewOrSavedCard()">
+                        <label for="rdo2" class="radio-label mr-0"><span class="radio-border"></span>Saved Card </label></div>
+                </div>
+
+
+
+
+                    <div class="addCard_form_row {{f['newOrSavedCard'].value==2?'off_height':''}}" *ngIf="f['newOrSavedCard'].value==1">
+                        <div class="form-element">
+                            <input type="text" class="form-field" appCapitalize
+                                            formControlName="newCardHolderName"  [ngClass]="{ 'is-invalid': submitted && f['newCardHolderName'].errors }">
+                            <label class="form-label">Card Holder Name <span class="c--error">*</span></label>
+                            <app-validation-error [control]="f['newCardHolderName']"></app-validation-error>
+                        </div>
+                        <div class="input-group  card-form-wrap">
+                            <div class="form-element">
+                                <input type="text" [minlength]="14" [maxlength]="21" appCardFormatter class="form-field"  formControlName="newCardNumber"  [ngClass]="{ 'is-invalid': submitted && f['newCardNumber'].errors }">
+                                <label class="form-label">Card Number <span class="c--error">*</span></label>
+                            </div>
+                            <div class="input-group-prepend">
+                                <div class="card-svg-icon">
+                                    <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.png" alt="Card Image" title="Card Image">
+                                </div>
+                            </div>
+                            <app-validation-error [control]="f['newCardNumber']"></app-validation-error>
+                        </div>
+                        <div class="form-element">
+                            <input type="text" class="form-field"
+                                            formControlName="newCardExpiryDate" appCardExpiryDate [ngClass]="{ 'is-invalid': submitted && f['newCardExpiryDate'].errors }">
+                            <label class="form-label">Expiry Date <span class="c--error">*</span></label>
+                            <app-validation-error [control]="f['newCardExpiryDate']"></app-validation-error>
+                        </div>
+                        <div class="form-element">
+                            <input type="text" class="form-field" [minlength]="3" [maxlength]="4" formControlName="newCVV" [appInputLimit]="4"  [ngClass]="{ 'is-invalid': submitted && f['newCVV'].errors }">
+                            <label class="form-label">CVV <span class="c--error">*</span></label>
+                            <app-validation-error [control]="f['newCVV']"></app-validation-error>
+                        </div>
+                        <!-- <div class="input-group  card-form-wrap">
+                            <div class="form-element">
+                                <input type="text" [readOnly]="f['selectedCardId'].value" [minlength]="14" [maxlength]="21" appCardFormatter class="form-field"  formControlName="newCardNumber"  [ngClass]="{ 'is-invalid': submitted && f['newCardNumber'].errors }">
+                                <label class="form-label">Card Number <span class="c--error">*</span></label>
+                            </div>
+                            <div class="input-group-prepend">
+                                <div class="card-svg-icon">
+                                    <img id="cardImageSelected" width="40px" [src]="imgSrc" alt="Card Image" title="Card Image">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="saved_card_list  {{f['newOrSavedCard'].value==1?'off_height':''}}" *ngIf="f['newOrSavedCard'].value==2">
+                        <ul> <li  *ngFor="let item of customerDetails?.card_list; let i=index;" class="{{item.is_active?'current':''}}" (click)="onChangecard(item)">
+                            <div class="radio_inline radio_sm">
+                                <input type="radio" name="cardlist" id="card-{{item.customer_card_id}}" class="radio-input" >
+                                <label for="card-{{item.customer_card_id}}" class="radio-label"><span class="radio-border"></span>
+                                   <span><img src="assets/img/icon/amex.webp" alt="AMEX" title="AMEX"></span>
+                                   {{item?.card_last_4_digit}}
+                                </label>
+                            </div>
+                        </li>
+                        </ul>
+
+                        <!-- <ul>
+                             <li class="active" *ngFor="let item of customerDetails?.card_list" (click)="onChangecard()">
+                            {{item?.card_last_4_digit}}
+                            </li>
+                        </ul> -->
+                    </div>
+
+                <!-- <div class="addCard_form_row">
+
+
+                <div class="addCard_form_row">
+
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-8" *ngIf="customerDetails?.card_list?.length>0">
+                                    <div class="form-radio inline-style mb-1">
+                                        <label>
+                                            <input type="radio" name="newOrSavedCard" value="1" formControlName="newOrSavedCard"  (change)="onChangeNewOrSavedCard()">
+                                            <span class="checkmark"></span>
+                                            <p>New Card</p>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="newOrSavedCard" value="2"  formControlName="newOrSavedCard"  (change)="onChangeNewOrSavedCard()">
+                                            <span class="checkmark"></span>
+                                            <p>Saved Card</p>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" >
+                             <h2>   {{f['selectedCardId'].value}}</h2>
+                                <ng-container *ngIf="!f['selectedCardId'].value">
+                                <div class="col-lg-4">
+                                    <div class="form-floating">
+                                        <input type="text"   class="form-control" appCapitalize  [readOnly]="f['selectedCardId'].value"
+                                        formControlName="newCardHolderName"  [ngClass]="{ 'is-invalid': submitted && f['newCardHolderName'].errors }">
+                                        <label class="form-label">Card Holder Name <span class="c--error">*</span></label>
+                                    <app-validation-error [control]="f['newCardHolderName']"></app-validation-error>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="input-group  card-form-wrap">
+                                        <div class="form-floating mb-0">
+                                            <input type="text"   [readOnly]="f['selectedCardId'].value" [minlength]="14" [maxlength]="21" appCardFormatter class="form-control"  formControlName="newCardNumber"  [ngClass]="{ 'is-invalid': submitted && f['newCardNumber'].errors }">
+                                            <label class="form-label">Card Number <span class="c--error">*</span></label>
+                                        </div>
+                                        <div class="input-group-prepend">
+                                            <div class="card-svg-icon">
+                                                <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.png" alt="Card Image" title="Card Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <app-validation-error  [control]="f['newCardNumber']"></app-validation-error>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-floating datepickform mr-0">
+                                        <input type="text" class="form-control" [readOnly]="f['selectedCardId'].value"
+                                        formControlName="newCardExpiryDate" appCardExpiryDate [ngClass]="{ 'is-invalid': submitted && f['newCardExpiryDate'].errors }">
+                                        <label class="form-label">Expiry Date <span class="c--error">*</span></label>
+                                    <app-validation-error [control]="f['newCardExpiryDate']"></app-validation-error>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-floating">
+                                        <input type="text"   class="form-control" [minlength]="3" [maxlength]="4"
+                                        formControlName="newCVV"  [ngClass]="{ 'is-invalid': submitted && f['newCVV'].errors }">
+                                        <label class="form-label">CVV <span class="c--error">*</span></label>
+                                    <app-validation-error [control]="f['newCVV']"></app-validation-error>
+                                    </div>
+                                </div>
+                                </ng-container>
+                                <div class="col-lg-4"  *ngIf="f['newOrSavedCard'].value==2">
+                                    <div class="input-group">
+                                        <div class="form-floating mb-0">
+                                            <div *ngFor="let item of customerDetails?.card_list" (click)="onChangecard()">
+                                                {{item?.card_last_4_digit}}
+                                            </div>
+                                            <!-- <select class="form-control form-select" formControlName="selectedCardId" (click)="onChangecard()"  >
+                                                <option *ngFor="let item of customerDetails?.card_list" [ngValue]="item?.customer_card_id">{{item?.card_last_4_digit}}</option>
+                                            </select> -->
+                                            <!-- <label for="" class="form-label">Select Card Number<span class="c--error">*</span></label>
+                                            <app-validation-error  [control]="f['cardNumber']"></app-validation-error>
+                                        </div>
+                                        <div class="input-group-prepend">
+                                            <div class="card-svg-icon">
+                                                <img id="cardImageSelected" width="40px" [src]="imgSrc" alt="Card Image" title="Card Image">
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="d-flex">
+
+                                        <div class="form-floating">
+                                            <select class="form-control form-select" formControlName="selectedCardId" (ngModelChange)="onChangecard()"  >
+                                                <option *ngFor="let item of policyDetails.customer_details?.card_list" [ngValue]="item?.customer_card_id">{{item?.card_last_4_digit}}</option>
+                                            </select>
+                                            <label for="" class="form-label">Select Card Number<span class="c--error">*</span></label>
+                                        </div>
+                                        <div class="card-svg-icon">
+                                            <img id="cardImageSelected" alt="Card Image" width="40px" [src]="imgSrc">
+                                        </div>
+                                    </div> -->
+                                <!-- </div>
+                                <div class="col-lg-4">
+                                    <div class="form-floating datepickform mr-0">
+                                        <p-calendar formControlName="paymentDate" dateFormat="yy-mm-dd"></p-calendar>
+                                        <label class="form-label">Payment Date <span class="c--error">*</span></label>
+                                        <app-validation-error [control]="f['paymentDate']"></app-validation-error>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                </div> -->
+                <div class="form_btn text-right pt-0 mt-0">                    <button class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" type="submit"
+                        >Pay Now</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>

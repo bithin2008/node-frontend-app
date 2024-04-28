@@ -1,0 +1,265 @@
+<main>
+    <section class="fp_customer_portal fp_edit_profile">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper edt_prof_wrap">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner pass_change_hdr">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="64" viewBox="0 0 54 64"
+                                        fill="none">
+                                        <path
+                                            d="M26.6409 34.993C36.0278 34.993 43.6374 27.3834 43.6374 17.9965C43.6374 8.60959 36.0278 1 26.6409 1C17.254 1 9.64441 8.60959 9.64441 17.9965C9.64441 27.3834 17.254 34.993 26.6409 34.993Z"
+                                            stroke="white" stroke-width="1.5" />
+                                        <path d="M52.5211 62.3624C52.5211 54.2289 55.4437 33.3064 34 33.3064"
+                                            stroke="white" stroke-width="1.5" />
+                                        <path d="M1.13409 62.3624C1.13409 54.2289 -1.78851 33.3064 19.6552 33.3064"
+                                            stroke="white" stroke-width="1.5" />
+                                        <path d="M1 62.3064L53 62.3624" stroke="white" stroke-width="1.5" />
+                                    </svg>
+                                    <h3>My Policies</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="policy_wrapper" *ngIf="customerDetails.policy_list?.length>0">
+                                    <ng-container *ngFor="let item of customerDetails.policy_list; let i=index">
+                                        <div class="policy_item">
+                                            <div class="policy_item_inner">
+                                                <div
+                                                    class="policy_item_header bg--{{item?.plan_details.plan_id==2?'platinum':'premier'}}">
+                                                    <!-- <picture>
+                                                    <source srcset="assets/img/customer-portal/policy-img1.webp"
+                                                        type="image/webp">
+                                                    <source srcset="assets/img/customer-portal/policy-img1.jpg"
+                                                        type="image/jpg">
+                                                    <img src="assets/img/customer-portal/policy-img1.webp"
+                                                        alt="First Premier" title="First Premier">
+                                                </picture> -->
+                                                    <div class="policy_info policy_info_item">
+                                                        <h4
+                                                            class="c--{{item?.plan_details.plan_id==2?'platinum':'premier'}}Light">
+                                                            {{item.plan_details.plan_name}}</h4>
+                                                        <p>Policy No. {{item.policy_number}}</p>
+                                                    </div>
+                                                    <div class="policy_info policy_info_item text-right">
+                                                        <!-- <div>
+                                                           
+
+                                                            <span class="stat_active" *ngIf="item?.policy_status==1">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_cancel" *ngIf="item?.policy_status==0">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_hold" *ngIf="item?.policy_status==2">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_hold" *ngIf="item?.policy_status==3">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_hold" *ngIf="item?.policy_status==4">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_hold" *ngIf="item?.policy_status==5">{{item?.policy_status_details}}</span>
+                                                            <span class="stat_hold" *ngIf="item?.policy_status==6">{{item?.policy_status_details}}</span>
+                                                        </div> -->
+    
+                                                        <!-- <div class="policy_info flow-rootx  bg--active">
+                                                        <h4>Policy Status</h4>
+                                                        
+                                                       
+                                                    </div> -->
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="policy_item_body">
+                                                    <div class="card_table">
+                                                        <!-- <div class="ctb-row">
+                                                        <div class="ctb-vlu"><strong class="fw--m">Policy Name</div>
+                                                        <div class="ctb-vlu lbl-val">{{item.plan_details.plan_name}}</div>
+                                                    </div>
+                                                    <div class="ctb-row">
+                                                        <div class="ctb-vlu"><strong class="fw--m">Policy Number</strong></div>
+                                                        <div class="ctb-vlu lbl-val">{{item.policy_number}}</div>
+                                                    </div> -->
+                                                        <div class="ctb-row">
+                                                            <div class="ctb-vlu">Address</div>
+                                                            <div class="ctb-vlu lbl-val">{{item.billing_address1}}
+                                                                {{item.billing_city}} {{item.billing_state}},
+                                                                {{item.billing_zip}}</div>
+                                                        </div>
+                                                        <div class="ctb-row">
+                                                            <div class="ctb-vlu">Policy holder</div>
+                                                            <div class="ctb-vlu lbl-val">{{item.first_name}} {{item.last_name}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="ctb-row">
+                                                            <div class="ctb-vlu">Email</div>
+                                                            <div class="ctb-vlu lbl-val">{{item.email}}</div>
+                                                        </div>
+                                                        <div class="ctb-row">
+                                                            <div class="ctb-vlu">Mobile</div>
+                                                            <div class="ctb-vlu lbl-val">{{item.mobile}}</div>
+                                                        </div>
+    
+    
+                                                    </div>
+                                                </div>
+                                                <a *ngIf="item.hasClaim" (click)="openWarningModal(item)"
+                                                class="c2a bg--fpYellow hvr:c--whitee hvr:bg--fpGreen size:minimal">FILE
+                                                A CLAIM</a>
+
+                                                <a *ngIf="!item.hasClaim" (click)="createClaim(item)"
+                                                    class="c2a bg--fpYellow hvr:c--whitee hvr:bg--fpGreen size:minimal">FILE
+                                                    A CLAIM</a>
+                                            </div>
+    
+                                        </div>
+                                    </ng-container>
+                                </div>
+                                <div class="policy_wrapper" *ngIf="customerDetails.policy_list?.length==0">
+                                    <p></p>
+                                    <p class="text-center"> No policies found</p>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal_wrap modal_wrap_on" *ngIf="showInfoModal && policyDetails">
+    <div class="modal-dialog edit_info_modal claim_mod">
+        <div for="modal-test" class="modal-close" (click)="closeInfoModal()">×</div>
+
+        <div class="modal-content modal_show">
+            <form class="form-style-3 flow-rootx moadal_form" [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <span class="material-symbols-outlined">description</span>
+                        <h3>File A Claim</h3>
+                    </div>
+                </div>
+                <div class="addCard_form_row claim_form_row">
+
+                    <div class="form-element">
+                        <label class="form-label">Select Product <span class="c--madnatory">*</span></label>
+                        <select class="form-select form-field" formControlName="product_id"
+                            [ngClass]="{ 'is-invalid': submitted && s1['product_id'].errors }" id="floatingSelect">
+                            <option value="">Select</option>
+                            <ng-container *ngFor="let item of policyDetails?.policy_product_list">
+                                <option value="{{item?.product_id}}">
+                                    {{item?.product_details?.product_name}}
+                                </option>
+                            </ng-container>
+                        </select>
+                        <app-validation-error [control]="s1['product_id']"></app-validation-error>
+                    </div>
+
+
+                    <div class="form-element">
+                        <label class="form-label">Brand</label>
+                        <input type="text" class="form-field" minlength="2" maxlength="150"
+                            formControlName="product_brand"
+                            [ngClass]="{ 'is-invalid': submitted && s1['product_brand'].errors }" />
+                        <app-validation-error [control]="s1['product_brand']"></app-validation-error>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">Model no</label>
+                        <input type="text" class="form-field" minlength="2" maxlength="150"
+                            formControlName="product_model"
+                            [ngClass]="{ 'is-invalid': submitted && s1['product_model'].errors }" />
+                        <app-validation-error [control]="s1['product_model']"></app-validation-error>
+                    </div>
+
+                    <!-- <div class="form-element">                                       
+                                    <label class="form-label">Priority</label>
+                                    <select class="form-field form-select"
+                                    id="floatingSelect" formControlName="priority"
+                                    [ngClass]="{ 'is-invalid': submitted && s1['priority'].errors }">
+                                    <option selected>Select</option>
+                                    <option value="Urgent">Urgent</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                                    <app-validation-error
+                                    [control]="s1['priority']"></app-validation-error>
+                                </div> -->
+
+                    <div class="form-element ">
+                        <label class="form-label">Serial no </label>
+                        <input type="text" class="form-field" formControlName="product_serial_no"
+                            [ngClass]="{ 'is-invalid': submitted && s1['product_serial_no'].errors }">
+                        <app-validation-error [control]="s1['product_serial_no']"></app-validation-error>
+                    </div>
+                    <div class="form-element datepicker colspan-2">
+                        <label class="form-label">Product Purchase Date </label>
+                        <p-calendar formControlName="product_purchase_date" dateFormat="yy-mm-dd"></p-calendar>
+                        <app-validation-error [control]="s1['product_purchase_date']"></app-validation-error>
+                    </div>
+                    <div class="form-element colspan-2">
+                        <label class="form-label">Issue
+                            Details</label>
+                        <textarea type="text" rows="3" class="form-field" formControlName="issue_details"
+                            [ngClass]="{ 'is-invalid': submitted && s1['issue_details'].errors }"></textarea>
+                        <app-validation-error [control]="s1['issue_details']"></app-validation-error>
+                    </div>
+                    <!-- <div class="form-element form_root">                                       
+                                    <label class="form-label">Add a
+                                        note</label>
+                                        <textarea type="text" rows="3" 
+                                        formControlName="note"
+                                        class="form-control"></textarea>
+                                </div> -->
+
+                </div>
+
+
+                <div class="form_btn text-right pt-0 mt-0">
+                    <button type="submit" value="Add New Card"
+                        class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">File
+                        a Claim <span class="spinner-border spinner-border-sm me-1"></span></button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="modal_wrap modal_wrap_on fp_modal" *ngIf="showClaimwarningModal">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close modal-close-sm c--blak fw--l bg--transparent" (click)="closeClaimwarningModal()"><span class="material-symbols-outlined">close</span></div>
+        <div class="modal-content modal_show modal_X">
+            <div class="flow-rootx">
+                <div class="momod_hdng mb-0" *ngIf="multipleClaim>0">
+                        <p>Already 1 or more claim(s) are currently in progress with policy number {{currentClaimData.policy_number}}. Following the resolution of the existing claim(s), you are free to file another claim.</p>
+                </div>
+                <div class="momod_hdng mb-0" *ngIf="claimStatusCheckMsg">
+                    <p>The policy you are attempting to file a claim on is still within its holding period. New claims cannot be raised until the holding period has passed.</p>
+                </div>
+                <div class="btn-grp text-right">
+                    <button class="c2a bg--blak c--whitee hvr:bg--transparent hvr:c--blak" type="submit" value="Get a Quote"  (click)="closeClaimwarningModal()">OK</button> 
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<!-- Logout modal -->
+<!-- <div class="modal_wrap modal_wrap_on logmodal">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close modal-close-sm" (click)="closeInfoModal()">×</div>
+        <div class="modal-content modal_show">
+            <div class="form-style-3 flow-rootx moadal_form">
+                <div class="mod_hdng">
+                    <div class="hd-i gap-0 justify-content-center">
+                        <h3>Are you Sure?</h3>
+                    </div>
+                </div>
+                <div class="btn-grp">
+                    <button class="c2a w-100" type="submit" value="Get a Quote">Yes</button> 
+                    <button class="c2a w-100" type="submit" value="Get a Quote">No</button> 
+                </div>
+            </div>    
+        </div>
+    </div>
+</div> -->

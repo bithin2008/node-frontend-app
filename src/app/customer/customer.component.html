@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<!-- <nav id="sidebar-wrapper" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }" (click)="closeSideBar()">
+  
+  </nav> -->
+
+<main id="main-content-wrapper" role="main" class="col px-4">
+    <router-outlet></router-outlet>
+
+
+
+
+
+  <app-footer></app-footer>
+    <app-scroll-to-top></app-scroll-to-top>
+</main>

@@ -1,0 +1,146 @@
+<header>
+
+    <div class="fp_cp_top_header">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="top_nav_wrapper">
+                    <div class="top_hdr_lft">
+                        <p>Last Account Activity:  {{lastLoginDetails.updated_at | date: 'MM-dd-yyyy HH:mm'}}</p>
+                        <div class="hammnu cp_hammnu">
+                            <div class="hammenu btn__hammenunew" (click)="enableVisibility()">
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_hdr_right">
+                        <ul>
+                            <li><a href="tel:18003881918">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M16 9C16 7.05 15.3208 5.39583 13.9625 4.0375C12.6042 2.67917 10.95 2 9 2V0C10.25 0 11.4208 0.2375 12.5125 0.7125C13.6042 1.1875 14.5542 1.82917 15.3625 2.6375C16.1708 3.44583 16.8125 4.39583 17.2875 5.4875C17.7625 6.57917 18 7.75 18 9H16ZM12 9C12 8.16667 11.7083 7.45833 11.125 6.875C10.5417 6.29167 9.83333 6 9 6V4C10.3833 4 11.5625 4.4875 12.5375 5.4625C13.5125 6.4375 14 7.61667 14 9H12ZM16.95 18C14.8667 18 12.8083 17.5458 10.775 16.6375C8.74167 15.7292 6.89167 14.4417 5.225 12.775C3.55833 11.1083 2.27083 9.25833 1.3625 7.225C0.454167 5.19167 0 3.13333 0 1.05C0 0.75 0.1 0.5 0.3 0.3C0.5 0.1 0.75 0 1.05 0H5.1C5.33333 0 5.54167 0.0791667 5.725 0.2375C5.90833 0.395833 6.01667 0.583333 6.05 0.8L6.7 4.3C6.73333 4.56667 6.725 4.79167 6.675 4.975C6.625 5.15833 6.53333 5.31667 6.4 5.45L3.975 7.9C4.30833 8.51667 4.70417 9.1125 5.1625 9.6875C5.62083 10.2625 6.125 10.8167 6.675 11.35C7.19167 11.8667 7.73333 12.3458 8.3 12.7875C8.86667 13.2292 9.46667 13.6333 10.1 14L12.45 11.65C12.6 11.5 12.7958 11.3875 13.0375 11.3125C13.2792 11.2375 13.5167 11.2167 13.75 11.25L17.2 11.95C17.4333 12.0167 17.625 12.1375 17.775 12.3125C17.925 12.4875 18 12.6833 18 12.9V16.95C18 17.25 17.9 17.5 17.7 17.7C17.5 17.9 17.25 18 16.95 18ZM3.025 6L4.675 4.35L4.25 2H2.025C2.10833 2.68333 2.225 3.35833 2.375 4.025C2.525 4.69167 2.74167 5.35 3.025 6ZM11.975 14.95C12.625 15.2333 13.2875 15.4583 13.9625 15.625C14.6375 15.7917 15.3167 15.9 16 15.95V13.75L13.65 13.275L11.975 14.95Z" fill="white"/>
+                                </svg>
+                                1-800-388-1918</a>
+                            </li>
+                            <!-- <li class="notification"><a href="javaScript:void(0)" data-badge="2"><span
+                                        class="material-symbols-outlined">notifications_active</span> Notification</a></li>
+                            <li><a href="javaScript:void(0)"><span class="material-symbols-outlined">mail</span>
+                                    Messages</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fphw_header_bottom cp_nav">
+        <div class="main-container">
+            <div class="inner-container">
+                <h1 class="logo">
+                    <a routerLink="/customer-portal">
+                        <figure><img src="./assets/img/logo.webp" alt="First Premier Home Warranty"
+                                title="First Premier Home Warranty"></figure>
+                    </a>
+                </h1>
+                <div class="cs-left-view">
+                    <div class="cs-mobile-logo">
+                        <a routerLink="/">
+                            <figure><img src="./assets/img/logo-icon.webp" alt="First Premier Home Warranty" title="First Premier Home Warranty"></figure>
+                        </a>
+                    </div>
+                    <!-- <div class="login-mnu"><a class="c2a c2a--inline quot-btn hvr:bg--fpGreen hvr:c--whitee" routerLink="/customer-portal/file-claim">FILE A CLAIM</a></div> -->
+                </div>
+                <nav role="main-navigation" class="{{isVisable?'is-visable':''}}">
+                    <div class="mobile-logo">
+                        <a routerLink="/">
+                            <figure><img src="./assets/img/logo-icon.webp" alt="First Premier Home Warranty" title="First Premier Home Warranty"></figure>
+                        </a>
+                    </div>
+                    <div class="navclos" (click)="disableVisibility()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1.4 13.4343L0.565685 12.6L5.88284 7.28284L6.16569 7L5.88284 6.71716L0.565685 1.4L1.4 0.565685L6.71716 5.88284L7 6.16569L7.28284 5.88284L12.6 0.565685L13.4343 1.4L8.11716 6.71716L7.83431 7L8.11716 7.28284L13.4343 12.6L12.6 13.4343L7.28284 8.11716L7 7.83431L6.71716 8.11716L1.4 13.4343Z" fill="white" stroke="white" stroke-width="0.8"/>
+                          </svg>
+                    </div>
+
+                    <ul>
+                        <li routerLinkActive="active"><a routerLink="/customer-portal/my-policy">My Policy</a></li>
+                        <li routerLinkActive="active"><a routerLink="/customer-portal/my-claims">My Claims</a></li>
+                        <li routerLinkActive="active"><a routerLink="/customer-portal/bill-payments">Billing & Payments</a></li>
+                        <li routerLinkActive="active"><a routerLink="/customer-portal/my-cards">My Cards</a></li>
+                        <li routerLinkActive="active"><a routerLink="/customer-portal/refer-a-friend">Refer a Friend</a></li>
+                        <li routerLinkActive="active" class="res-menu-link"><a routerLink="/customer-portal/file-claim">File a Claim</a></li>
+                    </ul>
+
+                    <div class="sidenav_bottom">
+                        <div class="cp_log_name">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M1.6 14V14.4H2H14H14.4V14V13.2C14.4 12.9464 14.3355 12.707 14.2038 12.4914C14.0771 12.284 13.9062 12.1181 13.6943 12.0003L13.6867 11.9961L13.6789 11.9922C12.754 11.5298 11.8178 11.1816 10.8704 10.949C9.92284 10.7165 8.96583 10.6 8 10.6C7.03417 10.6 6.07717 10.7165 5.12965 10.949C4.18225 11.1816 3.24599 11.5298 2.32111 11.9922L2.31334 11.9961L2.30574 12.0003C2.09384 12.1181 1.92295 12.284 1.79619 12.4914C1.66445 12.707 1.6 12.9464 1.6 13.2V14ZM8 7.6C7.00693 7.6 6.16676 7.25107 5.45784 6.54216C4.74893 5.83324 4.4 4.99307 4.4 4C4.4 3.00693 4.74893 2.16676 5.45784 1.45784C6.16676 0.748925 7.00693 0.4 8 0.4C8.99307 0.4 9.83324 0.748925 10.5422 1.45784C11.2511 2.16676 11.6 3.00693 11.6 4C11.6 4.99307 11.2511 5.83324 10.5422 6.54216C9.83324 7.25107 8.99307 7.6 8 7.6ZM0.4 15.6V13.2C0.4 12.7059 0.526039 12.2577 0.778368 11.8468C1.03242 11.4331 1.36547 11.1222 1.78138 10.9065C2.78833 10.4033 3.80916 10.0269 4.84415 9.77626C5.87992 9.52541 6.93165 9.4 8 9.4C9.06835 9.4 10.1201 9.52541 11.1558 9.77626C12.1908 10.0269 13.2117 10.4033 14.2186 10.9065C14.6345 11.1222 14.9676 11.4331 15.2216 11.8468C15.474 12.2577 15.6 12.7059 15.6 13.2V15.6H0.4ZM8 6.4C8.65693 6.4 9.22926 6.16143 9.69534 5.69534C10.1614 5.22926 10.4 4.65693 10.4 4C10.4 3.34307 10.1614 2.77074 9.69534 2.30466C9.22926 1.83857 8.65693 1.6 8 1.6C7.34307 1.6 6.77074 1.83857 6.30466 2.30466C5.83857 2.77074 5.6 3.34307 5.6 4C5.6 4.65693 5.83857 5.22926 6.30466 5.69534C6.77074 6.16143 7.34307 6.4 8 6.4Z" fill="#fff" stroke="#fff" stroke-width="0.8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p><em>{{customerDetails?.first_name}} {{customerDetails?.last_name}}</em></p>
+                                <p>Last Login -  {{lastLoginDetails.updated_at | date: 'MM/dd/yyyy hh:mm a'}}</p>
+                            </div>
+
+                            <div class="logbtn"><a (click)="logoutCustomer()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M2 16.3H8.7V17.7H2C1.5302 17.7 1.13549 17.5362 0.799632 17.2004C0.463777 16.8645 0.3 16.4698 0.3 16V2C0.3 1.5302 0.463777 1.13549 0.799632 0.799632C1.13549 0.463777 1.5302 0.3 2 0.3H8.7V1.7H2H1.7V2V16V16.3H2ZM14.175 9.7H6.3V8.3H14.175H14.8993L14.3871 7.78787L12.0437 5.44444L13.0057 4.42997L17.5757 9L13.0057 13.57L12.0437 12.5556L14.3871 10.2121L14.8993 9.7H14.175Z" fill="#fff" stroke="#fff" stroke-width="0.6"/>
+                            </svg> Logout</a></div>
+                        </div>
+                    </div>
+
+
+                    <div class="login-mnu"><a class="c2a c2a--inline quot-btn hvr:bg--fpGreen hvr:c--whitee" routerLink="/customer-portal/file-claim">FILE A CLAIM</a></div>
+                </nav>
+
+                <div class="cus_menu" (click)="toggleDropdown()">
+                    <span class="material-symbols-outlined usr">person</span>
+                    <p> Welcome, <em>{{customerDetails?.first_name}} {{customerDetails?.last_name}}</em></p>
+
+                    <div class="dropdown_wrapper">
+                        <button class="dropbtn"><span class="material-symbols-outlined c--fpBlue hvr:c--fpDarkYellow">expand_more</span></button>
+                    </div>
+                    <div id="myDropdown" *ngIf="isDropdownVisible" class="dropdown-content">
+                        <ul class="drop_menu">
+                            <li><a routerLink="/customer-portal/edit-profile">Edit Profile</a></li>
+                            <li><a routerLink="/customer-portal/change-password">Change Password</a></li>
+                            <li><a (click)="logoutCustomer()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- <section class="fp__inner__banner dashboard_bnr">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="banner_wrapper">
+                <picture>
+                    <source srcset="assets/img/customer-dashboard/c-dashboard-hero.webp" type="image/webp">
+                    <source srcset="assets/img/customer-dashboard/c-dashboard-hero.jpg" type="image/jpg">
+                    <img src="assets/img/customer-dashboard/c-dashboard-hero.webp" alt="First Premier"
+                        title="First Premier">
+                </picture>
+                <div class="banner_content flow-rootX3">
+                    <h1 class="h1">File a Claim</h1>
+                    <a href="/contact-us" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">CONTACT US
+                        NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- <nav id="sidebar-wrapper" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }" (click)="closeSideBar()">
+
+  </nav> -->
+
+<main id="main-content-wrapper" role="main" class="col px-4">
+    <router-outlet></router-outlet>
+    <footer class="fp__cutomer_footer bg--fpBlue">
+        <div class="text-center">
+            <p class="c--whitee">© {{currectYear}} <a routerLink="/">First Premier Home Warranty</a>. <span>All Rights Reserved.</span></p>
+        </div>
+    </footer>
+    <app-scroll-to-top></app-scroll-to-top>
+</main>

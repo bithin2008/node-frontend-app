@@ -1,0 +1,352 @@
+<main>
+	<section class="fp__inner__banner fp__coverage_banner">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/coverage/hero1.webp" type="image/webp">
+                        <source srcset="assets/img/coverage/hero1.jpg" type="image/jpg">
+                        <img src="assets/img/coverage/hero1.webp" alt="First Premier" title="First Premier">
+                    </picture>
+                    <div class="banner_content flow-rootX3">
+						<h1 class="h1 " *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+						<h1 class="h1 " *ngIf="!pageDetails?.h1_tag">Our Coverage</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<!-- <section class="fp_affiliate">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_hdng">
+                    <div class="hdng_content flow-rootX">
+						<h2 class="">Why Choose <br/><span>First Premier Home Warranty</span>? </h2>
+						<p>We believe by remaining loyal to our founding business principles established in 1989, we continue to steadily grow as a company in order to serve our customers in the best way possible. We will always strive to provide the highest level of customer service and customer satisfaction, and for over 30 years, we’ve set our goals in being the top performers in customer service in our industry. Our pledge of always being trustworthy and hard working will always be a guiding force.</p>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</section> -->
+
+	<section class="pf__why_premier fp__coverage">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="why_premier_wrapper">
+                    <div class="why_primr_image">
+                        <picture class="primr_fst ">
+                            <source srcset="assets/img/coverage/coverage-hero2.webp" type="image/webp">
+                            <source srcset="assets/img/coverage/coverage-hero2.jpg" type="image/jpeg">
+                            <img src="assets/img/coverage/coverage-hero2.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                        <div class="primr_image_card flow-rootx bg--fpBlue">
+                            <strong class="">We Build <br>for Your Comfort</strong>
+                            <div class="text-center mt-0">
+                                <a href="checkout" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">GET YOUR QUOTE</a>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="why_inner_content">
+                        <div class="inner_content flow-rootX2">
+                           
+                            <!-- <p>At First Premier Home Warranty, we cover the major components of your home systems and appliances that break down over time due to normal wear and tear, undetectable, pre-existing conditions or breakdowns caused by a lack of maintenance, and malfunctions due to rust or corrosion - all without needing to provide maintenance records.</p>
+                            <p>If we can’t repair your covered item, we’ll replace it subject to the limitations and exclusions of your contract.</p> -->
+							
+							<!-- <p>We aim to be the First and Premier place people turn to for emergencies and repairs on their home. First Premier continues to cover our clients systems and appliances in the event of a breakdown, with a premium level of service and customer care.</p>
+								
+							<p>When it comes to repairs, we tirelessly search for the best trained technicians. Our thorough technician screening process is rigorous, and technicians across the country are only added to our powerful network of home service professionals, as soon as they meet our standards. We understand how hard you worked to own your home, and we’ve worked hard to build a strong, solid company to provide for your home repair service solutions.</p>
+							<p>Be relieved in knowing that keeping your home in the best condition is our priority, and leave it up to us to insure your affordable coverage of protecting your home systems and appliances, while you spend your quality free time with the people that matter most to you.</p> -->
+
+
+							<h2 class="">Why Choose <br/>First Premier Home Warranty?</h2>
+							<p>Since 1989, we've grown by prioritizing your satisfaction and delivering top-notch service. Trust us for your home repairs—First Premier covers your systems and appliances with care. With rigorous technician screening, rest assured your home is in expert hands, letting you focus on what matters most.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section class="fp__coverage">
+		<div class="mainxx-container">
+			<div class="inner-container">
+				<!-- <div class="coverage_content">
+					<figcaption class="flow-rootX5">
+						<h1 class="h2 c--fpBlue">Our Coverage</h1>
+						<p>At First Premier Home Warranty, we cover the major components of your home systems and appliances that break down over time due to normal wear and tear, 
+							undetectable, pre-existing conditions or breakdowns caused by a lack of maintenance, and malfunctions due to rust or corrosion - all without needing to provide maintenance records. If we can’t repair your covered item, we’ll replace it subject to the limitations and exclusions of your 
+							contract.</p>
+							<a routerLink="/checkout" class="c2a c2a--inline bg--fpGreen c--whitee hvr:bg--fpDarkYellow">GET COVERAGE NOW</a>
+					</figcaption>
+				</div> -->
+
+				<div class="video_panel">
+					<div class="video_box">
+						<a href="javaScript:void(0)" data-modal="#modal" id="play-btn"><img src="assets/img/coverage/play-btn.webp" alt="play">
+						</a>
+						<img class="video-poster mw-100 w-100" src="assets/img/coverage/video-poster.webp" alt="" />
+					</div>
+				</div>
+				<div class="video_bottom_content">
+					<figcaption class="flow-rootX4">
+						<p>Current member? Please log into MyAccount to view your current contract and coverage details or to place a service request 24/7.</p>
+					</figcaption>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="fp__coverage_list">
+		<div class="mainxx-container">
+			<div class="inner-container">
+				<div class="covrg_lists">
+					<h4 class="">Covered Items</h4>
+					<ul class="batch-anim">
+						<li *ngFor="let item of productList">
+							<figure>
+							  <img src="{{item.product_image}}" alt="{{item.product_name}}" title="{{item.product_name}}" (error)="onImgError($event)">
+							</figure>
+							<span>{{item.product_name}}</span>
+						  </li>
+				
+						  
+					</ul>
+				</div>
+				<div class="covrg_lists">
+					<h4 class="">Add Ons Items</h4>
+					<ul class="batch-anim">
+						<li *ngFor="let item of addOnProductList">
+							<figure>
+							  <img src="{{item.product_image}}" alt="{{item.product_name}}" title="{{item.product_name}}" (error)="onImgError($event)">
+							</figure>
+							<span>{{item.product_name}}</span>
+						  </li>
+					</ul>
+				</div>
+				<!-- <div class="covrg_lists">
+					<h4>Home Systems</h4>
+					<ul>
+						<li>
+							<figure>
+							  <img src="assets/img/icon/adon-icon1.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I Heating System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ac.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I A/C System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Refrigerator Ice Maker</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/softner.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Water Softener</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/frezzer.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Stand Alone Freezer</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/sref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Second Refrigerator</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/pump.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic Pumping</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/septic.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic System</span>
+						  </li>
+					</ul>
+				</div>	
+				<div class="covrg_lists">
+					<h4>Additional Coverage</h4>
+					<ul>
+						<li>
+							<figure>
+							  <img src="assets/img/icon/adon-icon1.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I Heating System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ac.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I A/C System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Refrigerator Ice Maker</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/softner.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Water Softener</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/frezzer.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Stand Alone Freezer</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/sref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Second Refrigerator</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/pump.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic Pumping</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/septic.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic System</span>
+						  </li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+	</section>
+	<!--<section class="fp__coverage_list">
+		<div class="mainxx-container">
+			<div class="inner-container">
+				
+				 <div class="covrg_lists">
+					<h4>Home Systems</h4>
+					<ul>
+						<li>
+							<figure>
+							  <img src="assets/img/icon/adon-icon1.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I Heating System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ac.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I A/C System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Refrigerator Ice Maker</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/softner.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Water Softener</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/frezzer.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Stand Alone Freezer</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/sref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Second Refrigerator</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/pump.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic Pumping</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/septic.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic System</span>
+						  </li>
+					</ul>
+				</div>	
+				<div class="covrg_lists">
+					<h4>Additional Coverage</h4>
+					<ul>
+						<li>
+							<figure>
+							  <img src="assets/img/icon/adon-icon1.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I Heating System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ac.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Add'I A/C System</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/ref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Refrigerator Ice Maker</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/softner.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Water Softener</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/frezzer.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Stand Alone Freezer</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/sref.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Second Refrigerator</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/pump.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic Pumping</span>
+						  </li>
+						  <li>
+							<figure>
+							  <img src="assets/img/icon/septic.webp" alt="Add on" title="Add on">
+							</figure>
+							<span>Septic System</span>
+						  </li>
+					</ul>
+				</div> 
+			</div>
+		</div>
+	</section>-->
+
+<div class="coverage_faq">
+	<app-faq></app-faq>
+</div>	
+</main>
+<app-check-out-strip></app-check-out-strip>

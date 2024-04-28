@@ -1,0 +1,65 @@
+<app-header ></app-header>
+<main>
+    <section class="fp_rp">
+        <div class="mainX-container">
+            <div class="inner-container">
+                <div class="rp_wrapper">
+                    <div class="rp_login_img">
+                        <picture>
+                            <source srcset="assets/img/realtor-login/realtor-login.webp" type="image/webp">
+                            <source srcset="assets/img/realtor-login/realtor-login.png" type="image/png">
+                            <img src="assets/img/realtor-login/realtor-login.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                    </div>
+                    <div class="rp_login_form">
+                        <div class="rp_login_form_inner flow-rootX">
+                            <div class="hdng_content flow-rootx">
+                                <h2 id="heading">Real Estate Professional <span>Login</span></h2>
+                            </div>
+                            <form class="form-style-3 flow-rootX" [formGroup]="loginForm" (ngSubmit)="onSubmit()">                           
+                
+                                <div class="form-element form_root">
+                                    <input type="text"  class="form-field" formControlName="email"
+                                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                                    <label class="form-label">Email Address</label>
+                                    <span class="material-symbols-outlined">mail</span>
+                                    <app-validation-error [control]="f['email']"></app-validation-error>
+                                </div>
+                                <div class="form-element form_root">
+                                    <input type="password" class="form-field"  autocomplete="off" type="{{passwordType?'text':'password'}}" formControlName="password"
+                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                    <label class="form-label">Password</label>
+                                    <span class="material-symbols-outlined" *ngIf="!passwordType" (click)="passwordType=!passwordType">visibility_off</span>
+                                    <span class="material-symbols-outlined" *ngIf="passwordType" (click)="passwordType=!passwordType">visibility</span>
+                                    <app-validation-error [control]="f['password']"></app-validation-error>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center checkform_top">
+                                    <!-- <div class="form-element form-checkbox inline-style form-checkbox-black">
+                                        <label>
+                                            <input type="checkbox" name="callback_request" formControlName="isHuman" >
+                                            <span class="checkmark"></span><p>I'm not a robot</p>
+                                        </label>
+                                        <app-validation-error [control]="f['isHuman']"></app-validation-error>
+                                    </div> -->
+                                    <div class="form-element forgot-password mb-0">
+                                        <a routerLink="forgot-password" class="d-inline-bloc c2a-underline">Forgot Password?</a>
+                                    </div>
+                                </div>
+                                <div class="form-element form_root">
+                                    <button class="c2a bg--fpGreen w-100 hvr:bg--fpBlue c--whitee" type="submit" value="Get a Quote" [disabled]="loading">                                        
+                                        <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">LOGIN TO YOUR ACCOUNT</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+</main>
+<app-check-out-strip></app-check-out-strip>
+<app-footer ></app-footer>
+

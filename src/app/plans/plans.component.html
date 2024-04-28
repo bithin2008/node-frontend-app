@@ -1,0 +1,382 @@
+<main>
+	<!-- <section class="fp__inner__banner">
+		<div class="main-container">
+			<div class="inner-container">
+				<div class="banner_wrapper">
+					<figure><img src="./assets/img/plans/plans-banner.webp" alt="Protect Your Home" class="w-100">
+					</figure>
+					<div class="banner_content">
+						<h1 class="h1">First Premier <br>Home Warranty Plans</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<section class="fp__coverage_details fp_plan_details">
+		<div class="mainX-container">
+			<div class="inner-container">
+				<div class="pla_top text-center justify-content-center align-items-center">
+					<div class="planstop_header flow-rootX">
+						<h1 class="h2 txt-reveal-anim" *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+						<h1 class="h2 txt-reveal-anim" *ngIf="!pageDetails?.h1_tag">Choose your <span>right</span> plan!</h1>
+						<p>Select from best plans, ensuring a perfect match. Need more or less? Customize your Add Ons items for a seamless fit!</p>
+					</div>
+					<!-- <div class="plans_box_nav">
+						<h3>Select your payment term</h3>
+						<ul class="plansMenu">
+							<li class="tab" [class.active]="activeTerm === 'month'"><a (click)="changeTerm('month')" class="tab_btn" data-id="month">Monthly</a></li>
+							<li class="tab" [class.active]="activeTerm === 'year'"><a (click)="changeTerm('year')" class="tab_btn" data-id="year">Yearly</a></li>
+						</ul>
+					</div> -->
+
+				</div>
+				<div class="plans_box">
+					<div class="plans-list-wrap {{isExpanded?'showing-child':''}}">
+						<ng-container *ngFor="let item of planList">
+						<div class="plan_list {{item.showMoreItem?'showing':''}}">
+							<div class="plan_hdr">
+								<div class="pln_hdr_lft">
+									<span class="mostpopular" *ngIf="item?.plan_id ==2">
+										<span><img src="assets/img/thumbs-up.gif" alt="Mostpopular" title="Mostpopular" /></span> Most Popular</span>
+									<h4>{{item?.plan_name}}</h4>
+									<p *ngIf="item?.plan_id==2">Best for your home</p>
+									<p *ngIf="item?.plan_id==1">Perfect to get started</p>
+								</div>
+								<!-- <div class="pln_hdr_rit">
+									<span class="price" *ngIf="(item?.plan_name | lowercase)=='platinum'">{{platinumPlanPrice | currency:'USD'}}<em>/{{activeTerm}}</em></span>
+									<span class="price"  *ngIf="(item?.plan_name | lowercase)=='premier'">{{premierPlanPrice| currency:'USD'}}<em>/{{activeTerm}}</em></span>
+								</div> -->
+							</div>
+							<div class="pln_bdy">
+								<ul>
+									<ng-container *ngFor="let product of planWiseProductList | slice:0:item.displayedItems">
+										<li
+											*ngIf="product.exist_in_both_plan || item?.plan_id ==2">
+											{{product.product_name}}</li>
+										<li
+											*ngIf="!product.exist_in_both_plan && item?.plan_id ==1" class="cancl">
+											{{product.product_name}}</li>
+									</ng-container>											
+								</ul>
+								<a class="more_link" (click)="showMore(item)" *ngIf="!item.showMoreItem"> Show More</a>
+								<a class="more_link" (click)="showMore(item)" *ngIf="item.showMoreItem"> Show Less</a>
+								<div class="plan_box_footer">
+									<a routerLink="/checkout" class="c2a c2a--inline d-block bg--fpGreen c--whitee hvr:bg--fpDarkYellow">GET COVERAGE NOW</a>
+								</div>
+							</div>
+						</div>
+					</ng-container>
+						<!-- <div class="plan_list active bg--platinum">
+							<div class="plan_hdr">
+								<div class="pln_hdr_lft">
+									<span class="popular">MOST POPULAR</span> 
+									<h4>Platinum</h4>
+									<p>Best for your home</p>
+								</div>
+								<div class="pln_hdr_rit">
+									<span class="price">$149<em>/month</em></span>
+								</div>
+							</div>
+							<div class="pln_bdy">
+								<ul>
+									<li>Plumbing Stopage</li>
+									<li>Water Heater</li>
+									<li>Plumbing System</li>
+									<li>Ceiling & Exhaust Fans</li>
+									<li>Ductwork</li>
+									<li>Trash Compactor</li>
+									<li>Garage Door Opener</li>
+									<li>Dishwasher</li>
+									<li>Built-in Microwave</li>
+									<li>Garbage Disposal</li>
+									<li>A/C System (2 Units)</li>
+									<li>Heating System (2 Units)</li>
+								</ul>
+							</div>
+						</div> -->
+						<div class="plan_list optional {{showMoreItemAddon?'showing':''}}"  *ngIf="addOnProductList.length>0">
+							<div class="plan_hdr">
+								<div class="pln_hdr_lft">
+									<h4>Optional Coverage</h4>
+									<p>Add Ons Items are not covered under plans</p>
+								</div>
+								
+							</div>
+							<div class="pln_bdy bg--whitee">
+								<ul>
+									<ng-container *ngFor="let addOnItem of addOnProductList | slice:0:displayedAddonItems">
+										<li>{{addOnItem?.product_name}}
+											  <!-- <em *ngIf="activeTerm=='month'">{{addOnItem?.monthly_price| currency:'USD'}} /{{activeTerm}}</em> 
+											  <em *ngIf="activeTerm=='year'">{{addOnItem?.yearly_price| currency:'USD'}} /{{activeTerm}}</em> -->
+										</li>
+									</ng-container>											
+								</ul>
+								<a class="more_link" (click)="showMoreAddon()" *ngIf="!showMoreItemAddon"> Show More</a>
+								<a class="more_link" (click)="showMoreAddon()" *ngIf="showMoreItemAddon"> Show Less</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			
+
+					<div class="plans_wrap" style="display: none;">
+						<div class="plan_part">
+							<div class="plans-list-wrap">
+								<div class="plan_list">
+									<figcaption class="plans_header">
+										<h4>Covered Items</h4>
+									</figcaption>
+									<ul class="plan-container">
+										<ng-container *ngFor="let item of planWiseProductList">
+											<li>{{item.product_name}}</li>
+										</ng-container>
+									</ul>
+								</div>
+								<ng-container *ngFor="let item of planList">
+									<div class="plan_list {{item.is_active?'active':''}}">
+										<span *ngIf="item.is_active" role="presentation" class="mostpopular">Most Popular</span>
+										<figcaption class="plans_header">
+											<h4>{{item?.plan_name}} <span>Plan</span></h4>
+											<!-- <figure *ngIf="item?.plan_name.toLowerCase()=='platinum'">
+												<img src="assets/img/funnel/popular-badge.webp" alt="" />
+											</figure> -->
+										</figcaption>
+										<label class="plan-rdio-label"><input type="checkbox" name="coverage_plan0"
+												class="plan-rdio" value="3" checked="checked"></label>
+										<ul class="plan-container">
+											<ng-container *ngFor="let product of planWiseProductList">
+												<li
+													*ngIf="product.exist_in_both_plan || item?.plan_id ==2">
+													<i class="material-symbols-outlined">check_circle</i></li>
+												<li
+													*ngIf="!product.exist_in_both_plan && item?.plan_id ==1">
+													<i class="material-symbols-outlined cancl">cancel</i></li>
+											</ng-container>
+										</ul>
+									</div>
+								</ng-container>
+								
+							</div>
+							<div class="plan_list last_list">
+								<figcaption class="plans_header">
+									<h4>Optional Coverage <span>Add Ons Items</span></h4>
+								</figcaption>
+								<div class="card">
+									<div class="card-body flow-rootX">
+										<h5 class="h4">Plans that are not
+											covered under
+											Premier & Platinum</h5>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna</p>
+										<a routerLink="/checkout"
+											class="c2a c2a--inline bg--fpGreen c--whitee mt-2 hvr:bg--fpDarkYellow">GET
+											A FREE QUOTE</a>
+										<strong>Check some of them</strong>
+									</div>
+								</div>
+								<ul class="plan-container">
+									<ng-container *ngFor="let addOnItem of addOnProductList| slice:0:12;">
+										<li>{{addOnItem?.product_name}}</li>
+									</ng-container>
+								</ul>
+								<ul *ngIf="isExpandAddonList" class="plan-container moreAddon pt-0 {{isExpandAddonList?'addonAdd':''}}" >
+									<ng-container *ngFor="let addOnItem of addOnProductList.slice(12)">
+										<li>{{addOnItem?.product_name}}</li>
+									</ng-container>
+								</ul>
+								<div class="plan-list-bottom" *ngIf="addOnProductList.length>12">
+									<a (click)="isExpandAddonList=!isExpandAddonList" class="readbtn toggle_btn" >{{!isExpandAddonList? addOnProductList.length
+										- 12:'Show Less'}} {{!isExpandAddonList?'more Add Ons':''}}</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+			</div>
+		</div>
+	</section>
+	<section class="fp__trust">
+		<div class="mainX-container">
+			<div class="inner-container">
+					<figcaption>
+						<h2 class="h2 c--blak txt-reveal-anim text-center">Why do so many home owners trust us?</h2>
+						<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+							viverra maecenas accumsan lacus vel facilisis.</p> -->
+					</figcaption>
+					<div class="trust_list_wrapper">
+						<div class="trust-list">
+							<div class="item flow-rootX4 c--blak">
+								<figure class="icon anim--b2t">
+									<svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<g clip-path="url(#clip0_4_92)">
+											<path d="M7.14828 83.9544H55.7034" stroke="#344C61" stroke-width="3"
+												stroke-miterlimit="10" />
+											<path d="M84.2966 68.8213L66.3878 86.654" stroke="#344C61" stroke-width="3"
+												stroke-miterlimit="10" />
+											<path d="M69.6198 68.8593H84.3726V83.384" stroke="#344C61" stroke-width="3"
+												stroke-miterlimit="10" />
+											<path
+												d="M59.8479 56.2357V9.04943C59.8479 7.26236 60.038 5.47529 62.5475 5.47529L74.0304 5.81749C76.5019 5.81749 79.3536 5.62738 79.3536 7.41445V50.4183L79.1255 57.1103C79.1255 57.1103 70.4563 54.5247 59.8099 63.8023"
+												fill="#EAA633" />
+											<path
+												d="M75.3992 98.7453C86.9909 98.7453 96.3878 89.3483 96.3878 77.7567C96.3878 66.165 86.9909 56.7681 75.3992 56.7681C63.8076 56.7681 54.4106 66.165 54.4106 77.7567C54.4106 89.3483 63.8076 98.7453 75.3992 98.7453Z"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path d="M29.3536 42.6236H10.038V83.346H29.3536V42.6236Z" fill="#EAA633"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path d="M54.2586 22.2814H34.943V83.9544H54.2586V22.2814Z" fill="#EAA633"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path d="M59.8099 63.7643V5.74145H79.1255V57.0722" stroke="#344C61"
+												stroke-width="3" stroke-miterlimit="10" />
+										</g>
+										<defs>
+											<clipPath id="clip0_4_92">
+												<rect width="100" height="100" fill="white" />
+											</clipPath>
+										</defs>
+									</svg>
+								</figure>
+								<figcaption>
+									<p>Higher limits and<br> more coverage</p>
+								</figcaption>
+							</div>
+							<div class="item flow-rootX4 c--blak">
+								<figure class="icon anim--b2t">
+									<svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<g clip-path="url(#clip0_2_55)">
+											<path
+												d="M29.5818 43.9924C34.1176 43.9924 37.7947 40.3153 37.7947 35.7795C37.7947 31.2436 34.1176 27.5665 29.5818 27.5665C25.0459 27.5665 21.3688 31.2436 21.3688 35.7795C21.3688 40.3153 25.0459 43.9924 29.5818 43.9924Z"
+												fill="#EAA633" />
+											<path
+												d="M29.5818 43.9924C34.1176 43.9924 37.7947 40.3153 37.7947 35.7795C37.7947 31.2436 34.1176 27.5665 29.5818 27.5665C25.0459 27.5665 21.3688 31.2436 21.3688 35.7795C21.3688 40.3153 25.0459 43.9924 29.5818 43.9924Z"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path d="M48.5932 2.69962V37.4144" stroke="#344C61" stroke-width="3"
+												stroke-miterlimit="10" />
+											<path d="M48.5932 48.6312V98.6312" stroke="#344C61" stroke-width="3"
+												stroke-miterlimit="10" />
+											<path
+												d="M74.1825 24.9049H48.5551V6.76807H72.0152C73.2319 6.76807 74.1825 7.75666 74.1825 8.93537V24.9049Z"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path
+												d="M74.1825 13.1179H96.1977L86.4258 23.27L95.8555 32.6996H74.1825V13.1179Z"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+											<path
+												d="M20.7985 55.7795L5.93156 44.7148C5.93156 44.7148 3.57415 37.4145 10.8365 37.4145L23.4221 46.3118C23.4221 46.3118 30.3042 47.2624 36.0076 46.3118L48.5932 37.3764C55.8555 37.3764 53.4981 44.6768 53.4981 44.6768L38.6312 55.7415C38.5551 68.7833 38.5551 83.308 38.5551 96.3498C36.654 99.0114 32.4335 99.4297 30.1141 97.1103C29.8099 96.3878 29.6578 95.5894 29.7338 94.7909C29.8099 88.4411 29.7338 82.5475 29.5818 76.2357C29.7338 83.308 29.7338 89.8099 29.7338 96.692C28.2129 97.8327 26.2738 99.0114 23.9924 98.5932C22.4715 98.2129 20.9125 97.0722 20.5323 95.5133C20.1521 82.1293 20.5323 69.0875 20.5323 55.5133C20.5323 55.6654 20.5323 55.7795 20.4943 55.9316"
+												fill="#EAA633" />
+											<path
+												d="M20.7985 55.7795L5.93156 44.7148C5.93156 44.7148 3.57415 37.4145 10.8365 37.4145L23.4221 46.3118C23.4221 46.3118 30.3042 47.2624 36.0076 46.3118L48.5932 37.3764C55.8555 37.3764 53.4981 44.6768 53.4981 44.6768L38.6312 55.7415C38.5551 68.7833 38.5551 83.308 38.5551 96.3498C36.654 99.0114 32.4335 99.4297 30.1141 97.1103C29.8099 96.3878 29.6578 95.5894 29.7338 94.7909C29.8099 88.4411 29.7338 82.5475 29.5818 76.2357C29.7338 83.308 29.7338 89.8099 29.7338 96.692C28.2129 97.8327 26.2738 99.0114 23.9924 98.5932C22.4715 98.2129 20.9125 97.0722 20.5323 95.5133C20.1521 82.1293 20.5323 69.0875 20.5323 55.5133C20.5323 55.6654 20.5323 55.7795 20.4943 55.9316"
+												stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										</g>
+										<defs>
+											<clipPath id="clip0_2_55">
+												<rect width="100" height="100" fill="white" />
+											</clipPath>
+										</defs>
+									</svg>
+								</figure>
+								<figcaption>
+									<p>Nationwide network<br> of qualified Pros</p>
+								</figcaption>
+							</div>
+							<div class="item flow-rootX4 c--blak">
+								<figure class="icon anim--b2t">
+									<svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M47.9272 24.4347C54.2997 24.4347 59.4657 19.4349 59.4657 13.2674C59.4657 7.09981 54.2997 2.10001 47.9272 2.10001C41.5546 2.10001 36.3886 7.09981 36.3886 13.2674C36.3886 19.4349 41.5546 24.4347 47.9272 24.4347Z"
+											fill="#EAA633" />
+										<path
+											d="M47.9272 24.4347C54.2997 24.4347 59.4657 19.4349 59.4657 13.2674C59.4657 7.09981 54.2997 2.10001 47.9272 2.10001C41.5546 2.10001 36.3886 7.09981 36.3886 13.2674C36.3886 19.4349 41.5546 24.4347 47.9272 24.4347Z"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M26.4483 44.8831V36.0548C26.4483 31.9802 31.0871 28.6602 36.7784 28.6602H58.998C64.6893 28.6602 69.3281 31.9425 69.3281 36.0548V56.3522"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M35.2581 39.1485V56.3145" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+										<path d="M60.2843 39.1485V56.3145" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+										<path
+											d="M35.2581 67.595V94.2307C35.2581 94.2307 39.1952 102.153 47.9271 95.3248V67.595"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M47.9272 67.595V94.2307C47.9272 94.2307 51.8643 102.153 60.5962 95.3248V67.595"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M23.6417 61.37H99.5001" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+										<path
+											d="M12.5708 79.0642C6.45068 79.0642 1.5 74.2728 1.5 68.3496V54.4659C1.5 48.5426 6.45068 43.7512 12.5708 43.7512C18.6909 43.7512 23.6416 48.5426 23.6416 54.4659V68.3496C23.6416 74.2351 18.6909 79.0265 12.5708 79.0642Z"
+											fill="#EAA633" stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M81.6854 61.37V82.1202" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+										<path d="M93.8087 61.37V82.1202" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+										<path d="M81.6854 75.2915H93.8087" stroke="#344C61" stroke-width="3"
+											stroke-miterlimit="10" />
+									</svg>
+								</figure>
+								<figcaption>
+									<p>Additional coverage options to customize your plan </p>
+								</figcaption>
+							</div>
+							<div class="item flow-rootX4 c--blak">
+								<figure class="icon anim--b2t">
+									<svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M27.0722 25.9696C33.1411 25.9696 38.0608 21.0498 38.0608 14.981C38.0608 8.91216 33.1411 3.99239 27.0722 3.99239C21.0034 3.99239 16.0836 8.91216 16.0836 14.981C16.0836 21.0498 21.0034 25.9696 27.0722 25.9696Z"
+											fill="#EAA633" />
+										<path
+											d="M6.65399 66.2357V37.0722C6.65399 33.0799 11.0646 29.8099 16.4639 29.8099H37.6426C43.0798 29.8099 47.4525 33.0418 47.4525 37.0722V66.2357"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M27.0722 25.9696C33.1411 25.9696 38.0608 21.0498 38.0608 14.981C38.0608 8.91216 33.1411 3.99239 27.0722 3.99239C21.0034 3.99239 16.0836 8.91216 16.0836 14.981C16.0836 21.0498 21.0034 25.9696 27.0722 25.9696Z"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M15.019 40.5703V94.4106C15.019 94.4106 18.7452 102.205 27.1103 95.4753V68.2129"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M27.1103 68.2129V94.4107C27.1103 94.4107 30.8365 102.205 39.2015 95.4753V39.5437"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M42.2814 65.7034C42.2814 65.7034 45.057 68.327 47.7567 65.7414"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M6.65399 65.7034C6.65399 65.7034 9.42966 68.327 12.1293 65.7414"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M87.2243 21.2548C86.0456 20.8365 84.7909 20.6464 83.5361 20.6464C77.0723 20.6464 71.8631 25.8555 71.8631 32.3194C71.8631 38.7833 77.0723 43.9924 83.5361 43.9924C89.962 43.9924 95.2091 38.7833 95.2091 32.3194C95.2091 31.4068 95.0951 30.5323 94.905 29.6578"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M77.0722 32.3574L82.0913 36.9582L92.2814 23.9164" stroke="#344C61"
+											stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M79.3536 47.7567C73.346 50.076 70.3422 56.8441 72.6616 62.8517C74.981 68.8593 81.749 71.8631 87.7567 69.5437C92.2814 67.7947 95.2471 63.4981 95.2471 58.6692C95.2471 57.7567 95.1331 56.8821 94.943 56.0076L94.7528 55.7414"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M77.0722 58.7072L82.0913 63.346L92.2814 50.2662" stroke="#344C61"
+											stroke-width="3" stroke-miterlimit="10" />
+										<path
+											d="M79.3536 74.1445C73.346 76.4639 70.3422 83.2319 72.6616 89.2395C74.981 95.2471 81.749 98.251 87.7567 95.9316C92.2814 94.1825 95.2471 89.8859 95.2471 85.057C95.2471 84.1445 95.1331 83.27 94.943 82.3954L94.6768 82.1293"
+											stroke="#344C61" stroke-width="3" stroke-miterlimit="10" />
+										<path d="M77.0722 85.0951L82.0913 89.6958L92.2814 76.654" stroke="#344C61"
+											stroke-width="3" stroke-miterlimit="10" />
+									</svg>
+								</figure>
+								<figcaption>
+									<p>Transparent coverage – what you see is what you get </p>
+								</figcaption>
+							</div>
+						</div>
+					</div>
+			
+			</div>
+		</div>
+	</section>
+	<app-faq></app-faq>
+
+	<!-- SLIDER USE -->
+	<app-blog-list></app-blog-list>
+
+
+</main>
+<app-check-out-strip></app-check-out-strip>

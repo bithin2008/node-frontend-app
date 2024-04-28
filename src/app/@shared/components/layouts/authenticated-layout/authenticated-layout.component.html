@@ -1,0 +1,291 @@
+
+    <div class="fp_cp_top_header">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="top_nav_wrapper">
+                    <div class="top_hdr_lft">
+                        <p>Last Account Activity - 09/20/2023 3:16 am</p>
+                    </div>
+                    <div class="top_hdr_right">
+                        <ul>
+                            <li><a href="javaScript:void(0)"><span class="material-symbols-outlined">support_agent</span> Support</a></li>
+                            <li class="notification"><a href="javaScript:void(0)"  data-badge="2"><span class="material-symbols-outlined">notifications_active</span> Notification</a></li>
+                            <li><a href="javaScript:void(0)"><span class="material-symbols-outlined">mail</span> Messages</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="main-container">
+            <div class="inner-container">
+                <h1 class="logo">
+                    <a routerLink="/">
+                        <figure><img src="./assets/img/logo.webp" alt="First Premier Home Warranty" title="First Premier Home Warranty"></figure>
+                    </a>
+                </h1>                                        
+                <nav role="main-navigation">
+                    <ul>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/customer-portal/edit-profile">Edit Profile</a></li>
+                        <li routerLinkActive="active"><a routerLink="customer-portal/billing-payment">Billing & Payments</a></li>
+                        <li routerLinkActive="active"><a routerLink="javaScript:void(0)">My Card</a></li>
+                        <li routerLinkActive="active"><a href="customer-portal/my-policy">My Policy</a></li>
+                        <li routerLinkActive="active"><a routerLink="javaScript:void(0)">My Claim</a></li>
+                        <li routerLinkActive="active"><a routerLink="javaScript:void(0)">Refer a Friend</a></li>
+                    </ul>
+                </nav>
+                <div class="call--c2a cus_menu" (click)="toggleDropdown()">
+                    <span class="material-symbols-outlined usr">person</span>
+                    <div class="acct_card">
+                        <p>Welcome Back, <span>John Smith</span></p>
+                    </div>
+                    <div class="dropdown_wrapper">
+                        <button  class="dropbtn"><span class="material-symbols-outlined c--whitee">expand_more</span></button>
+                    </div>    
+                    <div id="myDropdown" *ngIf="isDropdownVisible" class="dropdown-content">
+                        <ul class="drop_menu">
+                            <li class="active"><a href="javaScript:void(0)">Change Password</a></li>
+                            <li><a href="javaScript:void(0)">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="fp__inner__banner dashboard_bnr">
+		<div class="main-container">
+			<div class="inner-container">
+				<div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/customer-dashboard/c-dashboard-hero.webp" type="image/webp">
+                        <source srcset="assets/img/customer-dashboard/c-dashboard-hero.jpg" type="image/jpg">
+                        <img src="assets/img/customer-dashboard/c-dashboard-hero.webp" alt="First Premier" title="First Premier">
+                    </picture>
+					<div class="banner_content flow-rootX3">
+						<h1 class="h1">File a Claim</h1>
+                        <a routerLink="/contact-us" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">CONTACT US NOW</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <nav id="sidebar-wrapper" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }" (click)="closeSideBar()">
+
+    </nav>
+   
+    <main id="main-content-wrapper" role="main" class="col px-4" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }">
+      <router-outlet></router-outlet>
+      
+
+
+    <section class="blling_claim">
+        <div class="mainxx-container">
+			<div class="inner-container">
+                <div class="bill_top">
+                    <div class="bill_wrap">
+                        <div class="cus_hdng"><h2 class="h2">Billing & Payments</h2></div>
+                        <div class="bill_box">
+                            <div class="paymnt_card">
+                                <strong>Last Payment Received</strong>
+                                <span class="price">$94.57</span>
+                                <p>Policy No: FP1233456789<br> 
+                                    Date: 10-05-2023</p>
+                            </div>
+                            <div class="paymnt_card">
+                                <strong>Upcoming Payment</strong>
+                                <span class="price">$194.57</span>
+                                <p>Policy No: FP1233456789<br> 
+                                        Date: 11-05-2023</p>
+                            </div>
+                        </div>
+                        <div class="edt_card bg--fpBlue">
+                            <div class="edt_card_bx">
+                                <picture>
+                                    <source srcset="assets/img/customer-dashboard/card-icn.webp" type="image/webp">
+                                    <source srcset="assets/img/customer-dashboard/card-icn.jpg" type="image/jpg">
+                                    <img src="assets/img/customer-dashboard/card-icn.webp" alt="First Premier" title="First Premier">
+                                </picture>
+                                <p>Edit your card information online.</p>
+                            </div>
+                            <a href="javaScript:void(0)" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">EDIT CARD</a>
+                        </div>
+                    </div>
+                    <div class="claim_wrap">
+                        <div class="cus_hdng"><h3 class="h2">My Claims</h3></div>
+                        <div class="claim_pogrs">
+                            <div class="pogrs_bar_wrap">
+                                <strong>Open</strong>
+                                <div class="pogress_bar">
+                                    <div class="pogrs_set"></div>
+                                </div>
+                                <span>35</span>
+                            </div>
+                            <div class="pogrs_bar_wrap">
+                                <strong>In Progress</strong>
+                                <div class="pogress_bar">
+                                    <div class="pogrs_set"></div>
+                                </div>
+                                <span>19</span>
+                            </div>
+                            <div class="pogrs_bar_wrap">
+                                <strong>Closed</strong>
+                                <div class="pogress_bar">
+                                    <div class="pogrs_set"></div>
+                                </div>
+                                <span>16</span>
+                            </div>
+                        </div>
+                        <div class="edt_card bg--fpBlue">
+                            <div class="edt_card_bx">
+                                <picture>
+                                    <source srcset="assets/img/customer-dashboard/claim-icn.webp" type="image/webp">
+                                    <source srcset="assets/img/customer-dashboard/claim-icn.jpg" type="image/jpg">
+                                    <img src="assets/img/customer-dashboard/claim-icn.webp" alt="First Premier" title="First Premier">
+                                </picture>
+                                <p>Visit My Claim page to know more.</p>
+                            </div>
+                            <a href="javaScript:void(0)" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">MY CLAIM</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="propites_wrap">
+                    <div class="propit_box">
+                        <div class="cus_hdng"><h4 class="h2">Covered Properties</h4></div>
+                        <div class="adrs-wrap">
+                            <div class="addrs">
+                                <img src="assets/img/customer-dashboard/loc.png" alt="First Premier" title="First Premier">
+                                <div class="loc">
+                                    <strong>Pride</strong>
+                                    <p>Los Angeles California, 90001</p>
+                                </div>
+                            </div>
+                            <div class="addrs">
+                                <img src="assets/img/customer-dashboard/loc.png" alt="First Premier" title="First Premier">
+                                <div class="loc">
+                                    <strong>Pride</strong>
+                                    <p>Los Angeles California, 90001</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="adr_nav">
+                            <span>2/15</span> <!-- show toltal of per slide show -->
+                            <div class="swiper-nav"><div class="swiper-nav--prev swiper__addrs-container--prev"></div><div class="swiper-nav--next swiper__addrs-container--next"></div></div>
+                        </div>
+                    </div>
+                    <div class="propit_box">
+                        <div class="proprty_box_inner flow-rootX4 cus_hdng">
+                            <h5 class="h2">Add New Property</h5>
+                            <p>Protecting your home is important! If you are interested in adding another property to your account, click on the link below</p>
+                            <a href="javaScript:void(0)" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">ADD ANOTHER HOME</a>
+                        </div>
+
+                        <picture>
+                            <source srcset="assets/img/customer-dashboard/fp-propaty-icon.webp" type="image/webp">
+                            <source srcset="assets/img/customer-dashboard/fp-propaty-icon.jpg" type="image/jpg">
+                            <img src="assets/img/customer-dashboard/fp-propaty-icon.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                    </div>
+                </div>
+
+                <div class="policy_sec">
+                    <div class="cus_hdng">
+                        <h2 class="h2">My Policy</h2>
+                        <div class="swiper-nav"><div class="swiper-nav--prev swiper__addrs-container--prev"></div><div class="swiper-nav--next swiper__addrs-container--next"></div></div>
+                    </div>
+                    <div class="policy-inner">
+                        <div class="policy_bx">
+                            <div class="cus_hdng">
+                                <h4 class="h4">Clothes Washer</h4>
+                                <span class="status stat_active">Active</span>
+                            </div>
+                            <table class="table card_table">
+                                <tbody>
+                                    <tr>
+                                        <td>Claim:</td>
+                                        <td>XX:XX-585233123</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date: </td>
+                                        <td>08-30-2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address: </td>
+                                        <td>Los Angeles California, 90001</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Make/Brand: </td>
+                                        <td>Samsung</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model:</td>
+                                        <td>XYZ123456</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Serial Number:</td>
+                                        <td>123456879</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desciption:</td>
+                                        <td>Lorem Ipsum is simply dummy text of the.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="policy_bx">
+                            <div class="cus_hdng">
+                                <h4 class="h4">Clothes Washer</h4>
+                                <span class="status stat_pending">Pending</span>
+                            </div>
+                            <table class="card_table">
+                                <tbody>
+                                    <tr>
+                                        <td>Claim:</td>
+                                        <td>XX:XX-585233123</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date: </td>
+                                        <td>08-30-2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address: </td>
+                                        <td>Los Angeles California, 90001</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Make/Brand: </td>
+                                        <td>Samsung</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model:</td>
+                                        <td>XYZ123456</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Serial Number:</td>
+                                        <td>123456879</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desciption:</td>
+                                        <td>Lorem Ipsum is simply dummy text of the.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<footer class="fp__cutomer_footer bg--fpBlue">
+    <div class="text-center">
+        <p class="c--whitee">© {{currectYear}} <a routerLink="/">First Premier Home Warranty</a>. All Rights Reserved.</p>
+    </div>
+</footer>
+      <app-scroll-to-top></app-scroll-to-top>
+    </main>
+
+

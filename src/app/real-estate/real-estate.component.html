@@ -1,0 +1,516 @@
+<main>
+    <section class="fp__inner__banner affiliate_bnr">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/real-estate/Real-Estate-banner.webp" type="image/webp">
+                        <source srcset="assets/img/real-estate/Real-Estate-banner.jpg" type="image/jpg">
+                        <img src="assets/img/real-estate/Real-Estate-banner.webp" alt="First Premier"
+                            title="First Premier">
+                    </picture>
+                    <div class="banner_content flow-rootX3">
+                        <h1  class="h1 " *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                        <h1 class="h1 " *ngIf="!pageDetails?.h1_tag">The Nation's #1 <br>Provider In Real Estate</h1>
+                        <a class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen"
+                            (click)="openRealEstateProfessionalModal()">APPLY TO PARTNER</a>
+                       <a class="c2a c2a--inline bg--whitee hvr:c--whitee hvr:bg--fpGreen" (click)="gotoToPortal()">REAL ESTATE LOGIN</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="fp_affiliate fp_realestate">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <form class="form-style-3 flow-rootX banner_form" [formGroup]="realEstateForm"
+                    (ngSubmit)="realEstateFormSubmit()">
+                    <div class="form-element form_root">
+                        <label class="form-label">Company Name <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" minlength="3" maxlength="150" formControlName="companyName"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['companyName'].errors }" />
+                        <app-validation-error [control]="s1['companyName']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Contact Name <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" minlength="3" maxlength="150" formControlName="contactName"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['contactName'].errors }" />
+                        <app-validation-error [control]="s1['contactName']"></app-validation-error>
+
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Email Address <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="emailId" placeholder="">
+                        <app-validation-error [control]="s1['emailId']"></app-validation-error>
+
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" usPhoneNumber formControlName="mobileNo" placeholder=""
+                            (input)="changeMobileFormat($event)">
+                        <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Address <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" minlength="5" formControlName="address"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['address'].errors }" />
+                        <app-validation-error [control]="s1['address']"></app-validation-error>
+                    </div>
+
+                    <h3>Real Estate Professional Information</h3>
+                    <div class="form-element form_root exp_fild">
+                        <div class="form-field">
+                            <label class="form-label d-inline-block">Select Your Account Type</label>
+                            <div class="radio_inline">
+                                <input type=radio id="rdo1" checked class="radio-input" name="accountType" formControlName="accountType" value="Real Estate Agent">
+                                <label for="rdo1" class="radio-label"> <span class="radio-border"></span>Real Estate Agent
+                                </label>
+
+                                <input type=radio id="rdo2" class="radio-input" name="accountType" formControlName="accountType"  value="Closing/Title/Escrow Agent/Attorney">
+                                <label for="rdo2" class="radio-label mr-0"><span class="radio-border"></span>Closing/Title/Escrow Agent/Attorney
+                                </label>
+                                <input type=radio id="rdo3" class="radio-input" name="accountType" formControlName="accountType"  value="Administrator/Transaction Coordinator">
+                                <label for="rdo3" class="radio-label mr-0"><span class="radio-border"></span>Administrator/Transaction Coordinator
+                                </label>
+                            </div>
+                            <app-validation-error
+                            [control]="s1['accountType']"></app-validation-error>
+                        </div>
+                    </div>
+
+                     <h3>Select Your Office</h3>
+                    <div class="form-element form_root">
+                        <label class="form-label">Office Location <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeLocation"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeLocation'].errors }" />
+                        <app-validation-error [control]="s1['officeLocation']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Office Address <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeAddress"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeAddress'].errors }" />
+                        <app-validation-error [control]="s1['officeAddress']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">Zip Code <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeZip" allowOnlyNumbers (keyup)="chekcZipCode($event)"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeZip'].errors }" />
+                        <app-validation-error [control]="s1['officeZip']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">City<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeCity"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeCity'].errors }" />
+                        <app-validation-error [control]="s1['officeCity']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <label class="form-label">State<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeState"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeState'].errors }" />
+                        <app-validation-error [control]="s1['officeState']"></app-validation-error>
+                    </div>
+                    <div class="form-element form_root">
+                        <button class="c2a bg--fpYellow w-100 c2a-lg hvr:bg--fpGreen hvr:c--whitee" type="submit"
+                            value="Get a Quote">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="fp_affiliate fp_realestate">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_premier_wrapper">
+                    <div class="affiliate_primr_image hide-from-tab">
+                        <picture class="primr_fst img-reveal-anim">
+                            <source srcset="assets/img/real-estate/Real-Estate-inner.webp" type="image/webp">
+                            <source srcset="assets/img/real-estate/Real-Estate-inner.jpg" type="image/jpg">
+                            <img src="assets/img/real-estate/Real-Estate-inner.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                    </div>
+                    <div class="contractor_content">
+                        <div class="hdng_content flow-rootX real_hdng">
+                            <h2 class="">Best Home Warranty <br/>Provider in 
+                                  <span class="c--fpDarkYellow"><img src="assets/img/real-estate/FPHW-home.png" alt="First Premier"
+                                    title="First Premier">merica!</span>
+                            </h2>
+
+                        </div>
+                        <div class="hdng_content flow-rootX3">
+                            <!-- <p>Provide your buyers and sellers the protection they deserve with a home warranty from
+                                First Premier Home Warranty.</p>
+                            <p>From listing to close, providing a home warranty protects your clients from incurring the
+                                costs of unexpected breakdowns of their systems and appliances.</p> -->
+                                <p>Our flexible and competitively-priced home warranty plans from First Premier Home Warranty offer real value to both buyers and sellers. With an array of options and tools, we provide the best coverage on the market.</p>
+                                <p>Utilize our cutting-edge 'Realtor Portal' to seamlessly manage your clients' needs, request additional policies, and generate Escrow invoices for closing. Our team of trained real estate agents is available for your support, ensuring you're always connected and supported.</p>
+                            <ul>
+                                <li>If you’re a contractor, you’ve surely heard of home warranties.</li>
+                                <li>That’s what brought you here, after all, and we’re glad you found us! </li>
+                                <li>Home warranty contractors and the experts who offer our service plans.</li>
+                            </ul>
+                            <div class="real_c2a">
+                                <a class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen mt-0"
+                                    (click)="openRealEstateProfessionalModal()">APPLY TO
+                                    PARTNER</a>
+                                <a class="c2a c2a--inline bg--fpGreen c--whitee hvr:c--blak hvr:bg--fpYellow mt-0 ml-1"
+                                    href="assets/pdf/First-Premier-Home-Warranty-Realtor-Brochure.pdf"
+                                    target="_blank"> DOWNLOAD BROCHURE </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fp_experance">
+        <div class="mainX-container">
+            <div class="inner-container">
+                <div class="experance_wrapper">
+                    <div class="experance_inner_content">
+                        <div class="experance_hdng">
+                            <div class="hdng_content flow-rootX">
+                                <h3 class="h2 ">More than <span>30 Years</span> of Experience</h3>
+                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br> tempor
+                                    incididunt ut labore et dolore magna aliqua.</p> -->
+                            </div>
+                        </div>
+                        <div class="exp_static grid-3">
+                            <div class="exp_bx flow-rootX">
+                                <div class="exp_icn">
+                                    <picture class="anim--b2t">
+                                        <source srcset="assets/img/real-estate/home-icn1.webp" type="image/webp">
+                                        <source srcset="assets/img/real-estate/home-icn1.png" type="image/png">
+                                        <img src="assets/img/real-estate/home-icn1.webp" alt="First Premier"
+                                            title="First Premier">
+                                    </picture>
+                                </div>
+                                <!-- <div class="exp_contnt">
+                                    <div  class=""><span>85%</span></div>
+                                    <p>Completed Property</p>
+                                </div> -->
+                                <div class="exp_contnt">
+                                    <div class=""><span>95%</span></div>
+                                    <p>Enhanced Marketability</p>
+                                </div>
+                            </div>
+                            <div class="exp_bx flow-rootX">
+                                <div class="exp_icn">
+                                    <picture class="anim--b2t">
+                                        <source srcset="assets/img/real-estate/hand-rating.webp" type="image/webp">
+                                        <source srcset="assets/img/real-estate/hand-rating.png" type="image/png">
+                                        <img src="assets/img/real-estate/hand-rating.webp" alt="First Premier"
+                                            title="First Premier">
+                                    </picture>
+                                </div>
+                                <div class="exp_contnt">
+                                    <div  class=""><span>99%</span></div>
+                                    <!-- <p>Satisfied Customers</p> -->
+                                    <p>Streamlined Transaction Process</p>
+                                </div>
+                            </div>
+                            <div class="exp_bx flow-rootX">
+                                <div class="exp_icn">
+                                    <picture class="anim--b2t">
+                                        <source srcset="assets/img/real-estate/hand-key.webp" type="image/webp">
+                                        <source srcset="assets/img/real-estate/hand-key.png" type="image/png">
+                                        <img src="assets/img/real-estate/hand-key.webp" alt="First Premier"
+                                            title="First Premier">
+                                    </picture>
+                                </div>
+                                <div class="exp_contnt">
+                                    <div  class=""><span>98%</span></div>
+                                    <!-- <p>Home Ownership</p> -->
+                                    <p>Higher Client Satisfaction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experance_inner_slider">
+                        <div class="experance_home">
+                            <picture class="experance_home_icn">
+                                <source srcset="assets/img/real-estate/FPHW-home.webp" type="image/webp">
+                                <source srcset="assets/img/real-estate/FPHW-home.png" type="image/png">
+                                <img src="assets/img/real-estate/FPHW-home.png" alt="First Premier"
+                                    title="First Premier">
+                            </picture>
+                            <div class="review_slider swiper-container slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" *ngFor="let item of customerReviews">
+                                        <div class="review-box">
+                                            <div class="review_top flow-rootX">
+                                                <!-- <h5>Awesome Support</h5> -->
+                                                <p>{{item.description}}</p>
+                                            </div>
+                                            <div class="review_bottom">
+                                                <div class="review_name">
+                                                    <h5>{{item.first_name}} {{item.last_name}}</h5>
+                                                    <span>Source: {{item.review_source?'Google':''}}</span>
+                                                </div>
+                                                <div class="rating_star flow-rootx3">
+                                                    <div class="stars">
+                                                        <star-rating [starType]="'svg'" [readOnly]="true" [rating]="item.rating"></star-rating>
+                                                    </div>
+                                                    <p><small>Rated {{item.rating}} Star</small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    
+                                </div>
+                                <div class="swiper-pagination"></div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fp_portal mt-0">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="float_img"></div>
+                <div class="portal_wrapper">
+                    <div class="portal_img">
+                        <figure>
+                            <img src="assets/img/real-estate/Real-Estate-laptop.png">
+                        </figure>
+                        <div class="laptop_overlay">
+                            <img class="screen" src="assets/img/real-estate/real-estate.jpg" alt="" title="" />
+                        </div>
+                    </div>
+                    <div class="contractor_content flow-rootX">
+                        <h4 class="h2 mt-0">Access Our Portal</h4>
+                        <p>Manage your clients and home warranty information with our exclusive portal. Our portal places all of the information about your clients all in one place, at your fingertips. No more phone-tag or snail mail.</p>
+                        <ul>
+                            <li>Set up coverage for new home warranty plans in minutes.</li>
+                            <li>Email order confirmations to clients, title agents, escrow agents and others.</li>
+                            <li>Add. Edit, Track Closing information.</li>
+                            <li>Join our Realtor Referral Program earn rewards and prizes!</li>
+                        </ul>
+                        <a class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen mt-0"
+                            (click)="openRealEstateProfessionalModal()">APPLY TO PARTNER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fp__protection real-estate_warenty">
+        <div class="protection_wrapper">
+            <div class="protection_inner">
+                <figcaption class="protecting_content flow-rootX5">
+                    <h2 class="h2 ">Need a warranty for your real estate transaction?</h2>
+                    <p>Our real estate plans are designed just for home buyers and sellers — and we offer real estate-exclusive pricing that sweetens the deal.</p>
+                    <div class="protection--c2a">
+                        <a class="c2a c2a--inline bg--fpYellow hvr:bg--fpDarkYellow" (click)="openRealEstateProfessionalModal()">APPLY TO PARTNER</a>
+                        <a routerLink="/plan" class="c2a c2a--inline bg--fpGreen c--whitee hvr:bg--fpDarkYellow">VIEW OUR PLANS</a>
+                    </div>
+                </figcaption>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="realeset_faq"><app-faq></app-faq></div>
+</main>
+<div class="modal_wrap  {{realEstateModal?'modal_wrap_on':''}}">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close" (click)="closeRealEstateModal()">×</div>
+
+        <div class="modal-content {{realEstateModal?'modal_show':''}}">
+            <form class="form-style-3 flow-rootx modal_form" [formGroup]="realEstateForm"
+                (ngSubmit)="realEstateFormSubmit()">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                        <style>.cls-1{fill:none;stroke:#020202;stroke-linecap:square;stroke-miterlimit:10;stroke-width:1.91px;}</style>
+                        </defs>
+                        <g id="briefcase_office" data-name="briefcase office">
+                        <rect class="cls-1" x="1.5" y="6.27" width="21" height="15.27" rx="1.91"/>
+                        <path class="cls-1" d="M3.41,6.27H20.59A1.91,1.91,0,0,1,22.5,8.18v1A3.82,3.82,0,0,1,18.68,13H5.32A3.82,3.82,0,0,1,1.5,9.14v-1A1.91,1.91,0,0,1,3.41,6.27Z"/>
+                        <line class="cls-1" x1="7.23" y1="12.95" x2="7.23" y2="14.86"/>
+                        <line class="cls-1" x1="16.77" y1="12.95" x2="16.77" y2="14.86"/>
+                        <polygon class="cls-1" points="15.82 6.27 8.18 6.27 9.14 2.46 14.86 2.46 15.82 6.27"/>
+                        </g>
+                        </svg>
+                        <h3>Company Information</h3>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-element">
+                        <label class="form-label">Brokerage/Agency Name <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" minlength="3" maxlength="100" 
+                            formControlName="companyName"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['companyName'].errors }" />
+                        <app-validation-error [control]="s1['companyName']"></app-validation-error>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">Full Name <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" minlength="3" maxlength="75"
+                            formControlName="contactName"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['contactName'].errors }" />
+                        <app-validation-error [control]="s1['contactName']"></app-validation-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-element">
+                        <label class="form-label">Email Address <span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="emailId" placeholder="" minlength="3" maxlength="255">
+                        <app-validation-error [control]="s1['emailId']"></app-validation-error>
+
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                        <input type="text" inputmode="numeric" class="form-field" usPhoneNumber formControlName="mobileNo" placeholder=""
+                            (input)="changeMobileFormat($event)">
+                        <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+
+                    </div>
+                </div>
+                <!-- <div class="form-row col-full">
+                    <div class="form-element mt-0">
+                        <label class="form-label">Address <span class="c--madnatory">*</span></label>
+                        <textarea class="form-field" minlength="5" formControlName="address" minlength="3" maxlength="255"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['address'].errors }"></textarea>
+                        <app-validation-error [control]="s1['address']"></app-validation-error>
+                    </div>
+                </div> -->
+                <div class="mold_mddl">
+                    <div class="mod_hdng">
+                        <div class="hd-i">
+                            <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 181.167 181.167" xml:space="preserve" stroke="#000000" stroke-width="1.8116700000000001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M148.556,0H32.613c-9.994,0-18.121,8.126-18.121,18.115v144.94c0,9.986,8.126,18.111,18.121,18.111h115.943 c9.992,0,18.118-8.125,18.118-18.111V18.121C166.679,8.131,158.554,0,148.556,0z M159.431,163.055 c0,5.996-4.878,10.871-10.875,10.871H32.613c-5.995,0-10.87-4.875-10.87-10.871V18.121c0-5.995,4.875-10.87,10.87-10.87h115.943 c5.992,0,10.867,4.875,10.867,10.87v144.935H159.431z"></path> <path d="M128.792,79.212H52.384c-1.839,0-3.324,1.491-3.324,3.33c0,1.838,1.485,3.33,3.324,3.33h76.407 c1.841,0,3.326-1.491,3.326-3.33C132.118,80.704,130.632,79.212,128.792,79.212z"></path> <path d="M128.792,94.386H52.384c-1.839,0-3.324,1.494-3.324,3.333s1.485,3.326,3.324,3.326h76.407 c1.841,0,3.326-1.487,3.326-3.326C132.113,95.87,130.632,94.386,128.792,94.386z"></path> <path d="M128.792,109.555H52.384c-1.839,0-3.324,1.494-3.324,3.331c0,1.839,1.485,3.328,3.324,3.328h76.407 c1.841,0,3.326-1.489,3.326-3.328C132.118,111.049,130.632,109.555,128.792,109.555z"></path> <path d="M128.792,124.728H90.585c-1.836,0-3.328,1.488-3.328,3.327s1.492,3.333,3.328,3.333h38.206 c1.841,0,3.321-1.494,3.321-3.333S130.632,124.728,128.792,124.728z"></path> <path d="M128.792,154.693h-26.747c-1.845,0-3.326,1.489-3.326,3.328c0,1.837,1.481,3.326,3.326,3.326h26.747 c1.841,0,3.321-1.489,3.321-3.326C132.113,156.182,130.632,154.693,128.792,154.693z"></path> <path d="M94.296,64.583c0-6.298-7.251-14.793-17.039-17.275c4.089-2.75,6.907-8.181,6.907-13.072 c0-6.898-5.586-12.496-12.49-12.496c-6.896,0-12.49,5.598-12.49,12.496c0,4.886,2.818,10.317,6.898,13.072 c-9.774,2.481-17.03,10.982-17.03,17.275C49.06,72.025,94.296,72.025,94.296,64.583z M70.667,50.933H70.61l-2.068-2.375 c1.011,0.358,2.042,0.577,3.133,0.577c1.093,0,2.125-0.213,3.134-0.572l-2.074,2.369h-0.049l5.337,12.895l-6.348,6.332 l-6.341-6.332L70.667,50.933z"></path> </g> </g> </g></svg>
+                            <h3>Professional Information</h3>
+                        </div>
+                       
+                    </div>                  
+                </div>
+               
+
+                
+                <div class="mold_mddl flow-root">
+                    <span>Select Designation</span>
+                    <div class="form-element exp_fild">
+                        <div>
+                            <div class="radio_inline">
+                                <div class="radio-group">
+                                    <input type=radio id="rdo1" checked="true" class="radio-input" name="accountType"
+                                        formControlName="accountType" value="1">
+                                    <label for="rdo1" class="radio-label"> <span class="radio-border"></span>Real Estate
+                                        Agent
+                                    </label>
+                                </div>
+                                <div class="radio-group">
+                                    <input type=radio id="rdo2" class="radio-input" name="accountType"
+                                        formControlName="accountType" value="2">
+                                    <label for="rdo2" class="radio-label"><span
+                                            class="radio-border"></span>Closing/Title/Escrow Agent/Attorney
+                                    </label>
+                                </div>
+                                <div class="radio-group">
+                                    <input type=radio id="rdo3" class="radio-input" name="accountType"
+                                        formControlName="accountType" value="3">
+                                    <label for="rdo3" class="radio-label mr-0"><span
+                                            class="radio-border"></span>Administrator/Transaction Coordinator
+                                    </label>
+                                </div>
+                            </div>
+                            <app-validation-error [control]="s1['accountType']"></app-validation-error>
+                        </div>
+                    </div>
+                </div>
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <svg width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M192 128v704h384V128H192zm-32-64h448a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32z"/><path fill="#000000" d="M256 256h256v64H256v-64zm0 192h256v64H256v-64zm0 192h256v64H256v-64zm384-128h128v64H640v-64zm0 128h128v64H640v-64zM64 832h896v64H64v-64z"/><path fill="#000000" d="M640 384v448h192V384H640zm-32-64h256a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H608a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32z"/></svg>
+                        <h3>Office Information</h3>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <label class="form-label">Office Address <span class="c--madnatory">*</span></label>
+                    <input type="text" class="form-field" id="addressBar" placeholder="" formControlName="officeAddress" minlength="3" maxlength="255"
+                        [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeAddress'].errors }" />
+                    <app-validation-error [control]="s1['officeAddress']"></app-validation-error>
+                </div>
+
+                <div class="form-row-col-3">
+                    <div class="form-element">
+                        <label class="form-label">Zip Code <span class="c--madnatory">*</span></label>
+                        <input  type="text" pattern="\d*" class="form-field" [minlength]="5" [maxlength]="5"
+                            formControlName="officeZip" allowOnlyNumbers (keyup)="chekcZipCode($event)"
+                            onKeyPress="if(this.value.length==5) return true;"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['zipCode'].errors }">
+                        <app-validation-error [control]="s1['officeZip']"></app-validation-error>
+                        <div class="my-1 py-2 alert alert-danger" *ngIf="validZipMessage">
+                            <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                            <span>{{validZipMessage}}</span>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">City<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeCity"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeCity'].errors }"
+                            [readonly]="isReadOnly" />
+                        <app-validation-error [control]="s1['officeCity']"></app-validation-error>
+                    </div>
+                    <div class="form-element">
+                        <label class="form-label">State<span class="c--madnatory">*</span></label>
+                        <input type="text" class="form-field" formControlName="officeState"
+                            [ngClass]="{ 'is-invalid': realEstateFormSubmitted && s1['officeState'].errors }"
+                            [readonly]="isReadOnly" />
+                        <app-validation-error [control]="s1['officeState']"></app-validation-error>
+                    </div>
+
+                </div>
+                <div class="form-element mdl_form_btn text-right mb-0">
+                    <button class="c2a bg--fpGreen w-100 c2a-lg c--whitee hvr:bg--fpYellow hvr:c--blak" type="submit"
+                        value="Get a Quote" [disabled]="loading || ziploading">
+                        
+                        <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">SUBMIT</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- DOWNLOAD Brocure form-->
+<!-- <div class="modal_wrap modal_wrap_on">
+    <div class="modal-dialog">
+        <div for="modal-test" class="modal-close" >×</div>
+        <div class="modal-content brocure_form modal_show">
+            <form class="form-style-3 flow-rootx moadal_form">
+                <div class="mod_hdng">
+                    <div class="hd-i">
+                        <h3>Please fillup the form to download brochure</h3>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <label class="form-label">First name <span class="c--madnatory">*</span></label>
+                    <input type="text" class="form-field"  />
+                </div>
+                <div class="form-element">
+                    <label class="form-label">Last Name <span class="c--madnatory">*</span></label>
+                    <input type="text" class="form-field" />
+                </div>
+                <div class="form-element">
+                    <label class="form-label">Email Address <span class="c--madnatory">*</span></label>
+                    <input type="text" class="form-field">
+                </div>
+                <div class="form-element">
+                    <label class="form-label">Phone <span class="c--madnatory">*</span></label>
+                    <input type="text" class="form-field">
+                </div>
+                <div class="form-element mdl_form_btn text-right mb-0">
+                    <button class="c2a bg--fpGreen w-100 c2a-lg c--whitee hvr:bg--fpYellow hvr:c--blak" type="submit">DOWNLOAD</button>
+                </div>
+            </form>    
+        </div>
+    </div>
+</div> -->
+
+<app-blog-list></app-blog-list>
+<app-check-out-strip></app-check-out-strip>

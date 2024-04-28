@@ -1,0 +1,168 @@
+
+<app-realtor-post-header></app-realtor-post-header>
+<main>
+    <section class="rp_panel">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="main-inner-container">
+                        <div class="inner-container">
+                            <div class="card_header">
+                                <h3>Edit Profile</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card_inner">
+                                    <form class="form-style rl_edit_form" [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+                                        <div class="grid grid-2 grid-sm-1">
+                                            <div class="form-element">
+                                                <label class="form-label">Company Name <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="companyName"  [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" />                                                  
+                                                    <span class="material-symbols-outlined">corporate_fare</span>
+                                                    <app-validation-error [control]="f['companyName']"></app-validation-error>
+                                            </div>                                           
+                                        
+                                            <div class="form-element">
+                                                <label class="form-label">Contact Name <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="contactName" minlength="3"
+                                                    maxlength="30"  [ngClass]="{ 'is-invalid': submitted && f['contactName'].errors }"/>
+                                                <span
+                                                    class="material-symbols-outlined">person</span>
+                                                    <app-validation-error [control]="f['contactName']"></app-validation-error>
+                                            </div>                                            
+                                        </div>
+                                        <div class="grid grid-2 grid-sm-1">
+                                            <div class="form-element ">
+                                                <label class="form-label">Email <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="emailId" [readonly]="isReadOnly">
+                                                <span class="material-symbols-outlined">mail</span>
+                                               <app-validation-error [control]="f['emailId']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">Phone <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" inputmode="numeric" class="form-field"
+                                                    formControlName="mobileNo" placeholder=""
+                                                     />
+                                                <span
+                                                    class="material-symbols-outlined">phone_in_talk</span>
+                                                    <app-validation-error [control]="f['mobileNo']"></app-validation-error>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-sm-1">
+                                            <div class="form-element ">
+                                                <label class="form-label">Address <span
+                                                        class="c--error">*</span></label>
+                                                        <textarea class="form-field"
+                                                        formControlName="address"></textarea>                                                
+                                                <span class="material-symbols-outlined">home</span>
+                                                <app-validation-error [control]="f['address']"></app-validation-error>
+                                                
+                                            </div>                                          
+                                        </div>
+                                        <div class="flow-root edit_radio_form">
+                                            <span>Designation</span>
+                                            <div class="form-element">
+                                                <div>
+                                                    <div class="radio_inline radioflx">
+                                                        <div class="radio-group">
+                                                            <input type=radio id="rdo1" checked="true" class="radio-input" name="accountType"
+                                                                formControlName="accountType" value="1">
+                                                            <label for="rdo1" class="radio-label"> <span class="radio-border"></span>Real Estate
+                                                                Agent
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio-group">
+                                                            <input type=radio id="rdo2" class="radio-input" name="accountType"
+                                                                formControlName="accountType" value="2">
+                                                            <label for="rdo2" class="radio-label"><span
+                                                                    class="radio-border"></span>Closing/Title/Escrow Agent/Attorney
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio-group">
+                                                            <input type=radio id="rdo3" class="radio-input" name="accountType"
+                                                                formControlName="accountType" value="3">
+                                                            <label for="rdo3" class="radio-label mr-0"><span
+                                                                    class="radio-border"></span>Administrator/Transaction Coordinator
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <app-validation-error [control]="s1['accountType']"></app-validation-error> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-2 grid-sm-1">
+                                            <div class="form-element ">
+                                                <label class="form-label">Office Location <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="officeLocation"
+                                                    minlength="3">
+                                                <span class="material-symbols-outlined">home</span>
+                                                <app-validation-error [control]="f['officeLocation']"></app-validation-error>
+                                            </div>   
+                                            <div class="form-element ">
+                                                <label class="form-label">Office Address <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="officeAddress"
+                                                    minlength="3">
+                                                <span class="material-symbols-outlined">home</span>
+                                                <app-validation-error [control]="f['officeAddress']"></app-validation-error>
+                                            </div>                                       
+                                        </div>
+                                        <div class="grid grid-3 grid-sm-1">
+                                            <div class="form-element ">
+                                                <label class="form-label">Zip Code <span
+                                                        class="c--error">*</span></label>
+                                                <input  type="text" pattern="\d*" class="form-field" formControlName="officeZip" allowOnlyNumbers [minlength]="5" [maxlength]="5" onKeyPress="if(this.value.length==5) return true;"
+                                                (keyup)="chekcZipCode($event)">
+                                                <span
+                                                    class="material-symbols-outlined">markunread_mailbox</span>
+                                                    <app-validation-error [control]="f['officeZip']"></app-validation-error>
+                                                    <div class="my-1 py-2 alert alert-danger" *ngIf="validZipMessage">
+                                                        <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                                                        <span>{{validZipMessage}}</span>
+                                                    </div>
+                                               
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">State </label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="officeCity" [readonly]="isReadOnly">
+                                                <span class="material-symbols-outlined">where_to_vote</span>
+                                                <app-validation-error [control]="f['officeCity']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">City</label>
+                                                <input type="text" class="form-field"
+                                                    formControlName="officeState" [readonly]="isReadOnly">
+                                                <span
+                                                    class="material-symbols-outlined">navigation</span>
+                                                    <app-validation-error [control]="f['officeState']"></app-validation-error>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="editfrm_btn gap-0">
+                                            <button type="submit"
+                                                class="c2a justify-content-between justify-md-content-center c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow"
+                                                >UPDATE</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>            
+</main>
+<app-realtor-post-footer></app-realtor-post-footer>

@@ -1,0 +1,811 @@
+<main class="fphw--checkout">
+    <section>
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="stepper_wrapper">
+                    <button type="button" class="back hvr:c--fpGreen" *ngIf="stepperBackBtn" (click)="stepBack()"><span
+                                class="material-symbols-outlined">arrow_back</span> Back</button>
+                    <ng-stepper style="overflow: visible;" [linear]="true" (selectionChange)="onStepChanged($event)">
+
+                        <!-- Step 1 -->
+                        <cdk-step [stepControl]="stepOneForm" [optional]="false">
+                            <ng-template cdkStepLabel>
+                                <div class="step-bullet">1</div>
+                                <div class="step-title current"><span class="stp">Step 1</span></div>
+                            </ng-template>
+                            <div class="step step-1">
+                                <div class="step-block">
+                                    <figure class="experance_home_icn">
+                                        <!-- <source srcset="assets/img/funnel/step-1-hero.webp" type="image/webp">
+                                        <source srcset="assets/img/funnel/step-1-hero.png" type="image/png"> -->
+                                        <img src="./assets/img/funnel/step-1-hero.webp" alt="Get your Home Warranty"
+                                            title="Get your Home Warranty">
+                                    </figure>
+
+                                    <article class="flow-rootX3">
+                                        <div class="flow-rootx2">
+                                            <h1  class="h2 fw--b" *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+						                    <h1 class="h2 fw--b" *ngIf="!pageDetails?.h1_tag">Get your Home Warranty</h1>
+                                            <p class="h5">Let us know what should we call you?</p>
+                                        </div>
+
+                                        <form class="form-style checkout_form" [formGroup]="stepOneForm"
+                                            (ngSubmit)="stepOneSubmit()" #formRef="ngForm">
+                                            <div class="form-element ">
+                                                <label class="form-label">First Name <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field" minlength="3" maxlength="25"
+                                                    formControlName="firstName"
+                                                    [ngClass]="{ 'is-invalid': stepOneSubmitted && s1['firstName'].errors }" (keypress)="mszKeyDown($event)"
+                                                     autocomplete="off" (keydown)="preventNumberInput($event)" />
+                                                <span class="material-symbols-outlined">person</span>
+                                                <app-validation-error
+                                                    [control]="s1['firstName']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">Last Name <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field" placeholder="" minlength="3"
+                                                    maxlength="25" formControlName="lastName" (keypress)="mszKeyDown($event)"
+                                                    autocomplete="off" (keydown)="preventNumberInput($event)">
+                                                <span class="material-symbols-outlined">person</span>
+                                                <app-validation-error [control]="s1['lastName']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">Email <span class="c--error">*</span></label>
+                                                <input type="text" class="form-field" formControlName="emailId"
+                                                    placeholder="" (keypress)="mszKeyDown($event)">
+                                                <span class="material-symbols-outlined">mail</span>
+                                                <app-validation-error [control]="s1['emailId']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element ">
+                                                <label class="form-label">Phone <span class="c--error">*</span></label>
+                                                <input type="text" inputmode="numeric" class="form-field" formControlName="mobileNo"
+                                                    placeholder="" usPhoneNumber (input)="changePhoneFormat($event)">
+                                                <span class="material-symbols-outlined">phone_in_talk</span>
+                                                <app-validation-error [control]="s1['mobileNo']"></app-validation-error>
+                                            </div>
+
+                                            
+                                            <div class="form-element">
+                                                <button type="submit"
+                                                    class="c2a c2a-lg justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100"
+                                                    cdkStepperNext [disabled]="loading">
+                                                    <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">CONTINUE TO PROPERTY DETAILS</span>
+                                                    <span
+                                                        class="material-symbols-outlined">east</span></button>
+                                            </div>
+                                        </form>
+                                    </article>
+                                </div>
+                            </div>
+                        </cdk-step>
+                        <!-- Step 2 -->
+                        <cdk-step [stepControl]="stepTwoForm" [optional]="false">
+                            <ng-template cdkStepLabel>
+                                <div class="step-bullet">2</div>
+                                <div class="step-title current"><span class="stp">Step 2</span></div>
+                            </ng-template>
+                            <div class="step step-2">
+                                <div class="step-block">
+                                    <picture class="experance_home_icn">
+                                        <source srcset="assets/img/funnel/step-2-hero.webp" type="image/webp">
+                                        <source srcset="assets/img/funnel/step-2-hero.png" type="image/png">
+                                        <img src="./assets/img/funnel/step-2-hero.webp" alt="Get your Home Warranty"
+                                            title="Get your Home Warranty">
+                                    </picture>
+                                    <article class="flow-rootX3">
+                                        <div class="flow-rootx2">
+                                            <h2 class="h2 fw--b">Property Details</h2>
+                                            <p class="h5">Let us know about your property</p>
+                                        </div>
+                                        <form class="form-style checkout_form" [formGroup]="stepTwoForm"
+                                            (ngSubmit)="stepTwoSubmit()" #formRef="ngForm">
+                                            <div class="form-element ">
+                                                <label class="form-label">Address <span
+                                                        class="c--error">*</span></label>
+                                                <input type="text" class="form-field" id="addressBar" placeholder=""
+                                                    formControlName="propertyAddressOne" minlength="3" maxlength="150">                                                     
+                                                <span class="material-symbols-outlined">home</span>
+                                                <app-validation-error
+                                                    [control]="s2['propertyAddressOne']"></app-validation-error>
+                                            </div>
+                                            <div class="grid grid-2 grid-sm-1">
+                                                <div class="form-element ">
+                                                    <label class="form-label">Zip Code <span
+                                                            class="c--error">*</span></label>
+                                                    <input type="text" pattern="\d*" class="form-field" placeholder=""
+                                                        formControlName="propertyZipCode"
+                                                        (input)="allowOnlyNumber($event)" (keyup)="chekcZipCode($event)"
+                                                        onKeyPress="if(this.value.length==5) return true;" [minlength]="5" [maxlength]="5"
+                                                        [ngClass]="{ 'is-invalid': stepTwoSubmitted && s2['propertyZipCode'].errors }">
+                                                    <span class="material-symbols-outlined">markunread_mailbox</span>
+                                                    <app-validation-error
+                                                        [control]="s2['propertyZipCode']"></app-validation-error>
+                                                    <div class="my-1 py-2 alert alert-danger" *ngIf="validZipMessage">
+                                                        <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                                                        <span>{{validZipMessage}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-element ">
+                                                    <label class="form-label">State </label>
+                                                    <input type="text" class="form-field" placeholder=""
+                                                        formControlName="propertyState" readonly>
+                                                    <app-validation-error
+                                                        [control]="s2['propertyState']"></app-validation-error>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-2 grid-sm-1">
+                                                <div class="form-element ">
+                                                    <label class="form-label">City</label>
+                                                    <input type="text" class="form-field" placeholder=""
+                                                        formControlName="propertyCity" readonly>
+                                                    <span class="material-symbols-outlined">navigation</span>
+                                                    <app-validation-error
+                                                        [control]="s2['propertyCity']"></app-validation-error>
+                                                </div>
+                                                <div class="form-element">
+                                                    <label class="form-label">Type of Home<span
+                                                            class="c--error">*</span></label>
+                                                    <select class="form-field form-select" id="propertyType"
+                                                        formControlName="propertyTypeId"
+                                                        (change)="getSelectedPropertyText()">
+                                                        <!-- <option value>Type of Home</option>  -->
+                                                        <option *ngFor="let item of propertyTypes"
+                                                            value="{{item.property_type_id}}">{{item.property_type}}
+                                                        </option>
+                                                    </select>
+                                                    <app-validation-error
+                                                        [control]="s2['propertyTypeId']"></app-validation-error>
+                                                </div>
+                                            </div>
+                                            <div class="form-element overlay-label">
+                                                <label class="form-label">Property Size<span
+                                                        class="c--error">*</span></label>
+                                                <div class="form-radio">
+                                                    <label>
+                                                        <input type="radio" name="propertySizeId" value="0"
+                                                            formControlName="propertySizeId">
+                                                        <span class="checkmark"></span>
+                                                        <p>Under 5,000 sq. ft</p>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="propertySizeId" value="1"
+                                                            formControlName="propertySizeId">
+                                                        <span class="checkmark"></span>
+                                                        <p>Over 5,000 sq. ft</p>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                            <app-validation-error
+                                                [control]="s2['propertySizeId']"></app-validation-error>
+                                            <div class="form-element">
+                                                <button type="submit"
+                                                    class="c2a c2a-lg justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100" [disabled]="loading || ziploading">
+                                                    <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> loading...</span> <span *ngIf="!loading">CONTINUE
+                                                        TO COVERAGE PLAN</span>
+                                                    <span
+                                                        class="material-symbols-outlined">east</span></button>
+                                            </div>
+                                        </form>
+                                    </article>
+                                </div>
+                            </div>
+                        </cdk-step>
+                        <!-- Step 3 -->
+                        <cdk-step [stepControl]="stepThreeForm" [optional]="false">
+                            <ng-template cdkStepLabel>
+                                <div class="step-bullet">3</div>
+                                <div class="step-title current"><span class="stp">Step 3</span></div>
+                            </ng-template>
+                            <div class="step step-3">
+                                <div class="step-coverage">
+                                    <div class="coverage-head">
+                                        <div class="flow-rootx">
+                                            <p class="h2 fw--b">Select Coverage Plan</p>
+                                            <p class="h5 subcpln">Find the plan that's right for you.<br> Your comprehensive
+                                                coverage starts here.</p>
+                                        </div>
+
+                                        <div class="switch-container">
+                                            <p>Monthly </p>
+                                            <label class="switch"><input type="checkbox" [(ngModel)]="planTerm"
+                                                    (change)="changePlanTerm()" />
+                                                <div></div>
+                                            </label>
+                                            <p>Annually <span class="bg--fpGreen">Best Choice</span></p>
+                                        </div>
+
+                                        <div class="annual-benefits flow-rootx3 {{planTerm?'':'not-benefited'}}">
+                                            <p class="h4 fw--b c--fpBlue">GET 2 MONTHS FREE</p>
+                                            <p class="h6">+ Limited Roof Coverage with Annual Plan Purchase</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="coverage-plans {{isExpanded?'showing-child':''}}">
+                                        <!-- <div class="premier-plan plan">
+                                        <div class="plan-price">
+                                            <div class="price">
+                                                <p class="currentPrice c--whitee"><span>$39.99</span><span>/Month</span>
+                                                </p>
+                                                <p class="oldPrice c--whitee"><span>$42.99</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-head">
+                                            <p class="plName"><span>Premier</span><span>Plan</span></p>
+                                        </div>
+                                        <div class="plan-body">
+                                            <ul>
+                                                <li class="include">Plumbing System</li>
+                                                <li class="include">Plumbing Stopage</li>
+                                                <li class="include">Water Heater</li>
+                                                <li class="include">Whirlpool Bathtub</li>
+                                                <li class="include">Electrical System</li>
+                                                <li class="include">Oven/Range/Stove</li>
+                                                <li class="include">Cooktop</li>
+                                                <li class="include">Sump Pump</li>
+                                                <li class="include">Built-in Microwave</li>
+                                                <li class="include">Dishwasher</li>
+                                                <li class="include">Garbage Disposal</li>
+                                                <li class="include">Trash Compactor</li>
+                                                <li class="include">Ductwork</li>
+                                                <li class="include">Garage Door Opener</li>
+                                                <li class="include">Ceiling & Exhaust Fans</li>
+                                                <li class="exclude">A/C System (2 Units)</li>
+                                                <li class="exclude">Heating System (2 Units)</li>
+                                                <li class="exclude">Clothes Washer</li>
+                                                <li class="exclude">Refrigerator</li>
+                                                <li class="exclude">Clothes Dryer</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="platinum-plan plan plan-active">
+                                        <div class="plan-price">
+                                            <div class="price">
+                                                <p class="currentPrice c--whitee"><span>$47.99</span><span>/Month</span>
+                                                </p>
+                                                <p class="oldPrice c--whitee"><span>$54.99</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-head">
+                                            <p class="plName"><span>Platinum</span><span>Plan</span></p>
+                                            <figure><img src="./assets/img/funnel/popular-badge.webp"
+                                                    alt="Most Popular">
+                                            </figure>
+                                        </div>
+                                        <div class="plan-body">
+                                            <ul>
+                                                <li class="include">Plumbing System</li>
+                                                <li class="include">Plumbing Stopage</li>
+                                                <li class="include">Water Heater</li>
+                                                <li class="include">Whirlpool Bathtub</li>
+                                                <li class="include">Electrical System</li>
+                                                <li class="include">Oven/Range/Stove</li>
+                                                <li class="include">Cooktop</li>
+                                                <li class="include">Sump Pump</li>
+                                                <li class="include">Built-in Microwave</li>
+                                                <li class="include">Dishwasher</li>
+                                                <li class="include">Garbage Disposal</li>
+                                                <li class="include">Trash Compactor</li>
+                                                <li class="include">Ductwork</li>
+                                                <li class="include">Garage Door Opener</li>
+                                                <li class="include">Ceiling & Exhaust Fans</li>
+                                                <li class="include">A/C System (2 Units)</li>
+                                                <li class="include">Heating System (2 Units)</li>
+                                                <li class="include">Clothes Washer</li>
+                                                <li class="include">Refrigerator</li>
+                                                <li class="include">Clothes Dryer</li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                        <ng-container *ngFor="let item of planList">
+                                            <div class="plan plan-{{ item.plan_name | lowercase}} {{item.is_active?'plan-active':''}}"
+                                               >
+                                                <span *ngIf="item.plan_id == 2"
+                                                    class="mostpopular"><span><img src="assets/img/thumbs-up.gif" alt="Mostpopular" title="Mostpopular" /></span> Most Popular</span>
+                                                <div class="plan-inner">
+                                                    <div class="plan-head">
+                                                        <p class="plName"><span>{{item.plan_name}} Plan</span></p>
+                                                    </div>
+
+                                                    <div class="plan-price">
+                                                        <div class="price">
+                                                            <p class="currentPrice">
+                                                                <span class="c--{{item.plan_id == 2?'platinum':'premier'}}"
+                                                                    *ngIf="s2['propertySizeId'].value==0">{{item.price_below_5000_sqft | currency:'USD'}}</span>
+                                                                <span
+                                                                    *ngIf="s2['propertySizeId'].value==1">{{item.price_above_5000_sqft| currency:'USD'}}</span>
+                                                                <span>/{{planTerm?'Year':'Month'}}</span>
+                                                            </p>
+                                                            <p class="oldPrice">
+                                                                <span
+                                                                    *ngIf="s2['propertySizeId'].value==0">{{(item.price_below_5000_sqft
+                                                                    + (planTerm?200:20))| currency:'USD' }}</span>
+                                                                <span
+                                                                    *ngIf="s2['propertySizeId'].value==1">{{(item.price_above_5000_sqft
+                                                                    + (planTerm?200:20))| currency:'USD'}}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="plan-body">
+                                                        <ul>
+                                                            <!-- <li class="include" *ngFor="let product of item.product_list">
+                                                                {{product.product_name}}</li> -->
+                                                            <ng-container *ngFor="let product of planWiseProductList | slice:0:item.displayedItems">
+                                                                <li
+                                                                    *ngIf="product.exist_in_both_plan || item?.plan_id==2">
+                                                                    <i
+                                                                        class="material-symbols-outlined">check_circle</i>
+                                                                    {{product?.product_name}}
+                                                                </li>
+                                                                <li
+                                                                    *ngIf="!product.exist_in_both_plan && item?.plan_id==1">
+                                                                    <i
+                                                                        class="material-symbols-outlined cancl">cancel</i>
+                                                                    {{product?.product_name}}
+                                                                </li>
+                                                            </ng-container>
+                                                        </ul>
+                                                        <button type="button" class="more_link" (click)="showMore(item)" *ngIf="!item.showMoreItem"> Show More</button>
+								                        <button type="button" class="more_link" (click)="showMore(item)" *ngIf="item.showMoreItem"> Show Less</button>
+                                                    </div>
+                                                </div>
+
+                                                <button type="button"
+                                                    class="c2a c2a-lg justify-content-between justify-md-content-center c--whitee w-100"  (click)="planSelection(item)"><span>GET
+                                                        THE PLAN</span><span
+                                                        class="material-symbols-outlined">east</span></button>
+                                            </div>
+                                        </ng-container>
+
+                                        <div #optionalPlan class="plan optional-plan">
+                                            <!-- <div class="coverage-info">
+                                                <p class="c--whitee info">Add Optional Coverage To Customize Your Plan
+                                                </p>
+                                            </div> -->
+                                            <!-- <div class="plan-head">
+                                                <p class="plName"><span>Optional Coverage</span><span>Add On
+                                                        Items</span>
+                                                </p>
+                                            </div> -->
+                                            <div class="plan-head">
+                                                <!-- <p class="plName"><span>Add Optional Coverage To Customize Your Plan</span></p> -->
+                                                <p class="plName"><span>Optional Coverage</span>
+                                                    <em>Choose from the list</em>
+                                                </p>
+                                            </div>
+                                            <div class="plan-body form-style posiR">
+                                                <div *ngIf="(activePlan | json) == '{}' || activePlan==undefined" (click)="disableClick()"
+                                                    style="position:absolute;width: 100%;height: 100%; z-index: 9999;top: 0;left: 0;">
+                                                </div>
+                                                <ul class="form-checkbox">
+                                                    <ng-container *ngFor="let item of addOnProductList | slice:0:displayedAddonItems">
+                                                        <li><label><input type="checkbox" [(ngModel)]="item.is_selected"
+                                                                    (change)="addonProductSelection($event,item)"><span
+                                                                    class="checkmark"></span>
+                                                                <p>{{item.product_name}}</p>
+                                                            </label>
+                                                            <div class="addons_price fw--sb c--fpBlue" *ngIf="planTerm">
+                                                                {{item.yearly_price | currency:'USD'}}/yr
+                                                            </div>
+                                                            <div class="addons_price fw--sb c--fpBlue" *ngIf="!planTerm">
+                                                                {{item.monthly_price | currency:'USD'}}/mo
+                                                            </div>
+                                                        </li>
+                                                    </ng-container>
+
+                                                </ul>
+                                                
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="button" class="more_link" (click)="showMoreAddon()" *ngIf="!showMoreItemAddon"> Show More</button>
+                                                <button type="button" class="more_link" (click)="showMoreAddon()" *ngIf="showMoreItemAddon"> Show Less</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="plan-prices-block {{activePlan?.plan_name?'is-showing':''}}">
+                                        <div class="plan-prices-block--inner">
+                                            <div class="plan-prices_bx">
+                                                <div><h5 class="h5">{{activePlan?.plan_name}} Plan:</h5></div>
+                                                <div><span class="fw--b">{{selectedPlanPrice |currency:'USD'}}</span></div>
+                                                 
+                                            </div>
+                                            <div class="plan-prices_bx">
+                                                <div><p>Optional Coverage:</p></div>
+                                                <div><span class="fw--b">{{totalAddonProductPrice | currency:'USD'}}</span></div>
+                                            </div>
+                                            
+                                            <div class="total-price plan-prices_bx">
+                                                <div>
+                                                    <p class="c--fpBlue">Total: </p>
+                                                    <p>Deductible <span>$75</span> per Claim</p>
+                                                </div>
+                                                <div>
+                                                    <span class="fw--b">{{(selectedPlanPrice+totalAddonProductPrice) |
+                                                            currency:'USD'}} / {{planTerm?'year':'month'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="nxt_stp_btn">
+                                                <button class="step-cta bg--fpGreen c--whitee hvr:bg--blak c2a"
+                                                    (click)="goToStepFour()">
+                                                    <span>NEXT STEP</span>
+                                                    <span class="material-symbols-outlined">east</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </cdk-step>
+                        <!-- Step 4 -->
+                        <cdk-step [stepControl]="stepFourForm" [optional]="false">
+                            <ng-template cdkStepLabel>
+                                <div class="step-bullet">4</div>
+                                <div class="step-title current"><span class="stp">Step 4</span></div>
+                            </ng-template>
+                            <div class="step step-4">
+                                <form [formGroup]="stepFourForm" (ngSubmit)="stepFourSubmit()"
+                                #formRef="ngForm" #stepFour>
+                                <div class="flow-rootX6 polcy_mb">
+                                    <div class="step-4-heading flow-rootx3">
+                                        <p class="h2 fw--b c--fpBlue">Get Coverage</p>
+                                        <p class="subcpln">Find the plan that’s right for you. Your comprehensive coverage starts here.
+                                        </p>
+                                    </div>
+
+                                    <div class="step-block">
+                                        <div class="step-4-info">
+                                            <div class="purchase-summary">
+
+                                                <div class="purchase-summary-block">
+                                                    <h5 class="fw--b"><span
+                                                            class="material-symbols-outlined">person</span></h5>
+                                                    <div class="purchase-summary-infos">
+                                                        <h5 class="fw--b">Customer Info</h5>
+                                                        <p>{{s1['firstName'].value}} {{s1['lastName'].value}}</p>
+                                                        <p>{{s1['emailId'].value}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="purchase-summary-block">
+                                                    <h5 class="fw--b"> <span class="material-symbols-outlined">event_note</span></h5>
+                                                    <div class="purchase-summary-infos">
+                                                        <h5 class="fw--b">Policy Plan</h5>
+                                                        <p>{{activePlan?.plan_name}}</p>
+                                                        <p>{{totalPolicyTerm | titlecase}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="purchase-summary-block">
+                                                    <h5 class="fw--b"> <span
+                                                            class="material-symbols-outlined">home</span></h5>
+                                                    <div class="purchase-summary-infos">
+                                                        <h5 class="fw--b">Property Info</h5>
+                                                        <p><span [ngSwitch]="s2['propertyTypeId'].value">
+                                                                <span *ngSwitchCase="1">Single Family</span>
+                                                                <span *ngSwitchCase="2">Condo</span>
+                                                                <span *ngSwitchCase="3">Town Home</span>
+                                                                <span *ngSwitchCase="4">Mobile</span>
+                                                                <span *ngSwitchCase="5">Two Family</span>
+                                                                <span *ngSwitchCase="6">Three Family</span>
+                                                                <span *ngSwitchCase="7">Four Family</span>
+                                                            </span></p>
+                                                        <p>{{s2['propertySizeId'].value==0?'Under':'Over'}} 5,000 sq.
+                                                            ft.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="purchase-summary-block">
+                                                    <h5 class="fw--b"><span class="material-symbols-outlined">home_pin</span>
+                                                    </h5>
+                                                    <div class="purchase-summary-infos">
+                                                        <h5 class="fw--b">
+                                                            <span>Property Location</span>
+                                                        </h5>
+                                                        
+                                                        <p>{{s2['propertyAddressOne'].value}} </p>
+                                                        <p>{{s2['propertyCity'].value}}, 
+                                                            {{s2['propertyState'].value}},
+                                                         {{s2['propertyZipCode'].value}}</p>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-style billing_form">
+                                                <div class="step-4-billing">
+                                                    <div class="form-style flow-rootX2 checkout_form">
+                                                        <div class="form-element">
+                                                            <p class="h4 fw--b">Billing Details</p>
+                                                            <div class="form-checkbox">
+                                                                <label><input type="checkbox"
+                                                                        [(ngModel)]="isSamePropertyAddress"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        (change)="setSamePropertyAddress()"><span
+                                                                        class="checkmark"></span>
+                                                                    <p>Same As Property Address</p>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-element ">
+                                                            <label class="form-label">Billing Address <span
+                                                                    class="c--error">*</span></label>
+                                                            <input type="text" class="form-field"
+                                                                formControlName="billingAddress" id="addressBar2" placeholder=""
+                                                                [ngClass]="{ 'is-invalid': stepFourSubmitted && s4['billingAddress'].errors }" (input)="changeBillingAddress()">
+                                                            <app-validation-error
+                                                                [control]="s4['billingAddress']"></app-validation-error>
+                                                        </div>
+                                                        <div class="form-element ">
+                                                            <label class="form-label">Zip Code <span
+                                                                    class="c--error">*</span></label>
+                                                            <input type="text"  pattern="\d*" class="form-field"
+                                                                formControlName="billingZipCode" allowOnlyNumbers
+                                                                [ngClass]="{ 'is-invalid': stepFourSubmitted && s4['billingZipCode'].errors }"
+                                                                onKeyPress="if(this.value.length==5) return true;"  [minlength]="5" [maxlength]="5"
+                                                                (input)="changeBillingAddress()" (keyup)="chekcBillingZipCode($event)">
+                                                            <app-validation-error
+                                                                [control]="s4['billingZipCode']"></app-validation-error>
+                                                                <div class="my-1 py-2 alert alert-danger" *ngIf="validBillingZipMessage">
+                                                                    <i aria-hidden="true" class="pi pi-exclamation-circle me-2"></i>
+                                                                    <span>{{validBillingZipMessage}}</span>
+                                                                </div>
+    
+                                                        </div>
+                                                        <div class="form-grid">
+                                                            <div class="form-element ">
+                                                                <label class="form-label">State </label>
+                                                                <input type="text" class="form-field"
+                                                                    formControlName="billingState" readonly
+                                                                    [ngClass]="{ 'is-invalid': stepFourSubmitted && s4['billingState'].errors }">
+                                                                <app-validation-error
+                                                                    [control]="s4['billingState']"></app-validation-error>
+                                                            </div>
+                                                            <div class="form-element ">
+                                                                <label class="form-label">City </label>
+                                                                <input type="text" class="form-field"
+                                                                    formControlName="billingCity" readonly
+                                                                    [ngClass]="{ 'is-invalid': stepFourSubmitted && s4['billingCity'].errors }">
+                                                                <app-validation-error
+                                                                    [control]="s4['billingCity']"></app-validation-error>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <figure class="payment-upto-desktop">
+                                                        <img src="./assets/img/funnel/payment-method.jpg" alt="Payment Method">
+                                                    </figure>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="property-details flow-root">
+                                            <div class="prop_top">
+                                                <div class="policy-term stpper_select_form">
+                                                    <p class="d-grid flow-rootx">
+                                                        <span class="h4 fw--b">Choose Policy Term</span>
+                                                        <span class="h6">Available for multi-year plans</span>
+                                                    </p>
+                                                    <div class="form-style checkout_form ">
+                                                        <div class="form-element">
+                                                            <label class="form-label">Select Policy Term</label>
+                                                            <select class="form-field" [(ngModel)]="planTermSelection"  [ngModelOptions]="{standalone: true}"
+                                                                (change)="changePolicyTerm();updateLeadByField('policyTerm', $event)">                                                           
+                                                                <ng-container *ngFor="let item of policyTerm">
+                                                                    <option value="{{item.plan_term_month}}">
+                                                                        {{item.plan_term}}</option>
+                                                                </ng-container>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="coverage-details flow-rootX">
+                                                    <p class="h4 fw--b">Coverage Details</p>
+                                                    <div class="h5 c-row">
+                                                        <div>{{activePlan?.plan_name}} Plan</div>
+                                                        <div class="fw--b">{{selectedPlanPrice | currency:'USD'}}</div>
+                                                    </div>
+                                                    <div>
+                                                        <div  class="h5 c-row" *ngIf="selectdAddOnProducts.length>0">
+                                                            <button type="button" (click)="toggleAddonItem()"
+                                                                *ngIf="selectdAddOnProducts.length>0"
+                                                                class="c--pointer c--fpBlue collapsible">Optional Add-ons
+                                                                {{showAddonItem?'-':'+'}}</button>
+    
+                                                                <div class="fw--b">{{totalAddonProductPrice |
+                                                                    currency:'USD'}}</div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="addon_collaps_content" *ngIf="showAddonItem">
+                                                                <ul>
+                                                                    <ng-container *ngFor="let item of selectdAddOnProducts">
+                                                                        <li>{{item.product_name}} <span *ngIf="this.planTermSelection==1">{{item.monthly_price | currency:'USD'}}</span><span *ngIf="planTermSelection>1">{{(item.yearly_price * (planTermSelection/12)) | currency:'USD'}}</span></li>
+                                                                    </ng-container>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="h5 c-row subtotal">
+                                                        <span>Subtotal </span>
+                                                        <span class="fw--b">{{(selectedPlanPrice +totalAddonProductPrice) |
+                                                            currency:'USD'}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="step-4-payment">
+                                                <div class="flow-rootx">
+                                                    <p class="h4 fw--b">Payment Details</p>
+                                                    <p>Select your payment method</p>
+                                                </div>
+    
+                                                <p class="data-safe"><span
+                                                        class="material-symbols-outlined">encrypted</span> Your data is
+                                                    safe with us</p>
+    
+                                                <div class="form-style flow-rootX2">
+                                                    <div class="wrapper">
+                                                        <input type="radio" name="select" id="credit-card" checked>
+                                                        <input type="radio" name="select" id="bank-account">
+                                                        <!-- <input type="radio" name="select" id="paypal" *ngIf="planTermSelection!=1"> -->
+                                                    </div>
+    
+                                                    <div class="tab-container">
+    
+                                                        <div class="tab active" (click)="openTab($event, 'tab1')">
+                                                            <label for="credit-card" class="option credit-card">
+                                                                <figure><img src="./assets/img/funnel/credit-card.webp"
+                                                                        alt="Credit Card">
+                                                                </figure>
+                                                                <span>Credit Card</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="tab " (click)="openTab($event, 'tab2')" style="display: none;"> <label
+                                                                for="bank-account" class="option bank-account">
+                                                                <figure><img src="./assets/img/funnel/bank-account.webp"
+                                                                        alt="Bank Account">
+                                                                </figure>
+                                                                <span>Bank Account</span>
+                                                            </label></div>
+                                                            
+                                                            <!-- <div class="tab" *ngIf="planTermSelection!=1" (click)="openTab($event, 'tab3')"> <label
+                                                                for="bank-account" class="option bank-account">
+                                                                <figure><img src="./assets/img/funnel/third-party.webp"
+                                                                        alt="Bank Account">
+                                                                </figure>
+                                                                <span>ESCROW</span>
+                                                            </label></div> -->
+                                                            
+                                                    </div>
+                                                    <div id="tab1" class="tab-content active">
+                                                        
+                                                        <div class="form-element">
+                                                            <label class="form-label">Card Holder Name <span class="c--madnatory">*</span></label>
+                                                            <input type="text" class="form-field" formControlName="cardHolderName" (keypress)="mszKeyDown($event)"
+                                                            autocomplete="off" (keydown)="preventNumberInput($event)">
+                                                            <app-validation-error
+                                                                [control]="s4['cardHolderName']"></app-validation-error>
+                                                        </div>
+                                                        <div class="form-element card-form-wrap">
+                                                            <label class="form-label">Card Number <span class="c--madnatory">*</span></label>
+                                                            <input type="text" inputmode="numeric" class="form-field"
+                                                                formControlName="cardNumber" creditCardFormatter>
+                                                                <div class="input-group-prepend">
+                                                                    <div class="card-svg-icon">
+                                                                        <img id="cardImage" width="40px" src="assets/img/allCardIcon/credit-card.svg" alt="Card Image" title="Card Image">
+                                                                    </div>
+                                                                </div>
+                                                                <app-validation-error
+                                                                [control]="s4['cardNumber']"></app-validation-error>                                                               
+                                                        </div>
+                                                    
+                                                        <div class="form-grid">
+                                                            <div class="form-element">
+                                                                <label class="form-label">Expiry Date (MM/YY) <span class="c--madnatory">*</span></label>
+                                                                <input type="text"  class="form-field" id="expiryDate"
+                                                                    formControlName="expiryDate" maxlength="5">
+                                                                    <app-validation-error
+                                                                    [control]="s4['expiryDate']"></app-validation-error>
+                                                            </div>
+    
+                                                            <div class="form-element cvv_fild">
+                                                                <label class="form-label">CVV <span class="c--madnatory">*</span></label>
+                                                                <input type="text" pattern="\d*"  class="form-field" id="cvv" formControlName="cvv"  [appInputLimit]="4" maxlength="4">
+                                                                <app-validation-error
+                                                                [control]="s4['cvv']"></app-validation-error>
+                                                            </div>
+    
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab2" class="tab-content checkout_form bnk_trms">
+                                                        <div class="form-grid-on">
+                                                            <div class="form-element">
+                                                                <label class="form-label"
+                                                                    >Account Holder Name <span class="c--madnatory">*</span></label>
+                                                                <input type="text" class="form-field" placeholder=""  formControlName="bankAccountHolderName" (keypress)="mszKeyDown($event)"
+                                                                autocomplete="off" (keydown)="preventNumberInput($event)">
+                                                                <app-validation-error
+                                                                    [control]="s4['bankAccountHolderName']"></app-validation-error>
+                                                            </div>
+                                                            <div class="form-element ">
+                                                                <label class="form-label" data-label="Account Number*">Bank Account Number <span class="c--madnatory">*</span></label>
+                                                                <input type="text" class="form-field" placeholder="" allowOnlyNumbers
+                                                                    formControlName="bankAccountNumber">
+                                                                <app-validation-error
+                                                                    [control]="s4['bankAccountNumber']"></app-validation-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-element ">
+                                                            <label class="form-label" data-label="Routing number">Bank Routing Number <span class="c--madnatory">*</span></label>
+                                                            <input type="text" class="form-field" placeholder="" allowOnlyNumbers
+                                                                formControlName="routingNumber">
+                                                            <app-validation-error
+                                                                [control]="s4['routingNumber']"></app-validation-error>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab3" class="tab-content checkout_form bnk_trms">
+                                                        <div class="form-grid-on">
+                                                            <p>Just click on "GET YOUR COVERAGE" button to purchase your policy </p>
+                                                            <!-- <div class="form-element">
+                                                                <label class="form-label"
+                                                                    >Check  Number <span class="c--madnatory">*</span></label>
+                                                                <input type="text" class="form-field" placeholder=""  formControlName="bankAccountHolderName" (keypress)="mszKeyDown($event)"
+                                                                autocomplete="off" (keydown)="preventNumberInput($event)">
+                                                                <app-validation-error
+                                                                    [control]="s4['bankAccountHolderName']"></app-validation-error>
+                                                            </div>
+                                                            <div class="form-element ">
+                                                                <label class="form-label" data-label="Account Number*">Payment Date <span class="c--madnatory">*</span></label>
+                                                                <input type="text" class="form-field" placeholder="" allowOnlyNumbers
+                                                                    formControlName="bankAccountNumber">
+                                                                <app-validation-error
+                                                                    [control]="s4['bankAccountNumber']"></app-validation-error>
+                                                            </div> -->
+                                                        </div>                                                      
+                                                    </div>
+    
+                                                    <!-- <div class="form-checkbox mt-1">
+                                                        <label>
+                                                            <input type="checkbox" [(ngModel)]="termsCondition"
+                                                                [ngModelOptions]="{standalone: true}"
+                                                                class="ng-untouched ng-pristine ng-valid">
+                                                            <span class="checkmark"></span>
+                                                            <p>I agreed with the <a routerLink="/terms-conditions"
+                                                                    class="fw--b c2a-underline hvr:c--fpBlue" target="_blank">Terms & Conditions</a></p>
+                                                        </label>
+                                                    </div> -->
+    
+                                                    <div class="form-element mt-2 form_checkout_btn">
+                                                        <button type="submit" [disabled]="loading"
+                                                            class="c2a c2a-lg justify-content-between justify-md-content-center bg--fpGreen hvr:bg--fpBlue c--whitee w-100 content-start">
+                                                            <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">GET YOUR COVERAGE</span>
+                                                            <span class="material-symbols-outlined">east</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <figure class="payment-after-desktop">
+                                                        <img src="./assets/img/funnel/payment-method.jpg" alt="Payment Method">
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-style" [formGroup]="stepFourForm" (ngSubmit)="stepFourSubmit()"
+                                        #formRef="ngForm">
+                                        <div class="step-block">
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                </form>
+                            </div>
+                        </cdk-step>
+                    </ng-stepper>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

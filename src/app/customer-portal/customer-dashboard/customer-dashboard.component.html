@@ -1,0 +1,297 @@
+<!--
+<div class="fp_cp_top_header">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="top_nav_wrapper">
+                <div class="top_hdr_lft">
+                    <p>Last Account Activity - 09/20/2023 3:16 am</p>
+                </div>
+                <div class="top_hdr_right">
+                    <ul>
+                        <li><a href="javaScript:void(0)"><span class="material-symbols-outlined">support_agent</span> Support</a></li>
+                        <li class="notification"><a href="javaScript:void(0)"  data-badge="2"><span class="material-symbols-outlined">notifications_active</span> Notification</a></li>
+                        <li><a href="javaScript:void(0)"><span class="material-symbols-outlined">mail</span> Messages</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header>
+    <div class="main-container">
+        <div class="inner-container">
+            <h1 class="logo">
+                <a routerLink="/">
+                    <figure><img src="./assets/img/logo.webp" alt="First Premier Home Warranty" title="First Premier Home Warranty"></figure>
+                </a>
+            </h1>
+            <nav role="main-navigation">
+                <ul>
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/customer-portal/edit-profile">Edit Profile</a></li>
+                    <li routerLinkActive="active"><a routerLink="customer-portal/billing-payment">Billing & Payments</a></li>
+                    <li routerLinkActive="active"><a routerLink="javaScript:void(0)">My Card</a></li>
+                    <li routerLinkActive="active"><a href="customer-portal/my-policy">My Policy</a></li>
+                    <li routerLinkActive="active"><a routerLink="javaScript:void(0)">My Claim</a></li>
+                    <li routerLinkActive="active"><a routerLink="javaScript:void(0)">Refer a Friend</a></li>
+                </ul>
+            </nav>
+            <div class="call--c2a cus_menu" >
+                <span class="material-symbols-outlined usr">person</span>
+                <div class="acct_card">
+                    <p>Welcome Back, <span>John Smith</span></p>
+                </div>
+                <div class="dropdown_wrapper">
+                    <button  class="dropbtn"><span class="material-symbols-outlined c--whitee">expand_more</span></button>
+                </div>
+                <div id="myDropdown"  class="dropdown-content">
+                    <ul class="drop_menu">
+                        <li class="active"><a href="javaScript:void(0)">Change Password</a></li>
+                        <li><a href="javaScript:void(0)">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="fp__inner__banner dashboard_bnr">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="banner_wrapper">
+                <picture>
+                    <source srcset="assets/img/customer-dashboard/c-dashboard-hero.webp" type="image/webp">
+                    <source srcset="assets/img/customer-dashboard/c-dashboard-hero.jpg" type="image/jpg">
+                    <img src="assets/img/customer-dashboard/c-dashboard-hero.webp" alt="First Premier" title="First Premier">
+                </picture>
+                <div class="banner_content flow-rootX3">
+                    <h1 class="h1">File a Claim</h1>
+                    <a href="/contact-us" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">CONTACT US NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+
+
+<main>
+<section class="blling_claim">
+    <div class="main-inner-container">
+        <div class="inner-container">
+            <div class="bill_top">
+                <div class="bill_wrap">
+                    <div class="cus_hdng"><h2 class="h2">Billing & Payments</h2></div>
+                    <div class="billpay of-hidden posiR">
+                        <div class="swiper-container policy-slider slider">
+                            <div class="polcy_nav" *ngIf="customerDetails.policy_list?.length>1">
+                                <div class="swiper-nav">
+                                    <div class="swiperTop-nav--prev swiper-nav--prev"></div>
+                                    <div class="swiperTop-nav--next swiper-nav--next"></div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-wrapper">
+                                <ng-container *ngFor="let item of customerDetails.policy_list">
+                                <div class="swiper-slide">
+                                    <div class="polcy_hdng">
+                                        <p class="policy_no fw--sb"><span>Policy No:</span> {{item?.policy_number}}</p>
+                                    </div>
+                                    <div class="bill_box">
+                                        <div class="bill_box_wrap">
+                                            <div class="paymnt_card" *ngIf="(item.lastReceivedPayment | json) != '{}'">
+                                                <strong><em>Last</em> Payment Received</strong>
+                                                <span class="price" >{{item.lastReceivedPayment?.amount | currency:'USD'}}</span>
+                                                <p class="py_dt">{{ item.lastReceivedPayment?.payment_date | date: 'MMMM d, y'}}</p>
+                                            </div>
+                                            <div class="paymnt_card" *ngIf="( item.lastReceivedPayment | json) == '{}'">
+                                                <h5>Payment data not found</h5>
+                                            </div>
+
+                                        </div>
+                                        <div class="bill_box_wrap">
+                                            <div class="paymnt_card" *ngIf="(item.recentUpcomingPayment | json) != '{}'">
+                                                <strong>Upcoming Payment</strong>
+                                                <span class="price">{{item.recentUpcomingPayment?.amount | currency:'USD'}}</span>
+                                                <p class="py_dt">{{item.recentUpcomingPayment?.payment_date | date: 'MMMM d, y'}}</p>
+                                            </div>
+                                            <div class="paymnt_card" *ngIf="(item.recentUpcomingPayment | json) == '{}'">
+                                                <h5>No Upcoming Payment found</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </ng-container>
+                            </div>
+
+                        <div class="swiperTop-pagination mt-sm-1"></div>
+                    </div>
+
+                </div>
+                    <div class="edt_card bg--fpBlue">
+                        <div class="edt_card_bx">
+                            <div class="edt_card_icn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="85" height="66" viewBox="0 0 85 66" fill="none">
+                                    <path d="M75.297 60.2296C75.297 62.4434 73.5028 64.238 71.289 64.238H6.0085C3.7946 64.238 2 62.4434 2 60.2296V17.8545C2 15.6407 3.7946 13.846 6.0085 13.846H71.289C73.5028 13.846 75.297 15.6407 75.297 17.8545" stroke="white" stroke-width="2.29055"/>
+                                    <path d="M80.707 52.2921C82.285 52.1896 83.481 50.8273 83.378 49.2493L80.483 4.67773C80.38 3.09973 79.018 1.90363 77.44 2.00613L10.0109 6.38692C8.43292 6.48952 7.23682 7.85182 7.33932 9.42972" stroke="white" stroke-width="2.29055"/>
+                                    <path d="M24.9055 29.0209H14.598C12.8586 29.0209 11.4485 30.431 11.4485 32.1704V36.7515C11.4485 38.491 12.8586 39.901 14.598 39.901H24.9055C26.6449 39.901 28.055 38.491 28.055 36.7515V32.1704C28.055 30.431 26.6449 29.0209 24.9055 29.0209Z" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M10.5895 49.0631H22.6149" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M13.4527 35.0336H25.4781" stroke="white" stroke-width="1.14527"/>
+                                    <path d="M26.0508 49.0631H38.0762" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M10.5895 55.9348H38.0761" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M41.512 49.0631H53.5374" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M56.9731 49.0631H68.9985" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M56.9731 25.8714V30.4525" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M60.4089 23.0082C61.4587 24.917 62.9285 29.479 60.4089 32.4567" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M63.5583 20.7176C65.2868 23.4941 67.7067 30.1297 63.5583 34.4609" stroke="white" stroke-width="1.71791"/>
+                                    <path d="M75.297 17.2818V40.4736" stroke="white" stroke-width="2.29055"/>
+                                    <path d="M75.297 46.4863V61.3748" stroke="white" stroke-width="2.29055"/>
+                                    <path d="M81.31 52.2126L75.297 53.9306" stroke="white" stroke-width="2.29055"/>
+                                  </svg>
+                            </div>
+                            <p>View your saved cards.</p>
+                        </div>
+                        <a  routerLink="/customer-portal/my-cards" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">MY CARDS</a>
+                    </div>
+                </div>
+                <div class="claim_wrap">
+                    <div class="cus_hdng dashclam-hdng">
+                        <h3 class="h2">My Claims</h3>
+                        <a routerLink="/customer-portal/my-claims" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">View Claims</a>
+                    </div>
+                    <div class="claim_pogrs">
+                        <div class="pogrs_bar_wrap" >
+                            <strong>Total</strong>
+                            <div class="pogress_bar">
+                                <div class="pogrs_set" [style.width]="(customerClaimList.length) + '%'"></div>
+                            </div>
+                            <span *ngIf="customerClaimList.length>0">{{customerClaimList.length}}</span>
+                            <span *ngIf="customerClaimList.length==0">0</span>
+                        </div>
+                        <div class="pogrs_bar_wrap" >
+                            <strong>Active/Pending</strong>
+                            <div class="pogress_bar">
+                                <div class="pogrs_set"  [style.width]="(customerClaimList.length - completedClaimCount) + '%'"></div>
+                            </div>
+                            <span *ngIf="(customerClaimList.length - completedClaimCount)>0">{{customerClaimList.length - completedClaimCount}}</span>
+                            <span *ngIf="customerClaimList.length==0">0</span>
+                        </div>
+                        <div class="pogrs_bar_wrap">
+                            <strong>Closed</strong>
+                            <div class="pogress_bar">
+                                <div class="pogrs_set" [style.width]="completedClaimCount+ '%'"></div>
+                            </div>
+                            <span *ngIf="customerClaimList.length>0">{{completedClaimCount>0?(completedClaimCount):0}}</span>
+                            <span *ngIf="customerClaimList.length==0">0</span>
+                        </div>
+                    </div>
+                    <div class="edt_card bg--fpBlue claim_edt_card">
+                        <div class="edt_card_bx">
+                            <div class="edt_card_icn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                                    <path d="M19.502 64.9959H21.6932C21.6932 66.1792 23.1941 67.1871 24.9799 67.1871C26.7657 67.1871 28.2667 66.1792 28.2667 64.9959C28.2667 63.7908 27.1273 63.3526 24.717 62.7719C22.3943 62.1912 19.502 61.4682 19.502 58.4224C19.502 56.4614 21.1125 54.7961 23.3365 54.2373V51.849H26.6233V54.2373C28.8473 54.7961 30.4578 56.4614 30.4578 58.4224H28.2667C28.2667 57.2392 26.7657 56.2313 24.9799 56.2313C23.1941 56.2313 21.6932 57.2392 21.6932 58.4224C21.6932 59.6276 22.8326 60.0658 25.2429 60.6465C27.5655 61.2271 30.4578 61.9502 30.4578 64.9959C30.4578 66.957 28.8473 68.6223 26.6233 69.1811V71.5694H23.3365V69.1811C21.1125 68.6223 19.502 66.957 19.502 64.9959Z" fill="white"/>
+                                    <path d="M24.9799 82.525H3.88991C2.06401 81.156 -0.0541873 77.486 6.08111 73.7607C6.08111 66.9681 6.08111 59.6094 6.08111 56.7792C5.71591 51.0274 8.98441 39.6881 24.9799 40.3455" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M24.4321 82.553H45.522C47.348 81.183 49.4661 77.513 43.3309 73.788C43.3309 66.9954 43.3309 59.6367 43.3309 56.8065C43.6961 51.0547 40.4276 39.7154 24.4321 40.3727" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M17.8586 40.3453L14.5719 32.6763" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M32.3751 40.8931L36.7574 32.6763" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M13.4763 32.1285H37.853" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M29.91 28.0201V2H69.351L81.95 15.147V74.5823H52.3695" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M61.6819 21.9944H75.3767M61.6819 29.6634H75.3767M61.6819 36.5108H75.3767H40.8658M46.0699 43.6321H59.7646M61.6819 43.6321H68.5293H75.3767M52.3695 50.2056H74.8289M75.3767 57.6008H68.5293M51.5478 57.6008H65.2425M52.3695 64.1742H74.8289" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M68.2554 2.54779V16.2426H81.402" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M44.9743 29.6634C42.0527 28.0201 36.1 24.2403 35.6618 22.2683C35.2236 20.2962 35.6618 14.8731 35.6618 12.1341" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M35.6619 13.2297C37.9444 12.6819 42.345 10.6003 43.8788 6.65619H45.2482C46.5264 9.02999 50.6166 13.6132 54.5607 12.9558" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M43.8787 29.6634C46.8003 28.0201 53.5747 25.062 54.0129 23.0899C54.4511 21.1179 54.0128 14.5992 54.0128 11.8602" stroke="white" stroke-width="2.19116"/>
+                                    <path d="M41.9615 16.7903H39.2225V19.5292H41.9615V16.7903Z" fill="white"/>
+                                    <path d="M46.3437 12.9558H43.6047V15.6948H46.3437V12.9558Z" fill="white"/>
+                                    <path d="M50.726 16.7903H47.9871V19.5292H50.726V16.7903Z" fill="white"/>
+                                    <path d="M46.3437 21.1727H43.6047V23.9117H46.3437V21.1727Z" fill="white"/>
+                                  </svg>
+                            </div>
+                            <p>Visit My Claim page to know more.</p>
+                        </div>
+                        <a routerLink="/customer-portal/my-claims" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">MY CLAIMS</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="propites_wrap">
+                <div class="propit_box">
+                    <div class="cus_hdng mb-0">
+                        <h4 class="">Covered Properties</h4>
+                        <div class="swiper-nav">
+                            <div class="swiperBot-nav--prev swiper-nav--prev"></div>
+                            <div class="swiperBot-nav--next swiper-nav--next"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-container swiper-address slider mt-sm-1">
+                        <div class="feature_payments swiper-wrapper">
+                            <ng-container *ngFor="let item of customerDetails.policy_list">
+                                <div class="adrs-wrap swiper-slide">
+                                    <div class="addrs">
+                                        <span><img src="assets/img/customer-dashboard/loc.png" alt="First Premier" title="First Premier"></span>
+                                        <div class="loc">
+                                            <strong>{{item.billing_address1}}</strong>
+                                            <p>{{item.billing_city}} <br/>{{item.billing_state}}, {{item.billing_zip}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div class="swiperBot-pagination"></div>
+                </div>
+                <div class="propit_box">
+                    <div class="proprty_box_inner flow-rootX cus_hdng">
+                        <!-- <h5 class="h2" routerLink="/customer-portal/create-policy">Add New Property</h5> -->
+                        <h5 class="h2">Add New Property</h5>
+                        <p>Protecting your home is important! If you are interested in adding another property to your account, click on the link below</p>
+                        <a routerLink="/customer-portal/create-policy" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">ADD ANOTHER HOME</a>
+                        <!-- <a href="javaScript:void(0)" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">ADD ANOTHER HOME</a> -->
+                    </div>
+                    <picture>
+                        <source srcset="assets/img/customer-dashboard/fp-propaty-icon.webp" type="image/webp">
+                        <source srcset="assets/img/customer-dashboard/fp-propaty-icon.jpg" type="image/jpg">
+                        <img src="assets/img/customer-dashboard/fp-propaty-icon.webp" alt="First Premier" title="First Premier">
+                    </picture>
+                </div>
+            </div>
+
+            <div class="policy-quick-view">
+                <a class="quick-view" routerLink="/customer-portal/create-policy">
+                    <div class="quick-icon">
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 14L12 14M12 14L9 14M12 14L12 11M12 14L12 17" stroke="#347a40" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#347a40" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Add Another Home</h4>
+                    <!-- <p>Buy a new policy.</p> -->
+                </a>
+                <a class="quick-view" routerLink="/customer-portal/my-cards">
+                    <div class="quick-icon">
+                        <!-- <svg width="800px" height="800px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.58 3.96997H6C4.93913 3.96997 3.92172 4.39146 3.17157 5.1416C2.42142 5.89175 2 6.9091 2 7.96997V17.97C2 19.0308 2.42142 20.0482 3.17157 20.7983C3.92172 21.5485 4.93913 21.97 6 21.97H18C19.0609 21.97 20.0783 21.5485 20.8284 20.7983C21.5786 20.0482 22 19.0308 22 17.97V13.8999" stroke="#905cd0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.58 9.96997H2" stroke="#905cd0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 18.9199H11" stroke="#905cd0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 10.9199V2.91992" stroke="#905cd0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 6.91992H22" stroke="#905cd0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg> -->
+
+                        <svg width="530" height="394" viewBox="0 0 530 394" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M457 0H73C33 0 0 33 0 73V321C0 361 33 394 73 394H457C497 394 530 361 530 321V73C530 33 497 0 457 0ZM73 42H457C474 42 488 56 488 73V113H43V73C43 56 56 42 73 42ZM457 352H73C56 352 42 338 42 321V155H487V321C488 338 474 352 457 352Z" fill="#905CD0"/>
+                        </svg>
+                    </div>
+                    <!-- <h4>Add/Edit Card</h4> -->
+                    <h4>View Card</h4>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+</main>
+
+

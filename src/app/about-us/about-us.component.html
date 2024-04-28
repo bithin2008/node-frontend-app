@@ -1,0 +1,477 @@
+<main>
+	<section class="fp__inner__banner about_bnr">
+		<div class="main-container">
+			<div class="inner-container">
+				<div class="banner_wrapper">
+                    <picture>
+                        <source srcset="./assets/img/about/about-hero.webp" type="image/webp">
+                        <source srcset="./assets/img/about/about-hero.jpg" type="image/jpg">
+                        <img src="./assets/img/about/about-hero.webp" alt="First Premier" title="First Premier">
+                    </picture>
+					<div class="banner_content flow-rootX3">	
+                        <h1 class="h1 " *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                        <h1 class="h1 " *ngIf="!pageDetails?.h1_tag">Why Choose First Premier<br> Home Warranty?</h1>
+                        <a routerLink="/checkout" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">GET YOUR QUOTE NOW</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="pf__why_premier about__why_premier">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="why_premier_wrapper">
+                    <div class="why_primr_image">
+                        <picture class="primr_fst img-reveal-anim">
+                            <source srcset="assets/img/about/about.webp" type="image/webp">
+                            <source srcset="assets/img/about/about.jpg" type="image/jpeg">
+                            <img src="assets/img/about/about.jpg" alt="First Premier" title="First Premier">
+                        </picture>
+                        <div class="primr_image_card flow-rootx">
+                            <strong class="">We Build<br>for Your Comfort</strong>
+                            <div class="text-center">
+                                <a routerLink="/checkout" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">GET YOUR QUOTE</a>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="why_inner_content">
+                        <div class="inner_content flow-rootx">
+                            <h2 class="">Why First Premier Home Warranty</h2>
+                            <p>Our thorough technician screening process is rigorous, and technicians across the country are only added to our powerful network of home service professionals, as soon as they meet our standards.</p>
+                            <p>We understand how hard you worked to own your home, and we’ve worked hard to build a strong, solid company to provide for your home repair service solutions.</p>
+                        </div>
+    
+                        <div class="why_tab_wrapper">
+                            <ul>
+                                <li class="tab" (click)="selectTab(1)"><a href="javascript:void(0);" data-id="mision" class="tab_btn {{selectedTab==1?'active':''}}">Our Mission</a></li>
+                                <li class="tab" (click)="selectTab(2)"><a href="javascript:void(0);" data-id="vision" class="tab_btn {{selectedTab==2?'active':''}}">Our Vision</a></li>
+                            </ul>
+                            <div class="tab_content">
+                                <div class="tab-pane {{selectedTab==1?'show':''}}">
+                                    <!-- <p>We believe by remaining loyal to our founding business principles established in 1989, we continue to steadily grow as a company in order to serve our customers in the best way possible.</p> -->
+                                    <p>We are committed to upholding the founding business principles established in 1989, which we believe are fundamental to our ongoing growth as a company. Our dedication to these principles enables us to consistently improve our services and better serve our valued customers.</p>
+                                </div>
+                                <div class="tab-pane {{selectedTab==2?'show':''}}">
+                                    <p>Our vision is to redefine the standard of home protection, ensuring peace of mind for homeowners nationwide. We aspire to be the trusted partner that homeowners turn to for comprehensive coverage, exceptional service, and unwavering reliability. With a focus on innovation, and customer satisfaction, we strive to set new benchmarks in the home warranty industry. Our vision is to empower homeowners to safeguard their investments and enjoy their homes with confidence, knowing that we're here to support them every step of the way.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="fp_for_all">
+        <div class="fp_for_box">
+            <div class="for_all_wrapper">
+                <picture>
+                    <source srcset="assets/img/about/about3.webp" type="image/webp">
+                    <source srcset="assets/img/about/about3.jpeg" type="image/jpeg">
+                    <img src="assets/img/about/about3.webp" alt="First Premier" title="First Premier">
+                </picture>
+            </div>
+            <div class="for_all_inner_content">
+                <div class="all_inner_content flow-rootX3">
+                    <h3 class="">We are for all!</h3>
+                    <div class="inner_content">
+                        <ul>
+                            <li>
+                                <span class="material-symbols-outlined">arrow_circle_right</span>
+                                <div class="ldiv">
+                                    <a href="javaScript:void(0)">For Home Owners</a>
+                                    <div class="fr_content">
+                                        <p>Shield your home with our customizable plans covering all vital systems and appliances.</p>
+                                    </div>
+        
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">arrow_circle_right</span>
+                                <div class="ldiv">
+                                    <a href="javaScript:void(0)">For Contractors</a>
+                                    <div class="fr_content">
+                                        <p>Add to our network of technicians and access service calls from homeowners.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">arrow_circle_right</span>
+                                <div class="ldiv">
+                                    <a href="javaScript:void(0)">For Real Estate Professionals</a>
+                                    <div class="fr_content" style="text-align: left;">
+                                        <p>Partner with us to seal every deal with the added value of comprehensive home warranty plans.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="inner_bottom_contnt flow-rootX3">
+                        <p>Call us for a Free Quote and Lowest Rates</p>
+                        <a href="tel:18003881918" class="c2a hvr:bg--fpYellow hvr:c--extradrk"><span class="material-symbols-outlined d-inline-block"> call</span><span>1-800-388-1918</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="forAll_right">
+                <picture>
+                    <source srcset="assets/img/about/for-all.webp" type="image/webp">
+                    <source srcset="assets/img/about/for-all.png" type="image/png">
+                    <img src="assets/img/about/for-all.webp" alt="First Premier" title="First Premier">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="fp_addvantages">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="advtg_premier_wrapper">
+                    <div class="advtg_primr_content">
+                        <div class="advtg_top_content flow-rootX5">
+                            <h3 class="">Our advantages</h3>
+                            <em>We’re On Your Side.</em>
+                            <!-- <p>We will send our specialist to your home, who will conduct a  detailed diagnosis of your equipment, at a convenient time for you. Our specialist will perform the necessary repairs right in your home, if the equipment malfunction does not require sending to the service. Branded warranty for repairs 3 years.</p> -->
+                            <p>Be relieved in knowing that keeping your home in the best condition is our priority, and leave it up to us to insure your affordable coverage of protecting your home systems and appliances, while you spend your quality free time with the people that matter most to you.</p>
+                        </div>
+                        <!-- <div class="advtg_mdl_content">
+                            <div class="d-flex align-items-center icon-contnt">
+                                <div class="flex-shrink-0">
+                                    <svg width="32" height="47" viewBox="0 0 32 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.69 4.55H27.02C27.02 4.55 31.02 3.23 30.72 0.5H0.529999C0.687528 1.53609 1.17913 2.49238 1.93004 3.22343C2.68094 3.95448 3.65006 4.42029 4.69 4.55Z" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M4.69 41.52H27.02C27.02 41.52 31.02 42.85 30.72 45.58H0.529999C0.687099 44.5428 1.17832 43.5851 1.92911 42.8524C2.67989 42.1196 3.64923 41.6518 4.69 41.52Z" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M5.05 5.17004V12.5C5.05 12.5 5.22 18.14 13.78 21.32V24.32C13.78 24.32 4.34 28.91 5.05 34.2C5.05 39.94 5.05 41.52 5.05 41.52" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M26.73 5.17004V12.5C26.73 12.5 26.55 18.14 17.99 21.32V24.32C17.99 24.32 27.43 28.91 26.73 34.2C26.73 39.94 26.73 41.52 26.73 41.52" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M8.58 41.38C8.75 41.02 8.45 40.17 8.58 39.79C9.34 37.58 13.78 34.7 16.34 34.61C16.34 34.61 22.6 37.41 23.14 39.79C23.2021 40.5253 23.2021 41.2646 23.14 42" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M8.73001 10.11C8.38001 9.94995 8.64001 12.5099 8.73001 12.8899C9.49001 15.0899 13.93 17.9799 16.49 18.0699C16.49 18.0699 22.76 15.2699 23.29 12.8899C23.42 12.3499 23.81 9.88995 23.17 10.11C17.99 12.32 16.21 13.64 8.73001 10.11Z" stroke="#20A245" stroke-miterlimit="10"/>
+                                        <path d="M15.87 25.4399V28.4399" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M15.87 31.53V32.71" stroke="#242424" stroke-miterlimit="10"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-grow-1 contnt-title">
+                                  <h5>We perform all work on time</h5>
+                                </div>
+                              </div>
+                              <div class="d-flex align-items-center icon-contnt">
+                                <div class="flex-shrink-0">
+                                    <svg width="37" height="46" viewBox="0 0 37 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.57 35.66C28.0417 35.66 35.72 27.9817 35.72 18.51C35.72 9.0383 28.0417 1.35999 18.57 1.35999C9.09832 1.35999 1.42 9.0383 1.42 18.51C1.42 27.9817 9.09832 35.66 18.57 35.66Z" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M18.57 30.04C24.9379 30.04 30.1 24.8778 30.1 18.51C30.1 12.1421 24.9379 6.97998 18.57 6.97998C12.2022 6.97998 7.04001 12.1421 7.04001 18.51C7.04001 24.8778 12.2022 30.04 18.57 30.04Z" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M6.47001 32.12L1.47001 40.82C1.47001 40.82 1.33001 42.7 6.47001 40.35C6.47001 40.35 7.27001 39.75 7.53001 39.88C8.35001 40.31 8.24001 43.53 8.24001 43.53C8.24001 43.53 9.88001 48.35 12.35 42.23L15.77 35.65" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M30.17 32.12L35.17 40.82C35.17 40.82 35.3 42.7 30.17 40.35C30.17 40.35 29.37 39.75 29.17 39.88C28.34 40.31 28.46 43.53 28.46 43.53C28.46 43.53 26.81 48.35 24.34 42.23L20.93 35.65" stroke="#242424" stroke-miterlimit="10"/>
+                                        <path d="M18.57 12.35L20.58 16.41L25.06 17.06L21.81 20.22L22.58 24.68L18.57 22.57L14.56 24.68L15.33 20.22L12.09 17.06L16.57 16.41L18.57 12.35Z" stroke="#20A245" stroke-miterlimit="10"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-grow-1 contnt-title">
+                                    <h5>We guarantee spare parts</h5>
+                                </div>
+                              </div>
+                        </div> -->
+                        <div class="advtg_btm_content">
+                            <a class="call--c2a"  href="tel:18003881918">
+                                <img src="assets/img/icon/cal-icon.webp" alt="Call" title="Call">
+                                <div class="call--Card">
+                                    <span class="calltop">For Free Quote & Lowest Rates</span>
+                                    <div class="call_txt">
+                                        <p class="d-inline">Call <span class="c--fpLightBlue">1-800-388-1918</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                            <span class="divi">OR</span>
+                            <div class="check_qut">
+                                <a routerLink="/checkout" class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">GET YOUR QUOTE NOW</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="advtg_primr_image">
+                        <picture class="primr_fst img-reveal-anim">
+                            <source srcset="assets/img/about/about4.webp" type="image/webp">
+                            <source srcset="assets/img/about/about4.jpg" type="image/jpg">
+                            <img src="assets/img/about/about4.webp" alt="First Premier" title="First Premier">
+                        </picture>
+                        <div class="primr_image_card advtg_primr_card">
+                            <!-- <span>7K <sup>+</sup></span> -->
+                            <span>1M <sup>+</sup></span>
+                            <p class="">Satisfied clients all over the world </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="fp_process">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="pros_hdng">
+                    <h4>Check out our <span>Process</span></h4>
+                </div>
+                <div class="line_draw">
+                    <svg class="arwline" width="588" height="84" viewBox="0 0 588 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M586.6 2.40002L586.2 2.10001L587.2 0.700012L587.6 1.00002L586.6 2.40002Z" fill="#BFBEBE" />
+                        <path d="M584.1 5.90002L583.7 5.60001L584.7 4.20001L585.1 4.50002L584.1 5.90002Z" fill="#BFBEBE" />
+                        <path d="M581.5 9.30001L581.1 9.00001L582.1 7.60001L582.5 7.90001L581.5 9.30001Z" fill="#BFBEBE" />
+                        <path d="M579 12.7L578.6 12.4L579.6 11L580 11.3L579 12.7Z" fill="#BFBEBE" />
+                        <path d="M576.5 16.1L576.1 15.8L577.1 14.4L577.5 14.7L576.5 16.1Z" fill="#BFBEBE" />
+                        <path d="M573.9 19.5L573.5 19.2L574.5 17.8L574.9 18.1L573.9 19.5Z" fill="#BFBEBE" />
+                        <path d="M571.3 22.9L570.9 22.6L571.9 21.2L572.3 21.5L571.3 22.9Z" fill="#BFBEBE" />
+                        <path d="M568.8 26.3L568.4 26L569.4 24.6L569.8 24.9L568.8 26.3Z" fill="#BFBEBE" />
+                        <path d="M566.2 29.7L565.8 29.4L566.8 28L567.2 28.3L566.2 29.7Z" fill="#BFBEBE" />
+                        <path d="M563.7 33.1L563.3 32.8L564.3 31.4L564.7 31.7L563.7 33.1Z" fill="#BFBEBE" />
+                        <path d="M561.1 36.5L560.7 36.2L561.8 34.8L562.2 35.1L561.1 36.5Z" fill="#BFBEBE" />
+                        <path d="M558.5 39.9L558.1 39.6L559.2 38.2L559.6 38.5L558.5 39.9Z" fill="#BFBEBE" />
+                        <path d="M555.8 43.1L555.5 42.8L556.6 41.5L556.9 41.8L555.8 43.1Z" fill="#BFBEBE" />
+                        <path d="M552.9 46.3L552.6 46L553.8 44.7L554.1 45L552.9 46.3Z" fill="#BFBEBE" />
+                        <path d="M550 49.5L549.7 49.2L550.9 48L551.2 48.3L550 49.5Z" fill="#BFBEBE" />
+                        <path d="M546.9 52.4L546.6 52.1L547.8 50.9L548.1 51.2L546.9 52.4Z" fill="#BFBEBE" />
+                        <path d="M543.7 55.3L543.4 55L544.7 53.8L545 54.1L543.7 55.3Z" fill="#BFBEBE" />
+                        <path d="M540.5 58.1L540.2 57.7L541.5 56.6L541.8 57L540.5 58.1Z" fill="#BFBEBE" />
+                        <path d="M537.1 60.7L536.8 60.3L538.2 59.3L538.5 59.7L537.1 60.7Z" fill="#BFBEBE" />
+                        <path d="M533.6 63.2L533.3 62.8L534.7 61.8L535 62.2L533.6 63.2Z" fill="#BFBEBE" />
+                        <path d="M530 65.6L529.8 65.2L531.3 64.3L531.5 64.7L530 65.6Z" fill="#BFBEBE" />
+                        <path d="M526.3 67.8L526.1 67.4L527.6 66.5L527.8 66.9L526.3 67.8Z" fill="#BFBEBE" />
+                        <path d="M522.5 69.7L522.3 69.3L523.8 68.5L524 68.9L522.5 69.7Z" fill="#BFBEBE" />
+                        <path d="M518.6 71.6L518.4 71.2L520 70.5L520.2 70.9L518.6 71.6Z" fill="#BFBEBE" />
+                        <path d="M514.6 73.2L514.4 72.8L516 72.2L516.2 72.6L514.6 73.2Z" fill="#BFBEBE" />
+                        <path d="M510.6 74.6L510.5 74.2L512.1 73.6L512.2 74L510.6 74.6Z" fill="#BFBEBE" />
+                        <path d="M506.5 75.9L506.4 75.5L508.1 75L508.2 75.4L506.5 75.9Z" fill="#BFBEBE" />
+                        <path d="M502.3 76.9L502.2 76.5L503.9 76.1L504 76.5L502.3 76.9Z" fill="#BFBEBE" />
+                        <path d="M498.1 77.8L498 77.4L499.7 77.1L499.8 77.5L498.1 77.8Z" fill="#BFBEBE" />
+                        <path d="M493.9 78.4L493.8 77.9L495.5 77.7L495.6 78.2L493.9 78.4Z" fill="#BFBEBE" />
+                        <path d="M489.6 78.8V78.3L491.3 78.1V78.6L489.6 78.8Z" fill="#BFBEBE" />
+                        <path d="M485.3 79.1V78.6L487 78.5V79L485.3 79.1Z" fill="#BFBEBE" />
+                        <path d="M481 79.1V78.6H482.7V79.1H481Z" fill="#BFBEBE" />
+                        <path d="M476.8 79V78.5L478.5 78.6V79.1L476.8 79Z" fill="#BFBEBE" />
+                        <path d="M472.5 78.7V78.2L474.2 78.3V78.8L472.5 78.7Z" fill="#BFBEBE" />
+                        <path d="M468.2 78.2L468.3 77.7L470 77.9L469.9 78.4L468.2 78.2Z" fill="#BFBEBE" />
+                        <path d="M464 77.6L464.1 77.2L465.8 77.5L465.7 77.9L464 77.6Z" fill="#BFBEBE" />
+                        <path d="M459.8 76.8L459.9 76.4L461.6 76.7L461.5 77.1L459.8 76.8Z" fill="#BFBEBE" />
+                        <path d="M455.6 75.9L455.7 75.5L457.4 75.9L457.3 76.3L455.6 75.9Z" fill="#BFBEBE" />
+                        <path d="M451.4 74.9L451.5 74.5L453.2 74.9L453.1 75.3L451.4 74.9Z" fill="#BFBEBE" />
+                        <path d="M447.3 73.7L447.4 73.3L449.1 73.8L449 74.2L447.3 73.7Z" fill="#BFBEBE" />
+                        <path d="M443.3 72.4L443.4 72L445 72.5L444.9 72.9L443.3 72.4Z" fill="#BFBEBE" />
+                        <path d="M439.2 71L439.4 70.6L441 71.2L440.8 71.6L439.2 71Z" fill="#BFBEBE" />
+                        <path d="M435.2 69.4L435.4 69L437 69.6L436.8 70L435.2 69.4Z" fill="#BFBEBE" />
+                        <path d="M431.3 67.8L431.5 67.4L433.1 68.1L432.9 68.5L431.3 67.8Z" fill="#BFBEBE" />
+                        <path d="M427.4 66.1L427.6 65.7L429.2 66.4L429 66.8L427.4 66.1Z" fill="#BFBEBE" />
+                        <path d="M423.5 64.3L423.7 63.9L425.3 64.6L425.1 65L423.5 64.3Z" fill="#BFBEBE" />
+                        <path d="M419.7 62.4L419.9 62L421.4 62.8L421.2 63.2L419.7 62.4Z" fill="#BFBEBE" />
+                        <path d="M415.9 60.4L416.1 60L417.6 60.8L417.4 61.2L415.9 60.4Z" fill="#BFBEBE" />
+                        <path d="M412.1 58.4L412.3 58L413.8 58.8L413.6 59.2L412.1 58.4Z" fill="#BFBEBE" />
+                        <path d="M408.5 56.3L408.7 55.9L410.2 56.8L410 57.2L408.5 56.3Z" fill="#BFBEBE" />
+                        <path d="M404.8 54L405 53.6L406.5 54.5L406.3 54.9L404.8 54Z" fill="#BFBEBE" />
+                        <path d="M401.2 51.8L401.4 51.4L402.9 52.3L402.7 52.7L401.2 51.8Z" fill="#BFBEBE" />
+                        <path d="M397.6 49.5L397.9 49.1L399.3 50.1L399 50.5L397.6 49.5Z" fill="#BFBEBE" />
+                        <path d="M394.1 47L394.4 46.6L395.8 47.6L395.5 48L394.1 47Z" fill="#BFBEBE" />
+                        <path d="M390.6 44.6L390.9 44.2L392.3 45.2L392 45.6L390.6 44.6Z" fill="#BFBEBE" />
+                        <path d="M387.1 42.1L387.4 41.7L388.8 42.7L388.5 43.1L387.1 42.1Z" fill="#BFBEBE" />
+                        <path d="M383.8 39.5L384.1 39.1L385.5 40.2L385.2 40.6L383.8 39.5Z" fill="#BFBEBE" />
+                        <path d="M380.4 36.9L380.7 36.5L382.1 37.6L381.8 38L380.4 36.9Z" fill="#BFBEBE" />
+                        <path d="M377.1 34.2L377.4 33.8L378.7 34.9L378.4 35.3L377.1 34.2Z" fill="#BFBEBE" />
+                        <path d="M373.9 31.3L374.2 31L375.5 32.1L375.2 32.4L373.9 31.3Z" fill="#BFBEBE" />
+                        <path d="M370.7 28.7L371 28.3L372.3 29.4L372 29.8L370.7 28.7Z" fill="#BFBEBE" />
+                        <path d="M367.5 26.1L367.8 25.7L369.2 26.8L368.9 27.2L367.5 26.1Z" fill="#BFBEBE" />
+                        <path d="M364.1 23.7L364.4 23.3L365.8 24.3L365.5 24.7L364.1 23.7Z" fill="#BFBEBE" />
+                        <path d="M360.7 21.3L361 20.9L362.4 21.9L362.1 22.3L360.7 21.3Z" fill="#BFBEBE" />
+                        <path d="M357 19L357.2 18.6L358.7 19.5L358.5 19.9L357 19Z" fill="#BFBEBE" />
+                        <path d="M353.3 16.9L353.5 16.5L355 17.3L354.8 17.7L353.3 16.9Z" fill="#BFBEBE" />
+                        <path d="M349.5 14.9L349.7 14.5L351.2 15.3L351 15.7L349.5 14.9Z" fill="#BFBEBE" />
+                        <path d="M345.6 13.1L345.8 12.7L347.4 13.4L347.2 13.8L345.6 13.1Z" fill="#BFBEBE" />
+                        <path d="M341.6 11.4L341.8 11L343.4 11.6L343.2 12L341.6 11.4Z" fill="#BFBEBE" />
+                        <path d="M337.6 10L337.7 9.60001L339.3 10.1L339.2 10.5L337.6 10Z" fill="#BFBEBE" />
+                        <path d="M333.5 8.80003L333.6 8.40002L335.3 8.90002L335.2 9.30003L333.5 8.80003Z" fill="#BFBEBE" />
+                        <path d="M329.3 7.80003L329.4 7.40002L331.1 7.80003L331 8.20002L329.3 7.80003Z" fill="#BFBEBE" />
+                        <path d="M325 7.10001L325.1 6.70001L326.8 7.00002L326.7 7.40002L325 7.10001Z" fill="#BFBEBE" />
+                        <path d="M320.8 6.60001V6.10001L322.5 6.30001V6.80001L320.8 6.60001Z" fill="#BFBEBE" />
+                        <path d="M316.5 6.30002V5.80002L318.2 5.90002V6.40002L316.5 6.30002Z" fill="#BFBEBE" />
+                        <path d="M312.2 6.30002V5.80002H313.9V6.30002H312.2Z" fill="#BFBEBE" />
+                        <path d="M307.9 6.50002V6.00002L309.6 5.90002V6.40002L307.9 6.50002Z" fill="#BFBEBE" />
+                        <path d="M303.6 7.00002L303.5 6.50002L305.2 6.30002L305.3 6.80002L303.6 7.00002Z" fill="#BFBEBE" />
+                        <path d="M299.4 7.7L299.3 7.3L301 7L301.1 7.4L299.4 7.7Z" fill="#BFBEBE" />
+                        <path d="M295.2 8.60001L295.1 8.20001L296.8 7.80002L296.9 8.20001L295.2 8.60001Z" fill="#BFBEBE" />
+                        <path d="M291 9.80003L290.9 9.40002L292.6 8.90002L292.7 9.30003L291 9.80003Z" fill="#BFBEBE" />
+                        <path d="M286.9 11.1L286.8 10.7L288.4 10.1L288.5 10.5L286.9 11.1Z" fill="#BFBEBE" />
+                        <path d="M282.9 12.7L282.7 12.3L284.3 11.7L284.5 12.1L282.9 12.7Z" fill="#BFBEBE" />
+                        <path d="M279 14.4L278.8 14L280.4 13.3L280.6 13.7L279 14.4Z" fill="#BFBEBE" />
+                        <path d="M275.2 16.3L275 15.9L276.5 15.1L276.7 15.5L275.2 16.3Z" fill="#BFBEBE" />
+                        <path d="M271.4 18.3L271.2 17.9L272.7 17.1L272.9 17.5L271.4 18.3Z" fill="#BFBEBE" />
+                        <path d="M267.7 20.5L267.5 20.1L269 19.2L269.2 19.6L267.7 20.5Z" fill="#BFBEBE" />
+                        <path d="M264.1 22.9L263.8 22.5L265.2 21.5L265.5 21.9L264.1 22.9Z" fill="#BFBEBE" />
+                        <path d="M260.7 25.3L260.4 24.9L261.8 23.9L262.1 24.3L260.7 25.3Z" fill="#BFBEBE" />
+                        <path d="M257.3 27.8L257 27.4L258.4 26.3L258.7 26.7L257.3 27.8Z" fill="#BFBEBE" />
+                        <path d="M254.1 30.5L253.8 30.1L255.1 29L255.4 29.4L254.1 30.5Z" fill="#BFBEBE" />
+                        <path d="M251 33.2L250.7 32.9L252 31.8L252.3 32.1L251 33.2Z" fill="#BFBEBE" />
+                        <path d="M248 36L247.7 35.7L249 34.5L249.3 34.8L248 36Z" fill="#BFBEBE" />
+                        <path d="M244.9 39L244.6 38.7L245.8 37.5L246.1 37.8L244.9 39Z" fill="#BFBEBE" />
+                        <path d="M241.8 41.9L241.5 41.6L242.8 40.4L243.1 40.7L241.8 41.9Z" fill="#BFBEBE" />
+                        <path d="M238.7 44.8L238.4 44.5L239.7 43.3L240 43.6L238.7 44.8Z" fill="#BFBEBE" />
+                        <path d="M235.4 47.6L235.1 47.3L236.4 46.2L236.7 46.5L235.4 47.6Z" fill="#BFBEBE" />
+                        <path d="M232.2 50.4L231.9 50L233.2 48.9L233.5 49.3L232.2 50.4Z" fill="#BFBEBE" />
+                        <path d="M228.8 53L228.5 52.6L229.9 51.5L230.2 51.9L228.8 53Z" fill="#BFBEBE" />
+                        <path d="M225.5 55.6L225.2 55.2L226.6 54.2L226.9 54.6L225.5 55.6Z" fill="#BFBEBE" />
+                        <path d="M222 58.1L221.7 57.7L223.1 56.7L223.4 57.1L222 58.1Z" fill="#BFBEBE" />
+                        <path d="M218.5 60.6L218.2 60.2L219.6 59.2L219.9 59.6L218.5 60.6Z" fill="#BFBEBE" />
+                        <path d="M214.9 62.9L214.7 62.5L216.2 61.6L216.4 62L214.9 62.9Z" fill="#BFBEBE" />
+                        <path d="M211.2 65.1L211 64.7L212.5 63.8L212.7 64.2L211.2 65.1Z" fill="#BFBEBE" />
+                        <path d="M207.5 67.2L207.3 66.8L208.8 66L209 66.4L207.5 67.2Z" fill="#BFBEBE" />
+                        <path d="M203.8 69.2L203.6 68.8L205.1 68L205.3 68.4L203.8 69.2Z" fill="#BFBEBE" />
+                        <path d="M199.9 71.1L199.7 70.7L201.3 69.9L201.5 70.3L199.9 71.1Z" fill="#BFBEBE" />
+                        <path d="M196 72.9L195.8 72.5L197.4 71.8L197.6 72.2L196 72.9Z" fill="#BFBEBE" />
+                        <path d="M192.1 74.6L191.9 74.2L193.5 73.5L193.7 73.9L192.1 74.6Z" fill="#BFBEBE" />
+                        <path d="M188.1 76.1L187.9 75.7L189.5 75.1L189.7 75.5L188.1 76.1Z" fill="#BFBEBE" />
+                        <path d="M184 77.5L183.9 77.1L185.5 76.6L185.6 77L184 77.5Z" fill="#BFBEBE" />
+                        <path d="M180 78.7L179.9 78.3L181.6 77.8L181.7 78.2L180 78.7Z" fill="#BFBEBE" />
+                        <path d="M175.8 79.9L175.7 79.5L177.4 79.1L177.5 79.5L175.8 79.9Z" fill="#BFBEBE" />
+                        <path d="M171.6 80.8L171.5 80.4L173.2 80L173.3 80.4L171.6 80.8Z" fill="#BFBEBE" />
+                        <path d="M167.4 81.6L167.3 81.2L169 80.9L169.1 81.3L167.4 81.6Z" fill="#BFBEBE" />
+                        <path d="M163.2 82.3L163.1 81.8L164.8 81.6L164.9 82.1L163.2 82.3Z" fill="#BFBEBE" />
+                        <path d="M158.9 82.8V82.3L160.6 82.1V82.6L158.9 82.8Z" fill="#BFBEBE" />
+                        <path d="M154.7 83.1V82.6L156.4 82.5V83L154.7 83.1Z" fill="#BFBEBE" />
+                        <path d="M150.4 83.3V82.8H152.1V83.3H150.4Z" fill="#BFBEBE" />
+                        <path d="M146.1 83.2V82.7H147.8V83.2H146.1Z" fill="#BFBEBE" />
+                        <path d="M141.8 83.1V82.6L143.5 82.7V83.2L141.8 83.1Z" fill="#BFBEBE" />
+                        <path d="M137.5 82.7V82.2L139.2 82.4V82.9L137.5 82.7Z" fill="#BFBEBE" />
+                        <path d="M133.3 82.2L133.4 81.7L135.1 81.9L135 82.4L133.3 82.2Z" fill="#BFBEBE" />
+                        <path d="M129.1 81.5L129.2 81.1L130.9 81.4L130.8 81.8L129.1 81.5Z" fill="#BFBEBE" />
+                        <path d="M124.9 80.6L125 80.2L126.7 80.6L126.6 81L124.9 80.6Z" fill="#BFBEBE" />
+                        <path d="M120.7 79.5L120.8 79.1L122.5 79.6L122.4 80L120.7 79.5Z" fill="#BFBEBE" />
+                        <path d="M116.6 78.1L116.7 77.7L118.3 78.3L118.2 78.7L116.6 78.1Z" fill="#BFBEBE" />
+                        <path d="M112.6 76.5L112.8 76.1L114.4 76.8L114.2 77.2L112.6 76.5Z" fill="#BFBEBE" />
+                        <path d="M108.5 75L108.7 74.6L110.3 75.2L110.1 75.6L108.5 75Z" fill="#BFBEBE" />
+                       <!--  <path d="M104.6 73.4L104.8 73L106.4 73.7L106.2 74.1L104.6 73.4Z" fill="#BFBEBE" />
+                        <path d="M100.6 71.7L100.8 71.3L102.4 72L102.2 72.4L100.6 71.7Z" fill="#BFBEBE" />
+                        <path d="M96.8 69.9L97 69.5L98.6 70.2L98.4 70.6L96.8 69.9Z" fill="#BFBEBE" />
+                        <path d="M92.9 68.1L93.1 67.7L94.7 68.5L94.5 68.9L92.9 68.1Z" fill="#BFBEBE" />
+                        <path d="M89.1 66.2L89.3 65.8L90.8 66.6L90.6 67L89.1 66.2Z" fill="#BFBEBE" />
+                        <path d="M85.3 64.2L85.5 63.8L87 64.6L86.8 65L85.3 64.2Z" fill="#BFBEBE" />
+                        <path d="M81.5 62.2L81.7 61.8L83.2 62.6L83 63L81.5 62.2Z" fill="#BFBEBE" />
+                        <path d="M77.8 60.2L78 59.8L79.5 60.6L79.3 61L77.8 60.2Z" fill="#BFBEBE" />
+                        <path d="M74.1 58.1L74.3 57.7L75.8 58.6L75.6 59L74.1 58.1Z" fill="#BFBEBE" />
+                        <path d="M70.4 55.9L70.6 55.5L72.1 56.4L71.9 56.8L70.4 55.9Z" fill="#BFBEBE" />
+                        <path d="M66.8 53.7L67 53.3L68.5 54.2L68.3 54.6L66.8 53.7Z" fill="#BFBEBE" />
+                        <path d="M63.2 51.5L63.4 51.1L64.9 52L64.7 52.4L63.2 51.5Z" fill="#BFBEBE" />
+                        <path d="M59.6 49.2L59.8 48.8L61.3 49.7L61.1 50.1L59.6 49.2Z" fill="#BFBEBE" />
+                        <path d="M56 46.8L56.3 46.4L57.7 47.4L57.4 47.8L56 46.8Z" fill="#BFBEBE" />
+                        <path d="M52.5 44.5L52.8 44.1L54.2 45.1L53.9 45.5L52.5 44.5Z" fill="#BFBEBE" />
+                        <path d="M49 42L49.3 41.6L50.7 42.6L50.4 43L49 42Z" fill="#BFBEBE" />
+                        <path d="M45.5 39.6L45.8 39.2L47.2 40.2L46.9 40.6L45.5 39.6Z" fill="#BFBEBE" />
+                        <path d="M42 37.1L42.3 36.7L43.7 37.7L43.4 38.1L42 37.1Z" fill="#BFBEBE" />
+                        <path d="M38.6 34.5L38.9 34.1L40.3 35.1L40 35.5L38.6 34.5Z" fill="#BFBEBE" />
+                        <path d="M35.2 31.6L35.5 31.2L36.8 32.3L36.5 32.7L35.2 31.6Z" fill="#BFBEBE" />
+                        <path d="M31.7 29.1L32 28.7L33.4 29.7L33.1 30.1L31.7 29.1Z" fill="#BFBEBE" />
+                        <path d="M28.1 26.8L28.3 26.4L29.8 27.3L29.6 27.7L28.1 26.8Z" fill="#BFBEBE" />
+                        <path d="M24.4 24.6L24.6 24.2L26.1 25.1L25.9 25.5L24.4 24.6Z" fill="#BFBEBE" />
+                        <path d="M20.6 22.6L20.8 22.2L22.3 23L22.1 23.4L20.6 22.6Z" fill="#BFBEBE" />
+                        <path d="M16.7 20.8L16.9 20.4L18.5 21.1L18.3 21.5L16.7 20.8Z" fill="#BFBEBE" />
+                        <path d="M12.8 19.1L13 18.7L14.6 19.3L14.4 19.7L12.8 19.1Z" fill="#BFBEBE" />
+                        <path d="M8.70001 17.7L8.80002 17.3L10.4 17.8L10.3 18.2L8.70001 17.7Z" fill="#BFBEBE" />
+                        <path d="M4.5 16.6L4.6 16.2L6.3 16.6L6.2 17L4.5 16.6Z" fill="#BFBEBE" />
+                        <path d="M0.200012 15.9L0.300011 15.4L2.00001 15.6L1.90001 16.1L0.200012 15.9Z" fill="#BFBEBE" /> -->
+                    </svg>
+                
+                    <span class="paper-plane">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30" height="30" viewBox="0 0 512.001 512.001" xml:space="preserve" fill="#cccccc">
+                        <path d="M480.88,247.271l-440-246c-3.68-2.058-8.257-1.584-11.441,1.183c-3.183,2.768-4.287,7.235-2.76,11.167l76.703,197.509
+                        l-71.853,35.926C28.14,248.75,26,252.213,26,256.001c0,3.788,2.14,7.25,5.528,8.944l71.853,35.926L26.679,498.38
+                        c-1.527,3.932-0.423,8.399,2.76,11.167c3.16,2.748,7.735,3.254,11.441,1.182l440-246c3.161-1.768,5.12-5.106,5.12-8.729
+                        C486,252.377,484.041,249.039,480.88,247.271z M55.386,32.296l370.813,207.318c-95.578-9.452-207.479-22.26-303.071-32.883
+                        L55.386,32.296z M55.386,479.705l67.742-174.435l54.117-6.011c5.488-0.61,9.444-5.554,8.834-11.043
+                        c-0.608-5.49-5.571-9.437-11.042-8.835l-57.205,6.354L58.361,256l59.471-29.735c2.986,0.332,237.605,26.273,259.24,28.502
+                        c-35.794,3.517-78.166,8.461-120.26,15.541c-5.447,0.916-9.119,6.074-8.203,11.52s6.08,9.124,11.52,8.203
+                        c64.25-10.806,129.396-16.597,170.147-19.924L55.386,479.705z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="process_inner">
+
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="45" viewBox="0 0 42 45" fill="none">
+                                <path d="M10.24 10.08H1.41V35.26H41.18V10.08H32.59" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M1.41 30.3199H40.59" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M17.53 35.26V39.73H25.18V35.97" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M10.47 4.96005C11.39 4.84005 12.28 4.75005 13.16 4.61005C16.14 4.13717 18.9189 2.81025 21.16 0.790054C21.42 0.560054 21.56 0.560054 21.82 0.790054C24.1492 2.88266 27.0494 4.2335 30.15 4.67005C30.92 4.78005 31.7 4.85005 32.51 4.95005C32.51 5.04005 32.51 5.15005 32.51 5.26005C32.51 7.72005 32.56 10.1901 32.46 12.6501C32.4191 15.4714 31.8032 18.2548 30.65 20.8301C29.4657 23.3777 27.5424 25.5101 25.13 26.9501C24.03 27.6201 22.84 28.1201 21.68 28.6901C21.6295 28.7121 21.5751 28.7234 21.52 28.7234C21.4649 28.7234 21.4104 28.7121 21.36 28.6901C19.1365 27.8672 17.0975 26.6132 15.36 25.0001C13.1795 22.8753 11.6972 20.1374 11.11 17.1501C10.6041 14.636 10.3761 12.0739 10.43 9.51005C10.43 8.11005 10.43 6.70005 10.43 5.30005C10.45 5.19005 10.46 5.08005 10.47 4.96005Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M13.34 7.48997C14.02 7.39997 14.68 7.33997 15.34 7.22997C17.5406 6.87925 19.593 5.89995 21.25 4.40997C21.44 4.23997 21.54 4.23997 21.74 4.40997C23.4603 5.9591 25.6065 6.95552 27.9 7.26997C28.47 7.35997 29.04 7.40997 29.64 7.47997C29.64 7.54997 29.64 7.62997 29.64 7.70997C29.64 9.52997 29.64 11.36 29.64 13.18C29.5966 15.2502 29.1375 17.2906 28.29 19.18C27.4103 21.0624 25.9854 22.6371 24.2 23.7C23.39 24.2 22.51 24.57 21.66 24.99C21.5829 25.0201 21.4972 25.0201 21.42 24.99C19.7684 24.388 18.255 23.4595 16.97 22.26C15.3583 20.6906 14.2631 18.6674 13.83 16.46C13.4558 14.6041 13.2848 12.7129 13.32 10.82C13.32 9.81997 13.32 8.73997 13.32 7.70997C13.3229 7.63635 13.3296 7.56292 13.34 7.48997Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M17.24 39.73H10.94L8.88 41.32V44.26H33.35V41.5L31.65 39.97L25.18 39.73" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M16.76 15.73L19.24 18.55L26.29 11.2" stroke="#20A245" stroke-miterlimit="10"/>
+                                <path d="M35.35 32.79H39" stroke="#242424" stroke-miterlimit="10"/>
+                             </svg>
+                        </div>
+                        <div class="procs_content">
+                            <h5 class="">Get Covered in Minutes</h5>
+                            <p>Protect your System & Appliances or for our best value - both. Starting at $1 a day.</p>
+                        </div>
+                    </div>
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="42" viewBox="0 0 41 42" fill="none">
+                                <path d="M29.76 40.58H1.70001L1.26001 0.869995H23.41L23.49 6.60999L29.76 6.52V40.58Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M23.4 0.869995L29.76 6.52" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.64999 8.28003H26.1" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.64999 10.58H21.86" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 13.75H26.23" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 16.05H21.99" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 19.58H26.23" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 21.87H21.99" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 24.6899H26.23" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M4.78998 26.99H21.99" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M39.55 3.68994H33.29V35.7199H39.55V3.68994Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M33.29 3.69006C33.29 3.69006 32.87 0.620059 34.11 0.560059H36.88" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M39.53 3.69006C39.53 3.69006 39.95 0.620059 38.72 0.560059H35.94" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M33.29 35.72L36.42 40.8L39.55 35.72" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M36.2 10.58V28.8" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M9.28998 39.26C12.2889 39.26 14.72 36.8289 14.72 33.83C14.72 30.8311 12.2889 28.4 9.28998 28.4C6.29107 28.4 3.85999 30.8311 3.85999 33.83C3.85999 36.8289 6.29107 39.26 9.28998 39.26Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M7.58998 35.19C7.81998 35.28 8.04998 35.37 8.27998 35.44C8.60347 35.539 8.94402 35.5697 9.27998 35.53C9.41627 35.5154 9.54682 35.4673 9.65999 35.39C9.71257 35.3517 9.75679 35.303 9.78998 35.247C9.82317 35.191 9.84462 35.1289 9.85304 35.0643C9.86146 34.9998 9.85668 34.9342 9.83896 34.8716C9.82124 34.809 9.79097 34.7506 9.74998 34.7C9.66552 34.605 9.56369 34.5269 9.44998 34.47C9.25631 34.3722 9.05579 34.2887 8.84999 34.22C8.53839 34.1176 8.2423 33.9729 7.96999 33.79C7.78223 33.6581 7.62898 33.4829 7.52319 33.2793C7.4174 33.0756 7.36218 32.8495 7.36218 32.62C7.36218 32.3905 7.4174 32.1644 7.52319 31.9608C7.62898 31.7572 7.78223 31.582 7.96999 31.45C8.20962 31.2794 8.48201 31.1602 8.76999 31.1H8.85999V30.27H9.71999V31.04C10.1628 31.041 10.6 31.1401 11 31.33L10.74 32.33H10.64C10.2347 32.1277 9.78134 32.0411 9.32999 32.08C9.19726 32.091 9.06806 32.1284 8.94998 32.19C8.88641 32.2197 8.83179 32.2657 8.79158 32.3232C8.75137 32.3807 8.727 32.4478 8.72092 32.5177C8.71484 32.5876 8.72727 32.6579 8.75694 32.7215C8.78662 32.7851 8.8325 32.8398 8.88998 32.88C9.05788 33.0141 9.24721 33.1189 9.44998 33.19L10.28 33.52L10.53 33.66C10.7589 33.7928 10.9464 33.9865 11.0718 34.2195C11.1971 34.4526 11.2554 34.7159 11.24 34.98C11.2363 35.3032 11.1323 35.6173 10.9425 35.8788C10.7526 36.1403 10.4861 36.3365 10.18 36.44C10.0413 36.4951 9.89716 36.5353 9.74998 36.56C9.73053 36.5648 9.71358 36.5767 9.70247 36.5933C9.69136 36.61 9.68691 36.6302 9.68999 36.65V37.48H8.81998V36.65H8.44998C8.10336 36.6013 7.76617 36.5002 7.44998 36.35C7.37998 36.35 7.36998 36.29 7.38998 36.23L7.61998 35.34L7.58998 35.19Z" fill="#20A245"/>
+                              </svg>
+                        </div>
+                        <div class="procs_content">
+                            <h5 class="">Submit a Claim</h5>
+                            <p>Submit your claim by phone or online. 24 hours a day, 7 days a week, 365 days a year.</p>
+                        </div>
+
+                    </div>
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="35" viewBox="0 0 41 35" fill="none">
+                                <path d="M3.33001 29.83H1.33001C1.33001 29.83 0.630026 29.75 0.720026 27.98V4.64004C0.720026 4.64004 0.90002 1.29004 3.37002 1.29004H34.43C34.43 1.29004 39.2 3.67004 36.2 8.34004L32.05 8.52004L35.4 18.05C35.4 18.05 39.9 17.87 40.52 20.17V29.83H37.78" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M7.81 34.0699C10.1241 34.0699 12 32.194 12 29.8799C12 27.5659 10.1241 25.6899 7.81 25.6899C5.49592 25.6899 3.62 27.5659 3.62 29.8799C3.62 32.194 5.49592 34.0699 7.81 34.0699Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M7.81 31.64C8.78202 31.64 9.57001 30.852 9.57001 29.88C9.57001 28.908 8.78202 28.12 7.81 28.12C6.83798 28.12 6.04999 28.908 6.04999 29.88C6.04999 30.852 6.83798 31.64 7.81 31.64Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M33.81 34.0699C36.1241 34.0699 38 32.194 38 29.8799C38 27.5659 36.1241 25.6899 33.81 25.6899C31.4959 25.6899 29.62 27.5659 29.62 29.8799C29.62 32.194 31.4959 34.0699 33.81 34.0699Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M33.81 31.64C34.782 31.64 35.57 30.852 35.57 29.88C35.57 28.908 34.782 28.12 33.81 28.12C32.838 28.12 32.05 28.908 32.05 29.88C32.05 30.852 32.838 31.64 33.81 31.64Z" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M12.33 29.88H29.89" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M39.9 20.08H36.55V23.39H40.17" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M38 25.42H40.17" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M1.17004 20.5699H3.62003" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M1.17004 23.66H3.62003" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M23.62 20.08H26.07" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M22.78 17.8799L22.65 7.68994H28.87L32.36 17.5699L22.48 17.4799" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M2.76001 17.3L20.58 17.48" stroke="#242424" stroke-miterlimit="10"/>
+                                <path d="M10.74 7.51001H3.32996V14.97H10.74V7.51001Z" stroke="#20A245" stroke-miterlimit="10"/>
+                                <path d="M3.62 12.1H10.39" stroke="#20A245" stroke-miterlimit="10"/>
+                                <path d="M19.74 7.51001H12.33V14.97H19.74V7.51001Z" stroke="#20A245" stroke-miterlimit="10"/>
+                                <path d="M12.62 12.1H19.39" stroke="#20A245" stroke-miterlimit="10"/>
+                              </svg>
+                        </div>
+                        <div class="procs_content">
+                            <h5 class="">Service is on the Way</h5>
+                            <p>Pay your service call fee and manage your claim online. We'll try to have a technician to you within 24-48 hours*.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+</main>   
+<app-blog-list></app-blog-list>
+<app-check-out-strip></app-check-out-strip>
+          
+

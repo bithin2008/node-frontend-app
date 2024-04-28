@@ -1,0 +1,56 @@
+
+<section class="fp__inner__banner fp_testi">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="banner_wrapper" style="--obj-position: right;">
+                <picture>
+                    <source srcset="assets/img/testimonial-banner.webp" type="image/webp">
+                    <source srcset="assets/img/testimonial-banner.jpg" type="image/jpg">
+                    <img src="assets/img/testimonial-banner.webp" alt="First Premier" title="First Premier">
+                </picture>
+                <div class="banner_content flow-rootX3">
+                    <h1  class="h1 txt-reveal-anim" *ngIf="pageDetails?.h1_tag" [innerHTML]="pageDetails?.h1_tag"></h1>
+                    <h1 class="h1 txt-reveal-anim" *ngIf="!pageDetails?.h1_tag">What Our<br>Customers Are Saying</h1>
+                    <a class="c2a c2a--inline bg--fpYellow hvr:c--whitee hvr:bg--fpGreen" routerLink="/checkout">GET COVERAGE NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="fp_testimonials_sec">
+    <div class="mainxx-container">
+        <div class="inner-container">
+            <div class="testimol_wrapper">
+                <div class="items flow-rootX" *ngFor="let item of customerReviews">
+                    <div class="top_content">
+                      <h5 class="sml_ttl">{{item.first_name}} {{item.last_name}}</h5>
+                      <span class="date">{{item.review_date  | date:'MMM d, y'}}</span>
+                    </div>
+                    <div class="middle_content">
+                      <div class="left">
+                        <div class="left_cont">
+                          <p>{{item.description}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="last_content">
+                        <div class="last_content_ratng">
+                            <span>Posted to</span>
+                            <figure *ngIf="item.review_source==1"> <img src="assets/img/home/google-icon.webp" alt="Google" title="Google"></figure>
+                            <figure *ngIf="item.review_source==2"><img src="assets/img/home/trustpilot-icon.webp"  width="55" alt="Trustpilot" title="Trustpilot"></figure>
+                            <figure *ngIf="item.review_source==3"><img src="assets/img/home/bbb-icon.webp"  width="60" alt="BBB" title="BBB"></figure>
+                        </div>
+                        <div>
+                        <star-rating [starType]="'svg'" [readOnly]="true" [rating]="item.rating"></star-rating>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination--review"></div>
+            </div>
+            <!-- <nav class="pagination_list" *ngIf="paginationObj.totalPages>1">
+                <p-paginator (onPageChange)="paginate($event)" [first]="paginationObj.first" [rows]="paginationObj.limit" [totalRecords]="paginationObj.total"></p-paginator>
+            </nav> -->
+        </div>
+    </div>
+</section>
+<app-check-out-strip></app-check-out-strip>

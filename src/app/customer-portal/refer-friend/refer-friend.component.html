@@ -1,0 +1,157 @@
+<main>
+    <section class="fp__inner__banner refer_inner_bnr">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="banner_wrapper">
+                    <picture>
+                        <source srcset="assets/img/refer-friend/refer-hero.webp" type="image/webp">
+                        <source srcset="assets/img/refer-friend/refer-hero.jpg" type="image/jpg">
+                        <img src="assets/img/refer-friend/refer-hero.webp" alt="First Premier" title="First Premier">
+                    </picture>
+                    <div class="banner_content flow-rootX3">
+                        <h1 class="h1">Refer a Friend <br>Program.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fp_process cp_fp_process">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="pros_hdng">
+                    <h4>Refer and Receive <img src="assets/img/refer-friend/amazon-icon.png" alt="Email" title="Email" />
+                        Gift Card</h4>
+                </div>
+
+                <div class="process_inner">
+
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <img src="assets/img/refer-friend/email.png" alt="Email" title="Email">
+                        </div>
+                        <div class="procs_content">
+                            <h5>Step 1</h5>
+                            <p>Send the email with your, and your friends details
+                            </p>
+                        </div>
+                    </div>
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <img src="assets/img/refer-friend/enrol.png" alt="Enrol" title="Enrol">
+                        </div>
+                        <div class="procs_content">
+                            <h5>Step 2</h5>
+                            <p>After sending the email your friend need to enroll!</p>
+                        </div>
+
+                    </div>
+                    <div class="process_box">
+                        <div class="process_icn">
+                            <img src="assets/img/refer-friend/gift-card.png" alt="Enrol" title="Enrol">
+                        </div>
+                        <div class="procs_content">
+                            <h5>Step 3</h5>
+                            <p>30 Days after they enroll, Amazon Gift <br>Cards will be sent to you both!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fp_affiliate fp_ref">
+        <div class="mainxx-container">
+            <div class="inner-container">
+                <div class="affiliate_premier_wrapper mt-0">
+                    <div class="affiliate_primr_image">
+                        <picture class="primr_fst">
+                            <source srcset="assets/img/refer-friend/refer-form.webp" type="image/webp">
+                            <source srcset="assets/img/refer-friend/refer-form.jpg" type="image/jpg">
+                            <img src="assets/img/refer-friend/refer-form.webp" alt="First Premier"
+                                title="First Premier">
+                        </picture>
+                        <div class="primr_image_card advtg_primr_card">
+                            <span>7K <sup>+</sup></span>
+                            <p>Users already get their referal gifts.</p>
+                        </div>
+                    </div>
+                    <div class="affiliate_primr_form">
+                        <div class="primr_image_card advtg_primr_card">
+                            <span>7K <sup>+</sup></span>
+                            <p>Users already get their referal gifts.</p>
+                        </div>
+                        <h3><span>Refer a Friend Now!</span></h3>
+
+
+                        <form class="form-style" [formGroup]="referFriendForm" (ngSubmit)="referFriendSubmit()">
+                            <div class="form-element">
+                                <label class="form-label">Your Full Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="150"
+                                formControlName="fullName"
+                                [ngClass]="{ 'is-invalid': referFriendFormSubmitted && s1['fullName'].errors }" />
+                                <app-validation-error [control]="s1['fullName']"></app-validation-error>
+                            </div>
+
+                            <div class="form-element">
+                                <label class="form-label">Email Address <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="150"
+                                formControlName="emailId"
+                                [ngClass]="{ 'is-invalid': referFriendFormSubmitted && s1['emailId'].errors }" />
+                                <app-validation-error [control]="s1['emailId']"></app-validation-error>
+                            </div>
+
+                            <div class="form-element">
+                                <label class="form-label">Friend's Full Name <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="150"
+                                formControlName="friendFullName"
+                                [ngClass]="{ 'is-invalid': referFriendFormSubmitted && s1['friendFullName'].errors }" />
+                                <app-validation-error [control]="s1['friendFullName']"></app-validation-error>
+                            </div>
+                            <div class="form-element">
+                                <label class="form-label"> Friend's Phone No. </label>
+                                <input type="text" class="form-field" usPhoneNumber (input)="changePhoneFormat($event)"
+                                formControlName="friendMobileNo"
+                                [ngClass]="{ 'is-invalid': referFriendFormSubmitted && s1['friendMobileNo'].errors }" />
+                                <app-validation-error [control]="s1['friendMobileNo']"></app-validation-error>
+                            </div>
+                            <div class="form-element">
+                                <label class="form-label">Friend's Email <span class="c--madnatory">*</span></label>
+                                <input type="text" class="form-field" minlength="3" maxlength="150"
+                                formControlName="friendEmailId"
+                                [ngClass]="{ 'is-invalid': referFriendFormSubmitted && s1['friendEmailId'].errors }" />
+                                <app-validation-error [control]="s1['friendEmailId']"></app-validation-error>
+                            </div>
+
+                            <div class="email_subject_wrapper">
+                                <strong>Email Being Sent:</strong>
+                                <div class="email_subject">
+                                    <em>Email Subject: (Your Friend Name) - Subscribe to best Home Warranty Rates</em>
+                                    <p>Hi (Friend's Full Name), it's (Your Full Name) reaching out to you! I just
+                                        purchased Home Warranty coverage from First Premier Home Warranty and I wanted
+                                        to share that with you! They're recognized as the nations #1 provider and they
+                                        offer comprehensive coverage for many of your homes systems and appliances. If
+                                        you would like to purchase a home warranty plan, please visit their website
+                                        www.firstpremierhomewarranty.com or call 1-800-388-1918, and one of their
+                                        representatives will be more than happy to assist you. As my friend, you're
+                                        entitled to discounted pricing which you can take advantage of! Additionally, if
+                                        you choose to enroll, each of us will receive a $25 Amazon Gift Card!</p>
+                                    <p>If you have any questions, you can respond to this email and an agent of theirs
+                                        will be in touch.</p>
+                                    <p>Enjoy!</p>
+                                </div>
+                            </div>
+                            <div class="form-element">
+                                <button class="c2a bg--fpGreen w-100 c2a-lg hvr:bg--fpYellow c--whitee hvr:c--blak"
+                                    type="submit" value="Get a Quote" [disabled]="loading">
+                                    <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">Send Email</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>

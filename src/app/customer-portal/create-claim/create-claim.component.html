@@ -1,0 +1,255 @@
+<main>
+    <section class="fp_customer_portal fp_edit_profile">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper edt_prof_wrap">
+                  
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                        <div class="alert-box" *ngIf="activeClaimCount>0">{{activeClaimCount}} claim(s) are currently 'in progress' in your account. Following the resolution of the existing claim(s), you are free to file another claim. </div>
+                            <div class="card_header">
+                                <div class="card_header_inner pass_change_hdr">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="64" viewBox="0 0 54 64" fill="none">
+                                    <path d="M26.6409 34.993C36.0278 34.993 43.6374 27.3834 43.6374 17.9965C43.6374 8.60959 36.0278 1 26.6409 1C17.254 1 9.64441 8.60959 9.64441 17.9965C9.64441 27.3834 17.254 34.993 26.6409 34.993Z" stroke="white" stroke-width="1.5"/>
+                                    <path d="M52.5211 62.3624C52.5211 54.2289 55.4437 33.3064 34 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1.13409 62.3624C1.13409 54.2289 -1.78851 33.3064 19.6552 33.3064" stroke="white" stroke-width="1.5"/>
+                                    <path d="M1 62.3064L53 62.3624" stroke="white" stroke-width="1.5"/>
+                                    </svg>
+                                    <h3>File A Claim</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="file_claim_wrapper">
+                                    <form class="form-style pay_details_form" [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+                                        <div class="white-overlay" *ngIf="activeClaimCount>0"></div>
+                                        <div class="form-grid-on">
+                                            <div class="form-element">
+                                                <label>Select your product <span class="c--madnatory">*</span></label>
+                                                <select class="form-select form-field has-field-valu"  formControlName="product_id"  [ngClass]="{ 'is-invalid': submitted && s1['product_id'].errors }" (change)="selectProduct()"  id="floatingSelect">
+                                                    <option value="">Select</option> 
+                                                    <ng-container *ngFor="let item of policyDetails?.policy_product_list">
+                                                        <option [ngValue]="item?.product_id">{{item?.product_details?.product_name}}</option>
+                                                    </ng-container>
+                                                </select>
+                                                <app-validation-error
+                                                [control]="s1['product_id']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element">
+                                                <label>Brand Name </label>
+                                                <input type="text" class="form-field  has-field-valu" minlength="2" maxlength="30" formControlName="product_brand"
+                                                [ngClass]="{ 'is-invalid': submitted && s1['product_brand'].errors }">   
+                                            </div>
+                                            <div class="form-element">
+                                                <label>Model No.</label>
+                                                <input type="text" class="form-field has-field-valu" minlength="2" maxlength="30"  formControlName="product_model"
+                                                [ngClass]="{ 'is-invalid': submitted && s1['product_model'].errors }">
+                                            </div>
+    
+                                            <div class="form-element">
+                                                <label>Serial No. </label>
+                                                <input type="text"  class="form-field has-field-valu" minlength="3" maxlength="40" formControlName="product_serial_no"
+                                                [ngClass]="{ 'is-invalid': submitted && s1['product_serial_no'].errors }">
+                                            </div>
+                                            <div class="form-element">
+                                                <label>Product purchase date </label>
+                                                <div class="form-field datepicker date-form-field">                                                   
+                                                    <div class="date_place">                                                        
+                                                        <p-calendar formControlName="product_purchase_date" placeholder="Select purchase date" [maxDate]="maxDate" dateFormat="yy-mm-dd"></p-calendar>
+                                                    </div>
+                                                    <app-validation-error
+                                                [control]="s1['product_purchase_date']"></app-validation-error>
+                                                </div>
+                                            </div>
+                                            <div class="form-element">
+                                                <label>What type of issue you are facing? <span class="c--madnatory">*</span></label>
+                                                <select class="form-select form-field has-field-valu"  formControlName="issue_type" [attr.readonly]="disableIssueList"  [ngClass]="{ 'is-invalid': submitted && s1['issue_type'].errors }" (change)="changeIssueType()"   id="issueTypeSelect">
+                                                    <option value="">Select</option> 
+                                                    <ng-container *ngFor="let item of productProblemList">
+                                                        <option [ngValue]="item?.product_problem_id">{{item?.problems}}</option>
+                                                    </ng-container>
+                                                    <option value="others">Others</option> 
+                                                </select>                                               
+                                                <app-validation-error
+                                                [control]="s1['issue_type']"></app-validation-error>
+                                            </div>
+                                           
+
+                                            <div class="form-element" *ngIf="s1['issue_type'].value=='others'">
+                                                <label>Other Issues  <span class="c--madnatory">*</span></label>
+                                                <textarea type="text" rows="3" formControlName="other_issue_type" class="form-field has-field-valu" 
+                                                [ngClass]="{ 'is-invalid': submitted && s1['other_issue_type'].errors }"></textarea>
+                                                <app-validation-error
+                                                [control]="s1['other_issue_type']"></app-validation-error>
+                                            </div>
+                                            <div class="form-element">
+                                                <label>Please share more details to understand about the problem <span class="c--madnatory">*</span></label>
+                                                <textarea type="text" rows="3" class="form-field has-field-valu" formControlName="issue_details"
+                                                [ngClass]="{ 'is-invalid': submitted && s1['issue_details'].errors }"></textarea>
+                                                <app-validation-error
+                                                [control]="s1['issue_details']"></app-validation-error>
+                                            </div>
+                                            <div class="form-checkbox cc_form_checkbox mb-2">
+                                                <label>
+                                                    <input type="checkbox" class="ng-untouched ng-pristine ng-valid" formControlName="ownTechnician">
+                                                    <span class="checkmark"></span>
+                                                    <p>Would you like to bring your own technician?</p>
+                                                </label>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-checkbox cc_form_checkbox">
+                                            <label>
+                                                <input type="checkbox" class="ng-untouched ng-pristine ng-valid" formControlName="iagree">
+                                                <span class="checkmark"></span>
+                                                <p>Agree to the <a routerLink="/terms-conditions"
+                                                        class="fw--b c2a-underline hvr:c--fpBlue" target="_blank">Terms & Conditions</a> and pay the Service Call Fee to the technician during the visit.</p>
+                                            </label>
+                                            
+                                        </div>
+                                        <div class="form_btn text-right mt-1">
+                                            <button type="submit" value="Add New Card" class="c2a c2a--inline bg--fpGreen c--whitee hvr:bg--fpYellow hvr:c--blak"  [disabled]="loading">
+                                                
+                                                <span class="fp-spinner-container" *ngIf="loading"><span class="fp-spinner"></span> Loading...</span> <span *ngIf="!loading">FILE A CLAIM </span>
+                                                <span 
+                                                class="spinner-border spinner-border-sm me-1"></span></button>
+                                        </div>
+                                    </form>
+                                    <div class="ad_blog_list">
+                                        <div class="related_blog">
+                                            <div class="related_blog_header">
+                                               <h4>Related Blog(s)</h4>
+                                               <div class="swiper-nav" *ngIf="blogList.length>1">
+                                                    <div class="swiper-nav--prev swiper__blog-container--prev"></div>
+                                                    <div class="swiper-nav--next swiper__blog-container--next"></div>
+                                                </div>
+                                            </div>
+                                            <div class="related_blog_body">
+                                                <ng-container *ngIf="blogList.length>0">
+                                                <div class="swiper-container swiper__blog-container" >
+                                                    <div class="swiper-wrapper eq-height">
+                                                      <div class="swiper-slide" *ngFor="let blog of blogList">
+                                                        <div class="blog--card">
+                                                          <span class="burdge">{{blog.publish_date | date:'MMM d, y'}}</span>
+                                                          <figure><a  routerLink="/blogs/{{blog.slug}}"><img src="{{blog.image}}" alt="{{blog.blog_title}}" title="{{blog.blog_title}}"/></a></figure>
+                                                          <article class="flow-rootX">
+                                                            <h5 class="item--heading"><a routerLink="/blogs/{{blog.slug}}">{{ (blog.blog_title.length>50)? (blog.blog_title | slice:0:40)+'...':(blog.blog_title) }}</a></h5>
+                                                            <a routerLink="/blogs/{{blog.slug}}" class="readbtn">Read Blog</a>
+                                                          </article>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </ng-container>
+                                                <ng-container *ngIf="blogList.length==0">
+                                                    <div class="no-post-block flow-root">
+                                                        <figure>
+                                                            <img src="assets/img/icon/no-post.svg"/>
+                                                        </figure>
+                                                        <p>No related post found</p>
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             <!--  <form class="form-style-3 flow-rootx moadal_form"  [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+                                    
+                                            <div class="addCard_form_row claim_form_row">
+                                        
+                                                    <div class="form-element">                                       
+                                                        <label class="form-label">Select Product <span class="c--madnatory">*</span></label>
+                                                        <select class="form-select form-field"
+                                                        formControlName="product_id"
+                                                        [ngClass]="{ 'is-invalid': submitted && s1['product_id'].errors }"
+                                                        id="floatingSelect">
+                                                        <option value="">Select</option> 
+                                                        <ng-container *ngFor="let item of policyDetails?.policy_product_list">
+                                                                                        <option value="{{item?.product_id}}">
+                                                                                            {{item?.product_details?.product_name}}
+                                                                                        </option>
+                                                                                    </ng-container>
+                                                    </select>
+                                                        <app-validation-error [control]="s1['product_id']"></app-validation-error>
+                                                    </div>
+                                                 
+                    
+                                                    <div class="form-element">                                       
+                                                        <label class="form-label">Brand</label>
+                                                        <input type="text" class="form-field"  minlength="2" maxlength="150"
+                                                        formControlName="product_brand"
+                                                        [ngClass]="{ 'is-invalid': submitted && s1['product_brand'].errors }" />
+                                                        <app-validation-error
+                                                        [control]="s1['product_brand']"></app-validation-error>
+                                                    </div>
+                                                    <div class="form-element">                                       
+                                                        <label class="form-label">Model no</label>
+                                                        <input type="text" class="form-field"  minlength="2" maxlength="150"
+                                                        formControlName="product_model"
+                                                        [ngClass]="{ 'is-invalid': submitted && s1['product_model'].errors }" />
+                                                        <app-validation-error
+                                                        [control]="s1['product_model']"></app-validation-error>
+                                                    </div> -->
+                        
+                                                    <!-- <div class="form-element">                                       
+                                                        <label class="form-label">Priority</label>
+                                                        <select class="form-field form-select"
+                                                        id="floatingSelect" formControlName="priority"
+                                                        [ngClass]="{ 'is-invalid': submitted && s1['priority'].errors }">
+                                                        <option selected>Select</option>
+                                                        <option value="Urgent">Urgent</option>
+                                                        <option value="High">High</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Low">Low</option>
+                                                    </select>
+                                                        <app-validation-error
+                                                        [control]="s1['priority']"></app-validation-error>
+                                                    </div> -->
+                        
+                                                    <!--<div class="form-element ">                                       
+                                                        <label class="form-label">Serial no </label>
+                                                        <input type="text" class="form-field"
+                                                        formControlName="product_serial_no"
+                                                        [ngClass]="{ 'is-invalid': submitted && s1['product_serial_no'].errors }">
+                                                    <app-validation-error
+                                                        [control]="s1['product_serial_no']"></app-validation-error>
+                                                    </div>
+                                                    <div class="form-element datepicker colspan-2">                                       
+                                                        <label class="form-label">Product Purchase Date </label>
+                                                        <p-calendar formControlName="product_purchase_date" dateFormat="yy-mm-dd"></p-calendar>                                    
+                                                        <app-validation-error
+                                                        [control]="s1['product_purchase_date']"></app-validation-error>
+                                                    </div>
+                                                    <div class="form-element colspan-2">                                       
+                                                        <label class="form-label">Issue
+                                                            Details</label>
+                                                            <textarea type="text" rows="3" 
+                                                            class="form-field"
+                                                            formControlName="issue_details"
+                                                            [ngClass]="{ 'is-invalid': submitted && s1['issue_details'].errors }"></textarea>
+                                                        <app-validation-error
+                                                        [control]="s1['issue_details']"></app-validation-error>
+                                                    </div>
+                                                  
+                                            
+                                            </div>
+                                               
+                                                  
+                                            <div class="form_btn text-right pt-0 mt-0">
+                                                <button type="submit" value="Add New Card" class="c2a c2a--inline c--blak bg--fpYellow hvr:c--whitee hvr:bg--fpGreen">Claim Now <span 
+                                                    class="spinner-border spinner-border-sm me-1"></span></button>
+                                            </div>
+                                           
+                                </form> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+

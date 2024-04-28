@@ -1,0 +1,64 @@
+@function color($key) {
+  @if map-has-key($allColors, $key) {
+    @return map-get($allColors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $allColors.";
+  @return null;
+}
+
+$allColors: (
+  // Base Colors
+  "body" : #ffffff,
+  "whitee" : #ffffff,
+  "blak" : #000000,
+  "place" : #aeaeae,
+  "mark" : #ffff00,
+  "border" : #e0e0e0,
+  "tblborder" : #dadada,
+
+  // Success and Error Colors
+  "success" : #7ac142,
+  "error" : #d81212,
+  "madnatory" : #ff3333,
+
+  // Theme Colors
+  "fpBlue" : #17367a,
+  // "fpBlue" : #364a77,
+  "fpYellow" : #f8c126,
+  //  "fpGreen" : #20a245,
+  "fpGreen" : #36a455,
+  "fpDarkYellow" : #d49428,
+  "fpGray" : #eaeaea,
+  "fpDarkGray" : #6b6b6b,
+  "fpRed" : #e40923,
+  "txt" : #404040,
+  "extradrk" : #202020,
+  "fpLightBlue" : #2325b3,
+  "mdSky" : #066afe,
+  "fpActive" : #48b84e,
+  "premierLight": #eef1ff,
+  "platinumLight": #e0eeff,
+  "fpPending" : #e98a11,
+  "premier": #17367a,
+  "platinum": #2325b3,
+  "optional" : #2a2a2a,
+  "inactive" : #c7c7c7,
+  
+  // Social Media
+  "facebook" : #1877F2,
+  "twitter" : #000000,
+  "linkedin" : #007bb5,
+  "vimeo" : #1ab7ea,
+  "youtube" : #ff0000,
+  "dribbble" : #ea4c89,
+  "whatsappgreen": #25D366,
+  "grays" : #f2f2f2,
+  "transparent": transparent,
+  "cancel" : #f7e1e1,
+  "hold" : #e9e5cf,
+  "active" : #e7f2e7,
+  "action" : #1c4294,
+  "trash" : #fe1010,
+  "lblu" : #f7faff,
+);

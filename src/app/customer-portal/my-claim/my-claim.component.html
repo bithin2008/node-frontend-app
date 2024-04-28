@@ -1,0 +1,384 @@
+<main>
+    <section class="fp_customer_portal fp_claim">
+        <div class="main-container">
+            <div class="inner-container">
+                <div class="card_wrapper">
+                    <div class="card_wrap_inner">
+                        <div class="main-inner-container">
+                            <div class="card_header">
+                                <div class="card_header_inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                                        <path d="M19.502 64.9959H21.6932C21.6932 66.1792 23.1941 67.1871 24.9799 67.1871C26.7657 67.1871 28.2667 66.1792 28.2667 64.9959C28.2667 63.7908 27.1273 63.3526 24.717 62.7719C22.3943 62.1912 19.502 61.4682 19.502 58.4224C19.502 56.4614 21.1125 54.7961 23.3365 54.2373V51.849H26.6233V54.2373C28.8473 54.7961 30.4578 56.4614 30.4578 58.4224H28.2667C28.2667 57.2392 26.7657 56.2313 24.9799 56.2313C23.1941 56.2313 21.6932 57.2392 21.6932 58.4224C21.6932 59.6276 22.8326 60.0658 25.2429 60.6465C27.5655 61.2271 30.4578 61.9502 30.4578 64.9959C30.4578 66.957 28.8473 68.6223 26.6233 69.1811V71.5694H23.3365V69.1811C21.1125 68.6223 19.502 66.957 19.502 64.9959Z" fill="white"/>
+                                        <path d="M24.9799 82.525H3.88991C2.06401 81.156 -0.0541873 77.486 6.08111 73.7607C6.08111 66.9681 6.08111 59.6094 6.08111 56.7792C5.71591 51.0274 8.98441 39.6881 24.9799 40.3455" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M24.4321 82.553H45.522C47.348 81.183 49.4661 77.513 43.3309 73.788C43.3309 66.9954 43.3309 59.6367 43.3309 56.8065C43.6961 51.0547 40.4276 39.7154 24.4321 40.3727" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M17.8586 40.3453L14.5719 32.6763" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M32.3751 40.8931L36.7574 32.6763" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M13.4763 32.1285H37.853" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M29.91 28.0201V2H69.351L81.95 15.147V74.5823H52.3695" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M61.6819 21.9944H75.3767M61.6819 29.6634H75.3767M61.6819 36.5108H75.3767H40.8658M46.0699 43.6321H59.7646M61.6819 43.6321H68.5293H75.3767M52.3695 50.2056H74.8289M75.3767 57.6008H68.5293M51.5478 57.6008H65.2425M52.3695 64.1742H74.8289" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M68.2554 2.54779V16.2426H81.402" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M44.9743 29.6634C42.0527 28.0201 36.1 24.2403 35.6618 22.2683C35.2236 20.2962 35.6618 14.8731 35.6618 12.1341" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M35.6619 13.2297C37.9444 12.6819 42.345 10.6003 43.8788 6.65619H45.2482C46.5264 9.02999 50.6166 13.6132 54.5607 12.9558" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M43.8787 29.6634C46.8003 28.0201 53.5747 25.062 54.0129 23.0899C54.4511 21.1179 54.0128 14.5992 54.0128 11.8602" stroke="white" stroke-width="2.19116"/>
+                                        <path d="M41.9615 16.7903H39.2225V19.5292H41.9615V16.7903Z" fill="white"/>
+                                        <path d="M46.3437 12.9558H43.6047V15.6948H46.3437V12.9558Z" fill="white"/>
+                                        <path d="M50.726 16.7903H47.9871V19.5292H50.726V16.7903Z" fill="white"/>
+                                        <path d="M46.3437 21.1727H43.6047V23.9117H46.3437V21.1727Z" fill="white"/>
+                                    </svg>
+                                    <h3>My Claim</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card_inner claim_wrap">
+                                    <div class="claim_nav_tab">
+                                        <ul>
+                                            <li class="tab active"><button type="button" (click)="openTab($event, 'tab1')"> Total <i *ngIf="customerClaimList.length">({{customerClaimList.length}})</i> <em>Claims</em><span class="badge badg-total" *ngIf="customerClaimList.length">{{customerClaimList.length}}</span> </button></li>
+                                            <li class="tab"><button type="button" (click)="openTab($event, 'tab2')">Active/Pending <i *ngIf="customerClaimList.length">({{customerClaimList.length - completedClaimCount}})</i> <em>Claims</em> <span class="badge badg-pend" *ngIf="customerClaimList.length">{{customerClaimList.length - completedClaimCount}}</span> </button></li>
+                                            <li class="tab"><button type="button" (click)="openTab($event, 'tab3')"> Closed <i *ngIf="customerClaimList.length">({{completedClaimCount>0?(completedClaimCount):0}})</i> <em>Claims</em> <span class="badge badg-close" *ngIf="customerClaimList.length">{{completedClaimCount>0?(completedClaimCount):0}}</span> </button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card_sec_hdng flow-rootX">
+                                        <div class="accodian_wrapper tab-content claim-tab active" id="tab1">
+                                            <ng-container *ngIf="customerClaimList.length>0">
+                                                <div class="js-acc-item is-open" *ngFor="let item of customerClaimList">
+                                                    <div class="js-acc-single-trigger">
+                                                        <h3 class="c--blak">{{item.product_details.product_name}}</h3>
+                                                        <div class="acc_hdr_elemts">
+                                                            <ul>
+                                                                <li>Claim No. - <strong>{{item.ticket_no}}</strong></li>
+                                                                <li>Date - <strong>{{item.created_at|
+                                                                        date:'MM-dd-yyyy'}}</strong></li>
+                                                                <li>Status -
+                                                                    <strong class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</strong>
+
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="accod_body mypolicy-accd">
+                                                        <div class="accod_table">
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr class="ticktno">
+                                                                            <td>Ticket No.</td>
+                                                                            <td>{{item.ticket_no}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Status:</td>
+                                                                            <td>
+                                                                              <span class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</span>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Logged on:</td>
+                                                                            <td>{{item.created_at| date:'MM-dd-yyyy'}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Make/Brand:</td>
+                                                                            <td>{{item.product_brand}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Policy No.</td>
+                                                                            <td>{{item.policy_details.policy_number}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Policy:</td>
+                                                                            <td><strong class="premium-pln">{{item?.policy_details?.plan_details?.plan_name}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Term:</td>
+                                                                            <td>{{item?.policy_details?.plan_term_details?.plan_term}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Address:</td>
+                                                                            <td>{{item.policy_details.billing_address1}}
+                                                                                {{item.policy_details.billing_city}}
+                                                                                {{item.policy_details.billing_state }},
+                                                                                {{item.policy_details.billing_zip}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Name:</td>
+                                                                            <td>{{item.policy_details.first_name}}
+                                                                                {{item.policy_details.last_name}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Email:</td>
+                                                                            <td>{{item.policy_details.email}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Phone No.</td>
+                                                                            <td>{{item.policy_details.mobile}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Claim Amount:</td>
+                                                                            <td>{{item.pcf | currency:'USD'}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="text-right">
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PDF</button>
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PAYMENT INVOICE</button>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngIf="customerClaimList.length==0">
+                                                <h2 class="text-center">No claims found</h2>
+                                            </ng-container>
+                                        </div>
+                                        <div class="accodian_wrapper tab-content claim-tab" id="tab2">
+                                            <ng-container *ngIf="openClaims.length>0">
+                                                <div class="js-acc-item is-open" *ngFor="let item of openClaims">
+                                                    <div class="js-acc-single-trigger">
+                                                        <h3 class="c--blak">{{item.product_details.product_name}}</h3>
+                                                        <div class="acc_hdr_elemts">
+                                                            <ul>
+                                                                <li>Claim No. - <strong>{{item.ticket_no}}</strong></li>
+                                                                <li>Date - <strong>{{item.created_at|
+                                                                        date:'MM-dd-yyyy'}}</strong></li>
+                                                                <li>Status -
+                                                                    <strong class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</strong>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="accod_body mypolicy-accd">
+                                                        <div class="accod_table">
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Ticket No.</td>
+                                                                            <td>{{item.ticket_no}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Status:</td>
+                                                                            <td>
+                                                                              <span class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Logged on:</td>
+                                                                            <td>{{item.created_at| date:'MM-dd-yyyy'}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Make/Brand:</td>
+                                                                            <td>{{item.product_brand}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Policy No.</td>
+                                                                            <td>{{item.policy_details.policy_number}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Policy:</td>
+                                                                            <td><strong class="premium-pln">{{item?.policy_details?.plan_details?.plan_name}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Term:</td>
+                                                                            <td>{{item?.policy_details?.plan_term_details?.plan_term}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Address:</td>
+                                                                            <td>{{item.policy_details.billing_address1}}
+                                                                                {{item.policy_details.billing_city}}
+                                                                                {{item.policy_details.billing_state }},
+                                                                                {{item.policy_details.billing_zip}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Name:</td>
+                                                                            <td>{{item.policy_details.first_name}}
+                                                                                {{item.policy_details.last_name}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Email:</td>
+                                                                            <td>{{item.policy_details.email}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Phone No.</td>
+                                                                            <td>{{item.policy_details.mobile}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Claim Amount:</td>
+                                                                            <td>{{item.pcf | currency:'USD'}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="text-right">
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PDF</button>
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PAYMENT INVOICE</button>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngIf="openClaims.length==0">
+                                                <h2 class="text-center">No claims found</h2>
+                                            </ng-container>
+                                        </div>
+                                        <div class="accodian_wrapper tab-content claim-tab " id="tab3">
+                                            <ng-container *ngIf="completedClaims.length>0">
+                                                <div class="js-acc-item is-open" *ngFor="let item of completedClaims">
+                                                    <div class="js-acc-single-trigger">
+                                                        <h3 class="c--blak">{{item.product_details.product_name}}</h3>
+                                                        <div class="acc_hdr_elemts">
+                                                            <ul>
+                                                                <li>Claim No. - <strong>{{item.ticket_no}}</strong></li>
+                                                                <li>Date - <strong>{{item.created_at|
+                                                                        date:'MM-dd-yyyy'}}</strong></li>
+                                                                <li>Status -
+                                                                  <span class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</span>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="accod_body mypolicy-accd">
+                                                        <div class="accod_table">
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Ticket No.</td>
+                                                                            <td>{{item.ticket_no}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Status:</td>
+                                                                            <td >
+                                                                              <span class="badge--style" [style.background-color]="item?.claim_ticket_status_details?.status_color">{{item?.claim_ticket_status_details?.ticket_status}}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Logged on:</td>
+                                                                            <td>{{item.created_at| date:'MM-dd-yyyy'}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Make/Brand:</td>
+                                                                            <td>{{item.product_brand}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Policy No.</td>
+                                                                            <td>{{item.policy_details.policy_number}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Policy Name:</td>
+                                                                            <td><strong class="premium-pln">{{item?.policy_details?.plan_details?.plan_name}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Policy Term:</td>
+                                                                            <td>{{item?.policy_details?.plan_term_details?.plan_term}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Address:</td>
+                                                                            <td>{{item.policy_details.billing_address1}}
+                                                                                {{item.policy_details.billing_city}}
+                                                                                {{item.policy_details.billing_state }},
+                                                                                {{item.policy_details.billing_zip}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="accod_table_item">
+                                                                <table class="table card_table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Name:</td>
+                                                                            <td>{{item.policy_details.first_name}}
+                                                                                {{item.policy_details.last_name}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Email:</td>
+                                                                            <td>{{item.policy_details.email}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Phone No.</td>
+                                                                            <td>{{item.policy_details.mobile}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Claim Amount:</td>
+                                                                            <td>{{item.pcf | currency:'USD'}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="text-right">
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PDF</button>
+                                                            <button type="submit"
+                                                                class="c2a c2a--inline c--whitee bg--fpGreen hvr:c--blak hvr:bg--fpYellow">DOWNLOAD
+                                                                POLICY PAYMENT INVOICE</button>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngIf="completedClaims.length==0">
+                                                <h2 class="text-center">No claims found</h2>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
